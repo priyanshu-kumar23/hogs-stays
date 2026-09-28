@@ -32,9 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next-cinema/types/**/*.ts",
-    ".next-production/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
+    ".next-production/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
