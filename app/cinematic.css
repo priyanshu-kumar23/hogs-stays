@@ -10,3 +10,57 @@ body{background:#111b17}html{overflow-x:clip}.navbar{padding:25px 4.5%;backdrop-
 .scene-fallback{position:fixed;inset:0;pointer-events:none;z-index:0;background:#111b17}.scene-fallback img{opacity:.35;filter:saturate(.35)}.scene-fallback:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent,#111b17c0)}.navbar{transition:none}
 @media(min-width:701px){.hero h1{font-size:clamp(95px,13vw,205px)}.hero-first{font-size:.78em}.hero h1 .last-line{margin-left:43%}}
 @media(min-width:701px) and (max-height:850px){.hero h1{font-size:11.2vw}}
+
+/* ===================================================================================
+   Hero rebuild (composed grid/flex headline; relative em/clamp offsets, no viewport-
+   absolute drift). Rules below are appended last on purpose so they win the cascade
+   over the older hero-* declarations above without having to hunt every one down.
+   =================================================================================== */
+.hero{position:relative;isolation:isolate;overflow:hidden;height:100svh;min-height:600px;max-height:1300px;display:flex;flex-direction:column;text-align:left;background:#111b17}
+.hero-scene{position:absolute;inset:0;width:100%;height:100%;z-index:-3;overflow:hidden}
+.hero-content{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3.5vh,44px);padding:clamp(96px,15vh,168px) clamp(20px,5vw,80px) clamp(20px,3vh,32px);min-height:0;min-width:0}
+.hero-kicker{justify-content:flex-start;margin:0;flex:0 0 auto}
+.hero-headline{display:flex;flex-direction:column;margin:0;font-family:var(--serif);font-weight:400;color:#fffaf0;letter-spacing:-.045em;text-shadow:none;min-width:0}
+.hero-line{display:block;min-width:0}
+.hero-line-1{font-size:clamp(2.4rem,8vw,7.2rem);line-height:.98}
+.hero-line-2{display:flex;flex-wrap:wrap;align-items:baseline;gap:.15em;font-size:clamp(3rem,11vw,11rem);line-height:.92;margin-top:.03em}
+.hero-the{font-size:.28em;font-style:italic;letter-spacing:-.03em;opacity:.92;flex:0 0 auto}
+.hero-star{font-size:.2em;color:#e4cda7;align-self:center;margin-left:.2em;flex:0 0 auto}
+.hero-line-3{margin-top:-.1em;margin-left:clamp(0px,7vw,3.6em);font-size:clamp(1.5rem,5.2vw,5rem);font-style:italic;color:#eadac0;line-height:1}
+.hero-line-3 .hero-word{white-space:normal}
+.hero-aside{position:relative;left:auto;bottom:auto;flex:0 0 auto;max-width:min(360px,88vw)}
+.hero-aside>.eyebrow{font-size:8px;letter-spacing:.22em;color:#eee2ce;display:block;margin-bottom:12px}
+.hero-aside p{font-size:12px;line-height:1.7;margin:0 0 22px}
+.hero-aside .button{font-size:10px;text-transform:uppercase;letter-spacing:.09em;background:#ded7c7;color:#18221c;padding:13px 20px;gap:20px}
+.hero-bottom{position:relative;bottom:auto;left:auto;right:auto;flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #e8e1d62b;padding:18px clamp(20px,5vw,80px) clamp(16px,3vh,26px);color:#f4f1ec}
+.hero-side-label{display:none}
+.gyro-permission{position:absolute;left:5%;bottom:calc(100% - 40px);z-index:2;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border:1px solid #ffffff50;border-radius:20px;background:#12291e99;color:#f4f1ec;backdrop-filter:blur(8px)}
+.cafe-ctas{display:flex;gap:20px;flex-wrap:wrap}
+.property-options>div{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.sticky-book-bar{display:none}
+@media(min-width:1024px){.hero-side-label{display:block;position:absolute;right:24px;top:42%;writing-mode:vertical-rl;font-size:8px;letter-spacing:.22em;z-index:1}}
+@media(max-width:1000px){.hero-content{padding-top:clamp(96px,17vh,150px)}}
+@media(max-width:700px){
+  .hero{min-height:560px;max-height:none}
+  .hero-content{padding:clamp(96px,16vh,140px) 6% clamp(16px,3vh,24px);gap:clamp(18px,4vh,30px)}
+  .hero-line-1{font-size:clamp(2.1rem,10vw,3.2rem)}
+  .hero-line-2{font-size:clamp(2.6rem,15vw,4.4rem);gap:.12em}
+  .hero-line-3{margin-left:clamp(0px,10vw,2em);font-size:clamp(1.3rem,7.5vw,2.1rem)}
+  .hero-bottom{flex-wrap:wrap;gap:10px;padding:14px 6% max(14px,env(safe-area-inset-bottom))}
+  .hero-coordinate{display:none}
+  .nav-book{display:none}
+  .sticky-book-bar{position:fixed;left:0;right:0;bottom:0;z-index:26;display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 16px calc(15px + env(safe-area-inset-bottom,0px));background:#d9822b;color:#18221c;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transform:translateY(115%);transition:transform .35s ease;box-shadow:0 -6px 20px #0004}
+  .sticky-book-bar.is-visible{transform:translateY(0)}
+  .mobile-whatsapp{bottom:82px}
+}
+@media(prefers-reduced-motion:reduce){.sticky-book-bar{transition:none}}
+/* Static (no-WebGL2 / reduced-motion / low-end) fallback for the prayer-flags hero scene. */
+.flags-fallback{position:absolute;inset:0;overflow:hidden;background:linear-gradient(180deg,#2b3a2f 0%,#1a241c 55%,#111b17 100%)}
+.flags-fallback-layer{position:absolute;left:0;right:0;bottom:0}
+.flags-fallback-sky{top:0;background:radial-gradient(ellipse at 68% 22%,#f2c98a55,transparent 60%)}
+.flags-fallback-ridge{height:55%;background-repeat:no-repeat;background-position:bottom center;background-size:100% 100%}
+.flags-fallback-ridge-3{height:70%;opacity:.9;background-image:linear-gradient(180deg,transparent 40%,#a9b1b6cc 41%);clip-path:polygon(0% 100%,0% 60%,12% 48%,26% 58%,41% 42%,55% 55%,68% 38%,82% 52%,100% 44%,100% 100%)}
+.flags-fallback-ridge-2{height:58%;opacity:.95;clip-path:polygon(0% 100%,0% 68%,18% 54%,33% 66%,50% 50%,66% 64%,84% 52%,100% 62%,100% 100%);background:linear-gradient(180deg,#4c5c50,#243a2e)}
+.flags-fallback-ridge-1{height:42%;clip-path:polygon(0% 100%,0% 72%,15% 58%,32% 70%,48% 56%,64% 70%,80% 58%,100% 68%,100% 100%);background:linear-gradient(180deg,#1c2e22,#0f1b14)}
+.flags-fallback-flags{top:8%;height:30%;opacity:.92}
+@media(max-width:700px){.flags-fallback-flags{top:5%;height:26%}}

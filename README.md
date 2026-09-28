@@ -39,7 +39,8 @@ Photographic sources (downloaded and served locally):
 - `mountains.jpg`: [Surya teja, Manali mountain range](https://unsplash.com/photos/a-view-of-a-mountain-range-from-a-distance-oIXJ839p55k)
 - `valley.jpg`: [Aditya Chache, Old Manali](https://unsplash.com/photos/a-village-with-a-mountain-in-the-background-4OuUNgTGynk)
 - `stays/panorama.jpg`: [Mithil Girish, mountain overlook](https://unsplash.com/photos/a-view-of-a-mountain-range-from-a-high-point-of-view-HZuq2OShCdI)
-- `stays/boutique.jpg`: [Unsplash cabin image](https://images.unsplash.com/photo-1587061949409-02df41d5e562); exact photographer/location not verified. This is a mood image only and must be replaced before a real-property launch.
+- `stays/retreat.jpg`: [Unsplash cabin image](https://images.unsplash.com/photo-1587061949409-02df41d5e562); exact photographer/location not verified. This is a mood image only and must be replaced before a real-property launch. Reused as the illustrative forest-retreat image; unrelated to Cafe Do Nthng.
+- `cafe/cafe-01.svg`, `cafe/cafe-02.svg`: TODO(owner) placeholders for Cafe Do Nthng — generated vector mood graphics, not real photography. Replace before launch.
 
 The first three images were sourced from pages displaying the [Unsplash License](https://unsplash.com/license). Confirm rights for final production assets. Fonts are self-hosted Cormorant Garamond and Manrope from Google Fonts; see `public/fonts/`. The cloud sprite is an original, mathematically generated radial alpha texture. Font license notices are included alongside the font files.
 

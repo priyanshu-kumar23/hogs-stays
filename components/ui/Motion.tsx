@@ -32,7 +32,7 @@ export default function Motion() {
         }
       }
       cameraPath.slice(1).forEach((frame,index)=>{
-        if(desktop && frame.section==='boutique') return;
+        if(desktop && frame.section==='cafe') return;
         const previous=cameraPath[index];const target=document.getElementById(frame.section);if(!target)return;
         gsap.fromTo(sceneState,{x:previous.position[0],y:previous.position[1],z:previous.position[2],tx:previous.target[0],ty:previous.target[1],tz:previous.target[2],phase:previous.phase},{x:frame.position[0],y:frame.position[1],z:frame.position[2],tx:frame.target[0],ty:frame.target[1],tz:frame.target[2],phase:frame.phase,immediateRender:false,ease:'none',scrollTrigger:{trigger:target,start:'top bottom',end:'top top',scrub:reduce?true:1.5}});
       });

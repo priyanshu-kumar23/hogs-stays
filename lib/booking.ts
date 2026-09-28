@@ -9,7 +9,9 @@ export const bookingSchema = z.object({
   checkIn: date.refine(value=>value>=todayInIndia(),'Check-in cannot be in the past'),
   checkOut: date,
   guests: z.number().int().min(1,'At least one guest is required').max(30,'For larger groups, please contact us directly'),
-  property: z.enum(['HOGS Panorama','Boutique Stay by HOGS'], { error:'Please choose a property' }),
+  // TODO(owner): Cafe Do Nthng is not bookable yet (see content.ts `bookable`). Add its name
+  // here once the owner decides enquiries should route through this form.
+  property: z.enum(['HOGS Panorama'], { error:'Please choose a property' }),
   website: z.string().max(0).optional(), // Hidden honeypot; never included in email.
 }).refine(data=>data.checkOut>data.checkIn,{ message:'Check-out must be after check-in', path:['checkOut'] });
 export type Booking = z.infer<typeof bookingSchema>;
