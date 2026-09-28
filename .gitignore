@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+.next-dev/
+.next-cinema/
+.next-production/
+out/
+
+# vercel
+.vercel/
+
+# env files (keep .env.example tracked)
+.env
+.env.local
+.env*.local
+.env*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# typescript
+*.tsbuildinfo

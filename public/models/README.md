@@ -1,0 +1,2 @@
+Procedural terrain is used by default; no binary model download is required.
+For a real terrain asset, add a licensed Draco/Meshopt-compressed GLB here and replace Terrain in components/three/MountainScene.tsx with a useGLTF component. Keep geometry instanced where possible. Load KTX2 textures through KTX2Loader after detecting renderer support; host matching transcoder files locally. Keep the procedural or photo fallback available while loading.

@@ -1,0 +1,12 @@
+'use client';
+import { useRef, useState } from 'react';
+import { todayInIndia } from '@/lib/booking';
+export default function DatePicker({id,label,value,onChange,min,error}:{id:string;label:string;value:string;onChange:(value:string)=>void;min?:string;error?:string}) {
+ const dialog=useRef<HTMLDialogElement>(null);const trigger=useRef<HTMLButtonElement>(null);
+ const [month,setMonth]=useState(()=>todayInIndia().slice(0,7)+'-01');
+ const date=new Date(month+'T12:00:00');const year=date.getFullYear();const m=date.getMonth();const days=new Date(year,m+1,0).getDate();const offset=new Date(year,m,1).getDay();
+ const close=()=>{dialog.current?.close();trigger.current?.focus();};
+ const changeMonth=(delta:number)=>{const d=new Date(year,m+delta,1,12);setMonth(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-01');};
+ return <div className="field"><label id={id+'-label'}>{label}</label><button ref={trigger} id={id} type="button" className="date-trigger" aria-labelledby={id+'-label '+id} aria-haspopup="dialog" aria-invalid={Boolean(error)} aria-describedby={error?id+'-error':undefined} onClick={()=>{setMonth((value||min||todayInIndia()).slice(0,7)+'-01');dialog.current?.showModal();}}>{value?new Date(value+'T12:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'Choose a date'}<span aria-hidden="true">↗</span></button>{error&&<span className="field-error" role="alert" id={id+'-error'}>{error}</span>}
+ <dialog ref={dialog} data-lenis-prevent className="calendar" aria-label={label+' calendar'} onCancel={close}><div className="calendar-top"><button type="button" onClick={()=>changeMonth(-1)} aria-label="Previous month">←</button><strong aria-live="polite">{date.toLocaleDateString('en-IN',{month:'long',year:'numeric'})}</strong><button type="button" onClick={()=>changeMonth(1)} aria-label="Next month">→</button></div><div className="calendar-grid">{['Su','Mo','Tu','We','Th','Fr','Sa'].map(day=><span key={day}>{day}</span>)}{Array.from({length:offset},(_,i)=><span key={'blank'+i}/>)}{Array.from({length:days},(_,i)=>{const day=year+'-'+String(m+1).padStart(2,'0')+'-'+String(i+1).padStart(2,'0');return <button key={day} type="button" disabled={day<(min||todayInIndia())} aria-pressed={value===day} aria-label={new Date(day+'T12:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})} onClick={()=>{onChange(day);close();}}>{i+1}</button>;})}</div><button type="button" className="calendar-close" onClick={close}>Close calendar</button></dialog></div>;
+}
