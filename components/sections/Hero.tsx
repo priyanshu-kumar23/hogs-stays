@@ -1,9 +1,9 @@
 import { content } from '@/lib/content';
 import MagneticButton from '@/components/ui/MagneticButton';
-import HeroScene from '@/components/three/HeroScene';
+
 export default function Hero() {
   return <section id="home" className="hero">
-    <div className="hero-photo hero-scene" aria-hidden="true"><HeroScene /></div>
+
     <div className="hero-scrim" /><div className="hero-contours" aria-hidden="true" />
     <div className="hero-content">
       <p className="eyebrow hero-kicker"><span className="live-dot" /> MANALI · HIMACHAL PRADESH</p>

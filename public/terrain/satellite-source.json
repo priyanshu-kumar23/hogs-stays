@@ -1,0 +1,25 @@
+{
+  "attribution": "Contains modified Copernicus Sentinel data 2024.",
+  "date": "2024-11-29",
+  "sources": [
+    {
+      "id": "S2A_43SFR_20241129_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/43/S/FR/2024/11/S2A_43SFR_20241129_0_L2A/TCI.tif"
+    },
+    {
+      "id": "S2A_43SGR_20241129_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/43/S/GR/2024/11/S2A_43SGR_20241129_0_L2A/TCI.tif"
+    },
+    {
+      "id": "S2A_43SFS_20241129_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/43/S/FS/2024/11/S2A_43SFS_20241129_0_L2A/TCI.tif"
+    },
+    {
+      "id": "S2A_43SGS_20241129_0_L2A",
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/43/S/GS/2024/11/S2A_43SGS_20241129_0_L2A/TCI.tif"
+    }
+  ],
+  "modifications": "Cropped, reprojected from UTM 43N to geographic terrain UVs, mosaicked, downsampled to 2048px and encoded as WebP.",
+  "missingPixels": 11,
+  "license": "https://cds.climate.copernicus.eu/licences/ec-sentinel"
+}

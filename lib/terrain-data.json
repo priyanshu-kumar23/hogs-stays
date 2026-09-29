@@ -1,0 +1,16 @@
+{
+  "west": 76.98,
+  "east": 77.5,
+  "south": 32.1,
+  "north": 32.6,
+  "size": 513,
+  "baseElevation": 1500,
+  "metresPerUnit": 100,
+  "width": 489.02152925254757,
+  "depth": 556.6,
+  "min": 1429,
+  "max": 6424,
+  "source": "Mapzen / Tilezen terrain tiles; SRTM data courtesy of the U.S. Geological Survey",
+  "sourceURL": "https://registry.opendata.aws/terrain-tiles/",
+  "modifications": "Cropped, bilinearly resampled to 513 by 513, integer metre quantization. No invented terrain or vertical exaggeration."
+}

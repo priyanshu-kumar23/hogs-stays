@@ -1,6 +1,6 @@
 # HOGS — Of Himalayan Homes
 
-A single-page Himalayan stay experience built with **Next.js 15 App Router, TypeScript, Tailwind CSS, React Three Fiber / Drei, postprocessing, GSAP ScrollTrigger, Lenis, Framer Motion, React Hook Form, and Zod**. The scene is procedural: there is no heavyweight terrain model to download.
+A single-page Himalayan stay experience built with **Next.js 15 App Router, TypeScript, Tailwind CSS, React Three Fiber / Drei, postprocessing, GSAP ScrollTrigger, Lenis, Framer Motion, React Hook Form, and Zod**. The persistent landscape uses real Manali elevation data and matching Copernicus Sentinel satellite imagery, with lightweight atmospheric effects.
 
 ## Run locally
 
@@ -46,20 +46,21 @@ The first three images were sourced from pages displaying the [Unsplash License]
 
 ## Scene and motion
 
-- `components/three/MountainScene.tsx`: ridged fractal terrain and snow/rock/pine shader, instanced trees, river, illuminated lodge markers, clouds, snow, stars, and the moving rider light.
-- `lib/cameraPath.ts`: one camera keyframe per section/property. Positions and targets use Three.js world coordinates.
-- `components/ui/Motion.tsx`: GSAP section transitions and reveals; Lenis uses the same GSAP ticker. The stays and photographic experience strips pin on wide screens. Mobile uses stacked stays and native horizontal experience scrolling. Reduced motion keeps every chapter available without pinning.
-- The hero photograph dissolves into the persistent world as you scroll. A transparent valley interlude exposes the terrain; the pinned stay sequence guides the camera between the two lodges. No scene toggle is needed.
-- Canvas is client-only and dynamically loaded. Page text is server-rendered and remains available without WebGL. A photo remains the hero fallback.
-- Low-core / narrow devices and PerformanceMonitor reduce rendering cost. Reduced motion disables snow and postprocessing and uses demand rendering; hidden tabs stop rendering. Native scrolling is retained for reduced motion.
+- `components/three/HimalayanScene.tsx`: one persistent canvas with real terrain, instanced forest, river, clouds, stars, and warm illustrative property markers.
+- `Terrain.tsx` and `MountainTerrain.tsx`: a 513 × 513 elevation grid with satellite surface imagery and CC0 rock detail. Mobile uses reduced geometry and a 1024px texture.
+- `lib/cameraPath.ts`: scroll camera positions in metres scaled at 100 metres per world unit, with no vertical exaggeration.
+- `components/ui/Motion.tsx`: GSAP section transitions and Lenis scrolling. Reduced motion uses native scrolling and demand rendering; hidden tabs stop rendering.
+- A photograph remains visible while WebGL loads or if rendering fails. Use `?scene=photo` to inspect the fallback.
+- Sources and modifications are recorded in `public/terrain/ATTRIBUTION.md`, `satellite-source.json`, and `public/textures/LICENSE.md`. Additional trees, river and buildings are artistic interpretations, not surveyed property locations.
+- `scripts/acquire-terrain.cjs` and `scripts/acquire-satellite.mjs` reproduce the geospatial assets. They require network access; normal builds use the checked-in assets.
 
-### Replace terrain with a real GLB
+### Optional terrain model
 
-Place your licensed, Draco/Meshopt-compressed GLB in `public/models/`. Replace the `Terrain` component with `useGLTF('/models/terrain.glb')`. Match its origin and scale to the camera keyframes, river, and lodge coordinates. Self-host decoder files when using Draco. Use KTX2-compressed textures via a KTX2Loader configured with `detectSupport(gl)` and locally hosted transcoder files; retain a compatible fallback. Keep repeated trees instanced and avoid adding per-tree meshes. No compressed model or KTX2 decoder is required for the default procedural scene.
+See `public/models/README.md` for the coordinate contract and `NEXT_PUBLIC_HIMALAYA_MODEL` override. The default real elevation mesh does not require a GLB download.
 
 ## Accessibility and SEO
 
-Semantic sections, a skip link, visible focus rings, labeled form fields, announced validation errors, custom modal calendars with linked date constraints and disabled past dates, keyboard-operable sliders, native modal focus containment, and a mobile menu are included. Arrow keys navigate the gallery; Escape closes dialogs. Property preselection works from each stay card. Structured data includes two LodgingBusiness entries with the supplied Manali location, without invented street addresses or ratings.
+Semantic sections, a skip link, visible focus rings, labeled form fields, announced validation errors, custom modal calendars with linked date constraints and disabled past dates, keyboard-operable sliders, native modal focus containment, and a mobile menu are included. Arrow keys navigate the gallery; Escape closes dialogs. Property preselection works from each stay card. Structured data describes the stay and cafe with the supplied Manali location, without invented street addresses or ratings.
 
 The social image is generated locally by `app/opengraph-image.tsx`. `robots.ts` and `sitemap.ts` use your configured origin. The five requested policy/FAQ pages are explicitly marked as draft stubs and excluded from indexing. Replace their contents with approved policies before launch.
 
