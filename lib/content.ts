@@ -9,6 +9,19 @@ export const images = {
   mountains: { src: '/images/mountains.jpg', alt: 'Layers of Himalayan mountain ridges in soft light', position: 'center 40%' },
   valley: { src: '/images/valley.jpg', alt: 'A green mountain valley with forest and distant peaks', position: 'center 55%' },
 };
+export const site = { origin: process.env.NEXT_PUBLIC_SITE_URL || 'https://hogsstays.com' };
+// Primary navigation. Every href here is a real App Router route (see app/).
+export const navLinks = [
+  { title: 'Gallery', href: '/gallery' },
+  { title: 'Features', href: '/features' },
+  { title: 'About Us', href: '/about' },
+  { title: 'Our Stays', href: '/stays' },
+] as const;
+export const footerLinks = [
+  { title: 'Home', href: '/' }, { title: 'Our Stays', href: '/stays' }, { title: 'HOGS Panorama', href: '/stays/panorama' },
+  { title: 'Cafe Do Nthng', href: '/cafe' }, { title: 'Gallery', href: '/gallery' }, { title: 'Features', href: '/features' },
+  { title: 'About Us', href: '/about' }, { title: 'Book Now', href: '/book' },
+] as const;
 export const content = {
   ui: {
     heroLines: ['Experience the', 'Himalayas', 'the HOGS Way'], heroShort: ['A little closer to nature.', 'A little closer to yourself.'],
@@ -27,8 +40,8 @@ export const content = {
   staysIntro: 'Discover two unique experiences curated by HOGS: a mountain stay with panoramic valley views, and Cafe Do Nthng, a slow-morning cafe surrounded by nature.',
   // TODO(owner): Cafe Do Nthng is new — confirm type/description/highlights/bookable below before launch.
   properties: [
-    { id: 'panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [images.hogs1, images.hogs2, images.hogs3], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
-    { id: 'cafe', name: 'Cafe Do Nthng', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe Do Nthng — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
+    { id: 'panorama', path: '/stays/panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [images.hogs1, images.hogs2, images.hogs3], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
+    { id: 'cafe', path: '/cafe', name: 'Cafe Do Nthng', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe Do Nthng — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
   ],
   intro: { image: images.hogs3 },
   // Layered collage for the "Come for the mountains" moment (depth 1 = nearest).
@@ -49,6 +62,18 @@ export const content = {
     { src: '/images/stays/retreat.jpg', alt: 'An illustrative woodland mountain retreat', caption: 'Somewhere to settle in' },
     { src: '/images/valley.jpg', alt: 'A mountain valley with forest and distant peaks', caption: 'Take the long way home' },
     { src: '/images/stays/panorama.jpg', alt: 'An illustrative peaceful mountain landscape', caption: 'Mornings, unhurried' },
+  ],
+  // Every photograph in /public/images (filenames are case-sensitive on Vercel). Vector placeholders and
+  // the WebGL fallback reference image are intentionally excluded.
+  galleryAll: [
+    { src: images.hogs3.src, alt: images.hogs3.alt, caption: 'Blue hour from the glass door' },
+    { src: images.hogs1.src, alt: images.hogs1.alt, caption: 'The attic lounge, sunlit' },
+    { src: images.hogs2.src, alt: images.hogs2.alt, caption: 'Wake up to the valley' },
+    { src: images.cafe.src, alt: images.cafe.alt, caption: 'Cafe Do Nthng after dark' },
+    { src: '/images/mountains.jpg', alt: 'Layers of mountain ridges in soft Himalayan light', caption: 'A different kind of perspective' },
+    { src: '/images/valley.jpg', alt: 'A mountain valley with forest and distant peaks', caption: 'Take the long way home' },
+    { src: '/images/stays/panorama.jpg', alt: 'An illustrative peaceful mountain landscape', caption: 'Mornings, unhurried' },
+    { src: '/images/stays/retreat.jpg', alt: 'An illustrative woodland mountain retreat', caption: 'Somewhere to settle in' },
   ],
   about: "HOGS (House of GS) was born from two souls who found freedom on open roads and comfort in conversations with strangers who soon became friends. Gazal and Saloni are riders at heart, always chasing mountains, stories, and moments that don't fit into plans. Somewhere between bike rides, shared sunsets, and chai conversations, they realised that travel isn't just about places, it's about people and vaataavaran.",
   storyLines: ['House of GS is not just a homestay.', "It's a feeling.", 'A place where riders rest without questions, travellers feel understood, and conversations flow as easily as mountain air.', "Here, you don't just stay. You arrive, you belong, and you carry the vaataavaran with you when you leave."],

@@ -1,0 +1,160 @@
+/* Dedicated pages + home-page legibility layer. Loaded last so it layers over globals/cinematic.
+   Nothing in here touches the WebGL scene: the scrims are plain HTML/CSS sitting above the canvas
+   and below the text. */
+
+/* ---------- Navigation: active state ---------- */
+.desktop-nav a.is-active{color:#f3d3a4}
+.desktop-nav a.is-active:after{transform:scaleX(1)}
+.navbar.on-paper .desktop-nav a.is-active{color:#8a4f22}
+.nav-book.is-active{box-shadow:0 0 0 2px #d9822b55}
+.mobile-menu nav a.is-active{color:var(--ember)}
+
+/* ---------- Footer sitemap ---------- */
+.footer-sitemap{display:flex;flex-wrap:wrap;gap:0 30px;padding:22px 0 0;font-size:13px;color:#e3e7df}
+.footer-sitemap a{display:inline-flex;align-items:center;min-height:44px}
+.footer-sitemap a:hover,.footer-links a:hover{color:#f3d3a4}
+
+/* ---------- Page transition + reveal ---------- */
+.reveal-ready [data-reveal]{transition:opacity .8s ease,transform .8s ease}
+.reveal-ready [data-reveal]:not(.is-in){opacity:0;transform:translateY(28px)}
+
+/* ---------- Inner-page hero ---------- */
+.subpage{background:var(--pine)}
+.page-hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end;min-height:clamp(480px,74svh,780px);background:#111b17}
+.page-hero-photo{z-index:-2;object-fit:cover;filter:saturate(.8)}
+.page-hero-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,.45) 0%,transparent 30%),linear-gradient(to top,rgba(10,14,12,.9) 0%,rgba(10,14,12,.55) 42%,rgba(10,14,12,.22) 100%)}
+.page-hero-content{width:100%;padding:150px max(6%,calc((100vw - 1400px)/2)) clamp(48px,9vh,88px)}
+.page-hero .eyebrow{color:#f0dcb8;margin-bottom:20px}
+.page-hero h1{font-size:clamp(54px,9vw,150px);line-height:.93;letter-spacing:-.045em;color:#fffaf0;text-shadow:0 2px 24px rgba(0,0,0,.35);max-width:14ch}
+.page-hero h1 em{color:#ecdcc0}
+.page-hero-lede{max-width:540px;margin-top:24px;font-size:clamp(15px,1.3vw,18px);line-height:1.7;color:#f2f3ec}
+.page-hero .button{margin-top:30px}
+
+/* ---------- Shared bits ---------- */
+.cta-band{text-align:center;background:linear-gradient(#14211c,#101a17);padding-top:clamp(90px,14vh,150px);padding-bottom:clamp(90px,14vh,150px)}
+.cta-band .eyebrow{color:#e3b06f;margin-bottom:22px}
+.cta-band h2{font-size:clamp(48px,7vw,110px);line-height:.98}
+.cta-band h2 em{color:#e6dcc6}
+.cta-actions{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:42px}
+.gallery-more{margin-top:30px}
+.features-more{border-bottom:1px solid #a4612e}
+.stay-row-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px;margin-top:34px}
+.detail-note{margin-top:26px;font-size:13px;color:#c1c8be}
+.chips{margin-top:26px}
+
+/* ---------- /gallery ---------- */
+.gallery--full{padding-top:clamp(64px,10vh,110px)}
+.gallery--full .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.gallery--full .gallery-item,.gallery--full .gallery-item:nth-child(n){height:clamp(260px,27vw,400px);margin:0;grid-row:auto;grid-column:auto;transform:none}
+.gallery--full .gallery-item:nth-child(3n+2){height:clamp(320px,34vw,500px)}
+.gallery--full .gallery-note{margin-top:36px}
+@media(max-width:1000px){.gallery--full .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .gallery--full .gallery-item,.gallery--full .gallery-item:nth-child(n){height:clamp(220px,40vw,360px)}}
+@media(max-width:560px){.gallery--full .gallery-grid{grid-template-columns:minmax(0,1fr)}
+  .gallery--full .gallery-item,.gallery--full .gallery-item:nth-child(n){height:min(92vw,420px)}}
+
+/* ---------- /features ---------- */
+.feature-intro{max-width:1100px;margin:0 auto;padding-top:clamp(72px,11vh,130px);padding-bottom:clamp(56px,8vh,90px)}
+.feature-intro .eyebrow{color:#e3b06f;margin-bottom:22px}
+.feature-intro h2 em{color:#e6dcc6}
+.feature-intro>p:last-child{margin-top:28px;font-size:12px;color:#b9c1b8}
+.feature-rows{background:#e8e1d6;color:#1f2a24;padding:clamp(56px,9vh,110px) max(6%,calc((100vw - 1400px)/2));display:grid;gap:clamp(56px,9vw,120px)}
+.feature-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,88px);align-items:center}
+.feature-row.is-flipped .feature-row-photo{order:2}
+.feature-row-photo{position:relative;aspect-ratio:4/3;overflow:hidden;background:#c9c3b5;box-shadow:0 24px 60px -24px #1f2a2466}
+.feature-row-photo img{object-fit:cover;filter:saturate(.75)}
+.feature-row-photo:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(10,14,12,.6) 0%,transparent 48%)}
+.feature-row-photo .feature-number{position:absolute;z-index:1;left:22px;bottom:8px;font-family:var(--serif);font-size:clamp(64px,8vw,110px);line-height:1;color:#f4f1ec;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.feature-row-icon{display:inline-flex;color:#8a4f22;margin-bottom:16px}
+.feature-row-copy .eyebrow{display:block;color:#5d4a2c;margin-bottom:18px;font-size:11px}
+.feature-row-copy h2{font-size:clamp(40px,4.6vw,70px);line-height:1;color:#1f2a24}
+.feature-row-copy p{margin-top:20px;max-width:440px;font-size:16px;color:#3a463d}
+@media(max-width:860px){.feature-row{grid-template-columns:minmax(0,1fr)}.feature-row.is-flipped .feature-row-photo{order:0}}
+
+/* ---------- /stays ---------- */
+.stay-list{display:grid;gap:clamp(64px,9vw,130px);padding:clamp(64px,10vh,120px) max(6%,calc((100vw - 1400px)/2))}
+.stay-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,88px);align-items:center}
+.stay-row.is-flipped .stay-row-photo{order:2}
+.stay-row-photo{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:#33483c}
+.stay-row-photo img{object-fit:cover;transition:transform .9s ease}
+.stay-row-photo:hover img{transform:scale(1.04)}
+.stay-row-copy .eyebrow{color:#e3b06f}
+.stay-row-copy h2{font-size:clamp(46px,5.6vw,92px);line-height:.96;margin:18px 0 14px}
+.stay-row-copy .subtitle{font-family:var(--serif);font-size:clamp(22px,2vw,28px);color:#f1e2c3;margin-bottom:18px}
+.stay-row-copy p:not(.eyebrow):not(.subtitle){max-width:460px;color:#d6dbd2}
+@media(max-width:860px){.stay-row{grid-template-columns:minmax(0,1fr)}.stay-row.is-flipped .stay-row-photo{order:0}}
+
+/* ---------- /stays/panorama + /cafe ---------- */
+.detail-intro{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,7vw,110px);align-items:start;padding-top:clamp(72px,11vh,130px);padding-bottom:clamp(40px,6vh,70px)}
+.detail-intro .eyebrow{color:#e3b06f;margin-bottom:22px}
+.detail-intro h2 em{color:#e6dcc6}
+.detail-intro p:not(.eyebrow){font-size:clamp(16px,1.3vw,19px);line-height:1.85;color:#d6dbd2;max-width:620px}
+.detail-photos{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);grid-template-rows:repeat(2,clamp(220px,25vw,340px));gap:18px;padding:0 max(6%,calc((100vw - 1400px)/2)) clamp(72px,11vh,130px)}
+.detail-photo{position:relative;margin:0;overflow:hidden;background:#33483c}
+.detail-photo img{object-fit:cover}
+.detail-photo-1{grid-row:span 2}
+.detail-photos--single{grid-template-columns:minmax(0,1fr);grid-template-rows:clamp(300px,46vw,620px)}
+.detail-photos--single .detail-photo-1{grid-row:auto}
+.cafe-info{list-style:none;margin:30px 0 0;padding:0;border-top:1px solid #ffffff25}
+.cafe-info li{padding:18px 0;border-bottom:1px solid #ffffff25;font-size:15px;color:#d6dbd2}
+.cafe-info .eyebrow{display:block;margin:0 0 6px;font-size:11px;color:#e3b06f}
+@media(max-width:860px){.detail-intro{grid-template-columns:minmax(0,1fr)}
+  .detail-photos{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-rows:min(72vw,380px)}
+  .detail-photo-1{grid-row:auto}}
+
+/* ---------- /about ---------- */
+.subpage .about{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);padding-top:clamp(72px,11vh,130px)}
+.subpage .about .story-line{opacity:1}
+.vaataavaran{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:center;background:#17221d}
+.vaataavaran .eyebrow{color:#e3b06f;margin-bottom:22px}
+.vaataavaran h2 em{color:#e6dcc6}
+.vaataavaran p:not(.eyebrow){margin-top:26px;max-width:480px;color:#d6dbd2}
+.vaataavaran-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vaataavaran-photos figure{position:relative;margin:0;aspect-ratio:3/4;overflow:hidden}
+.vaataavaran-photos figure:nth-child(2){margin-top:48px}
+.vaataavaran-photos img{object-fit:cover}
+@media(max-width:860px){.subpage .about{grid-template-columns:minmax(0,1fr)}.vaataavaran{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- /book ---------- */
+.subpage .booking{padding-top:clamp(64px,10vh,110px)}
+.booking-teaser-card{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.booking-teaser-card .eyebrow{color:#c1c8d0}
+.booking-teaser-card .booking-contact{margin-top:14px}
+
+/* ---------- Legal pages now sit under the shared navbar ---------- */
+.policy-page{background:var(--pine);color:var(--snow);padding-top:150px;min-height:80vh}
+.policy-page .eyebrow{color:#e3b06f}
+.policy-page a{border-bottom-color:#d9822b}
+.policy-page .button{border-bottom:0;color:#18221c}
+
+/* =====================================================================
+   HOME LEGIBILITY: soft dark scrims only where text sits.
+   ===================================================================== */
+
+/* Hero: HTML layer between the canvas (behind the hero's stacking context) and the text. */
+.hero-legibility{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(to bottom,rgba(0,0,0,.35) 0%,transparent 24%),
+    linear-gradient(to top right,rgba(10,14,12,.55) 0%,rgba(10,14,12,.34) 38%,transparent 74%),
+    radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.35) 100%)}
+.hero-headline{text-shadow:0 2px 24px rgba(0,0,0,.35)!important}
+@media(max-width:1023px){.hero-legibility{background:
+    linear-gradient(to bottom,rgba(0,0,0,.4) 0%,transparent 24%),
+    linear-gradient(to top,rgba(10,14,12,.62) 0%,rgba(10,14,12,.42) 50%,transparent 88%),
+    radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.35) 100%)}}
+
+/* Intro + stays headings sit on a translucent section wash; add a top scrim. */
+.intro{background:linear-gradient(to top,rgba(10,14,12,.3),transparent 220px),linear-gradient(to bottom,rgba(10,14,12,.42),transparent 260px),linear-gradient(#10201985,#111b17ee 25%,#111b17d9 62%,#111b1726 100%)}
+.stays{background:linear-gradient(to bottom,rgba(10,14,12,.3),transparent 440px),linear-gradient(#14211c25,#14211cd0 400px)}
+/* "Some journeys bring you home" floats over the raw scene. */
+.valley-window{position:relative;isolation:isolate;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.valley-window:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse closest-side at 50% 50%,rgba(10,14,12,.62) 0%,rgba(10,14,12,.42) 55%,transparent 100%)}
+.valley-window .eyebrow{color:#f0ebdd}
+/* Photo containers: caption/number scrims. */
+@media(max-width:1000px){.intro-photo:after{background:linear-gradient(180deg,rgba(10,14,12,.55) 0%,transparent 30%),linear-gradient(0deg,#111b17 0%,#111b17d0 22%,#111b1700 62%)}}
+@media(max-width:700px){.intro-photo:after{background:linear-gradient(180deg,rgba(10,14,12,.55) 0%,transparent 30%),linear-gradient(0deg,#0d1612b0 0%,#0d161200 34%)}}
+.feature-photo:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(10,14,12,.6) 0%,transparent 48%)}
+.feature-photo .feature-number{z-index:1;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.features-more{color:#1f2a24;letter-spacing:.14em}
+/* Navbar over bright sky/clouds: a touch more depth behind the small links (scrolled/paper states keep their own fills). */
+.navbar{background:linear-gradient(rgba(8,12,10,.6),rgba(8,12,10,.16) 70%,transparent)}
