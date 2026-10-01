@@ -11,7 +11,7 @@ export const images = {
   valley: { src: '/images/valley.jpg', alt: 'A green mountain valley with forest and distant peaks', position: 'center 55%' },
 };
 // Real HOGS Panorama photography (generated data in lib/gallery.generated.ts). Cards use the 1000px variant; hero/slider use full size.
-const photo = (subject: string, full = false) => { const g: GalleryImage = findImage(subject); return { src: full ? g.src : g.srcMd, alt: g.alt, position: g.position, blur: g.blurDataURL }; };
+const photo = (subject: string, full = false) => { const g: GalleryImage = findImage(subject); return { src: full ? g.src : g.srcMd, full: g.src, alt: g.alt, position: g.position, blur: g.blurDataURL, landscape: g.orientation === 'landscape' }; };
 export const site = { origin: process.env.NEXT_PUBLIC_SITE_URL || 'https://hogsstays.com' };
 // Primary navigation. Every href here is a real App Router route (see app/).
 export const navLinks = [
@@ -35,7 +35,7 @@ export const content = {
       // Home-page horizontal story (components/sections/Features.tsx).
       story: { index: '03 / THE HOGS WAY', label: 'THE ART OF BEING HERE', more: 'Explore the HOGS way →', intro: ['Come for the', 'mountains.', 'Stay for the', 'feeling.'], scroll: 'Scroll', outroCta: 'Explore the HOGS way', progress: 'Experience progress', region: 'The art of being here' } },
     panorama: { eyebrow: 'PHOTOGRAPHS', seeAll: 'See all photos →', sections: { rooms: 'Rooms', views: 'Views', outdoor: 'Outdoor', common: 'Common Room' } },
-    gallery: { eyebrow: 'POSTCARDS FROM THE MOUNTAINS', index: '03 — STAY A LITTLE LONGER', heading: ['Some places are felt.', 'Not just seen.'], description: 'A glimpse of the world we call home.', note: 'A moodboard of mountain life. Photographs are illustrative; HOGS property photography is coming soon.' },
+    gallery: { eyebrow: 'POSTCARDS FROM THE MOUNTAINS', index: '03 — STAY A LITTLE LONGER', heading: ['Some places are felt.', 'Not just seen.'], description: 'A glimpse of the world we call home.', note: 'A moodboard of mountain life, photographed at HOGS Panorama in Manali.' },
     about: { eyebrow: 'THE SOUL BEHIND THE STAYS', heading: ['Open roads.', 'Open hearts.', 'A place to belong.'], byline: 'HOUSE OF GS · EST. IN THE MOUNTAINS', founders: 'GAZAL & SALONI / THE HEART OF HOGS' },
     booking: { eyebrow: 'THE MOUNTAINS ARE CALLING', heading: ['Let the mountains', 'welcome you.'], contact: 'A CONVERSATION IS A GOOD START', submit: 'Enquire About Your Stay', whatsapp: 'Continue on WhatsApp' },
     footer: { heading: ['Come for the mountains.', 'Stay for the feeling.'], credit: 'Made of mountains, stories & a little chai.' },
@@ -63,23 +63,14 @@ export const content = {
     { number: '04', title: 'The little rituals', text: 'A warm cup, a mountain morning, and nowhere else you need to be.', icon: 'cup', image: images.cafe.src, imageAlt: images.cafe.alt, position: images.cafe.position },
     { number: '05', title: 'Permission to slow down', text: 'Less on the itinerary. More in the moment.', icon: 'sun', image: '/images/stays/retreat.jpg', imageAlt: 'Illustrative forest retreat', position: 'center 50%' },
   ],
+  // Home curved rail: real HOGS Panorama photos only (md variant for the cards, full size for the lightbox). Keep exactly four, in this
+  // order: the card tilt in app/cinematic.css is defined per :nth-child(1-4). Cards are ~3:4, so portraits are preferred; landscapes are
+  // cropped with a subject-aware object-position.
   gallery: [
-    { src: '/images/mountains.jpg', alt: 'Layers of mountain ridges in soft Himalayan light', caption: 'A different kind of perspective' },
-    { src: '/images/stays/retreat.jpg', alt: 'An illustrative woodland mountain retreat', caption: 'Somewhere to settle in' },
-    { src: '/images/valley.jpg', alt: 'A mountain valley with forest and distant peaks', caption: 'Take the long way home' },
-    { src: '/images/stays/panorama.jpg', alt: 'An illustrative peaceful mountain landscape', caption: 'Mornings, unhurried' },
-  ],
-  // Every photograph in /public/images (filenames are case-sensitive on Vercel). Vector placeholders and
-  // the WebGL fallback reference image are intentionally excluded.
-  galleryAll: [
-    { src: images.hogs3.src, alt: images.hogs3.alt, caption: 'Blue hour from the glass door' },
-    { src: images.hogs1.src, alt: images.hogs1.alt, caption: 'The attic lounge, sunlit' },
-    { src: images.hogs2.src, alt: images.hogs2.alt, caption: 'Wake up to the valley' },
-    { src: images.cafe.src, alt: images.cafe.alt, caption: 'Cafe Do Nthng after dark' },
-    { src: '/images/mountains.jpg', alt: 'Layers of mountain ridges in soft Himalayan light', caption: 'A different kind of perspective' },
-    { src: '/images/valley.jpg', alt: 'A mountain valley with forest and distant peaks', caption: 'Take the long way home' },
-    { src: '/images/stays/panorama.jpg', alt: 'An illustrative peaceful mountain landscape', caption: 'Mornings, unhurried' },
-    { src: '/images/stays/retreat.jpg', alt: 'An illustrative woodland mountain retreat', caption: 'Somewhere to settle in' },
+    { id: 'perspective', caption: 'A different kind of perspective', ...photo('balcony-with-two-wicker-chairs-and-prayer-flags') },
+    { id: 'settle-in', caption: 'Somewhere to settle in', ...photo('patterned-sofa-lounge-with-white-cushions') },
+    { id: 'long-way-home', caption: 'Take the long way home', ...photo('stone-building-with-balconies-and-garden-seating') },
+    { id: 'mornings', caption: 'Mornings, unhurried', ...photo('balcony-wicker-chair-with-mountain-view'), position: '72% 60%' },
   ],
   about: "HOGS (House of GS) was born from two souls who found freedom on open roads and comfort in conversations with strangers who soon became friends. Gazal and Saloni are riders at heart, always chasing mountains, stories, and moments that don't fit into plans. Somewhere between bike rides, shared sunsets, and chai conversations, they realised that travel isn't just about places, it's about people and vaataavaran.",
   storyLines: ['House of GS is not just a homestay.', "It's a feeling.", 'A place where riders rest without questions, travellers feel understood, and conversations flow as easily as mountain air.', "Here, you don't just stay. You arrive, you belong, and you carry the vaataavaran with you when you leave."],
