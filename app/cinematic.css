@@ -224,3 +224,17 @@ html{scroll-padding-top:96px}body{overflow-x:clip}
   .stepper button{min-width:44px;min-height:44px}
   .section-heading h2,.about-heading h2,.booking-copy h2,.gallery .section-heading h2{overflow-wrap:break-word}
 }
+
+/* --- Home About: legibility over the bright sky/cloud part of the scene ---
+   The scrim is a non-interactive layer above the section background (and the fixed WebGL scene)
+   and below the copy. It is dark where the sky sits and fades out so the mountains still show. */
+main:not(.subpage) .about{position:relative;isolation:isolate}
+main:not(.subpage) .about::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,rgba(8,12,22,.75) 0%,rgba(8,12,22,.55) 40%,rgba(8,12,22,.25) 70%,transparent 100%),linear-gradient(to right,rgba(8,12,22,.45),rgba(8,12,22,.15))}
+main:not(.subpage) .about-heading h2{text-shadow:0 2px 24px rgba(0,0,0,.35)}
+main:not(.subpage) .about-heading em{color:#f0c98f}
+main:not(.subpage) .about .eyebrow{color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+main:not(.subpage) .about .section-index{color:#e4e9ec;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+main:not(.subpage) .about-copy>p{color:rgba(255,255,255,.95);font-weight:400;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+main:not(.subpage) .about .founders{color:#f0cf9c;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+main:not(.subpage) .about .story-line:nth-child(2){color:#f0c98f}
+main:not(.subpage) .about .text-link{text-shadow:0 1px 10px rgba(0,0,0,.5)}
