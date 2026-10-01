@@ -11,7 +11,10 @@ export const images = {
   valley: { src: '/images/valley.jpg', alt: 'A green mountain valley with forest and distant peaks', position: 'center 55%' },
 };
 // Real HOGS Panorama photography (generated data in lib/gallery.generated.ts). Cards use the 1000px variant; hero/slider use full size.
-const photo = (subject: string, full = false) => { const g: GalleryImage = findImage(subject); return { src: full ? g.src : g.srcMd, full: g.src, alt: g.alt, position: g.position, blur: g.blurDataURL, landscape: g.orientation === 'landscape' }; };
+const photo = (subject: string, full = false) => { const g: GalleryImage = findImage(subject); return { src: full ? g.src : g.srcMd, full: g.src, alt: g.alt, position: g.position, blur: g.blurDataURL, landscape: g.orientation === 'landscape', ratio: g.width / g.height }; };
+// Image fields for a home "art of being here" panel (width/height ratio drives the next/image `sizes` hint when a landscape photo is cropped to 4:5).
+type Shot = { src: string; alt: string; position: string; blur?: string; ratio: number };
+const panelImage = (shot: Shot) => ({ image: shot.src, imageAlt: shot.alt, position: shot.position, blur: shot.blur, ratio: shot.ratio });
 export const site = { origin: process.env.NEXT_PUBLIC_SITE_URL || 'https://hogsstays.com' };
 // Primary navigation. Every href here is a real App Router route (see app/).
 export const navLinks = [
@@ -57,11 +60,11 @@ export const content = {
   },
   // TODO(owner): confirm these experience descriptions before launch; not an amenities list.
   features: [
-    { number: '01', title: 'Views worth pausing for', text: 'Mountains that remind you to look up, breathe deep, and take your time.', icon: 'mountain', image: photo('balcony-with-prayer-flags-and-wicker-chair').src, imageAlt: photo('balcony-with-prayer-flags-and-wicker-chair').alt, position: photo('balcony-with-prayer-flags-and-wicker-chair').position, blur: photo('balcony-with-prayer-flags-and-wicker-chair').blur },
-    { number: '02', title: 'A rider’s kind of place', text: 'Born from a love of open roads and the people we meet along the way.', icon: 'road', image: '/images/valley.jpg', imageAlt: 'Illustrative valley on a mountain journey', position: images.valley.position },
-    { number: '03', title: 'Room for connection', text: 'Shared stories, new friendships, and conversations without a clock.', icon: 'home', image: photo('wooden-lounge-sofa-seating').src, imageAlt: photo('wooden-lounge-sofa-seating').alt, position: photo('wooden-lounge-sofa-seating').position, blur: photo('wooden-lounge-sofa-seating').blur },
-    { number: '04', title: 'The little rituals', text: 'A warm cup, a mountain morning, and nowhere else you need to be.', icon: 'cup', image: images.cafe.src, imageAlt: images.cafe.alt, position: images.cafe.position },
-    { number: '05', title: 'Permission to slow down', text: 'Less on the itinerary. More in the moment.', icon: 'sun', image: '/images/stays/retreat.jpg', imageAlt: 'Illustrative forest retreat', position: 'center 50%' },
+    { number: '01', title: 'Views worth pausing for', text: 'Mountains that remind you to look up, breathe deep, and take your time.', icon: 'mountain', ...panelImage(photo('balcony-with-prayer-flags-and-wicker-chair')) },
+    { number: '02', title: 'A rider’s kind of place', text: 'Born from a love of open roads and the people we meet along the way.', icon: 'road', ...panelImage({ src: images.hogs3.src, alt: images.hogs3.alt, position: 'center 45%', ratio: 1024 / 1536 }) },
+    { number: '03', title: 'Room for connection', text: 'Shared stories, new friendships, and conversations without a clock.', icon: 'home', ...panelImage(photo('wooden-lounge-sofa-seating')) },
+    { number: '04', title: 'The little rituals', text: 'A warm cup, a mountain morning, and nowhere else you need to be.', icon: 'cup', ...panelImage({ src: images.cafe.src, alt: images.cafe.alt, position: '58% 50%', ratio: 1272 / 1189 }) },
+    { number: '05', title: 'Permission to slow down', text: 'Less on the itinerary. More in the moment.', icon: 'sun', ...panelImage({ ...photo('double-bedroom-with-timber-framed-windows'), position: '40% 50%' }) },
   ],
   // Home curved rail: real HOGS Panorama photos only (md variant for the cards, full size for the lightbox). Keep exactly four, in this
   // order: the card tilt in app/cinematic.css is defined per :nth-child(1-4). Cards are ~3:4, so portraits are preferred; landscapes are

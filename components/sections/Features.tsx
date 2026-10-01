@@ -14,6 +14,8 @@ function accent(title: string) {
   words.forEach((word, i) => { if (word.length >= words[pick].length) pick = i; });
   return words.map((word, i) => <span key={i}>{i > 0 && ' '}{i === pick ? <em>{word}</em> : word}</span>);
 }
+// A 4:5 card needs source width >= card height * source ratio, so a landscape photo cropped to a tall card gets a proportionally wider hint.
+const sizesFor = (ratio: number) => { const f = Math.max(1, ratio / 0.8); return `(max-width: 768px) ${Math.round(80 * f)}vw, ${Math.round(480 * f)}px`; };
 export default function Features() {
   return <section id="features" className="fs" aria-label={story.region}>
     <div className="fs-top"><p className="fs-eyebrow">{story.index}</p><Link className="fs-more" href="/features">{story.more}</Link></div>
@@ -30,7 +32,7 @@ export default function Features() {
           <figure className="fs-media">
             <span className="fs-num" aria-hidden="true">{feature.number}</span>
             <div className="fs-mask">
-              <Image className="fs-img" src={feature.image} alt={feature.imageAlt} fill sizes="(min-width:1024px) 26vw, (min-width:768px) 40vw, 68vw" style={{ objectFit: 'cover', objectPosition: feature.position }} {...(feature.blur ? { placeholder: 'blur' as const, blurDataURL: feature.blur } : {})} />
+              <Image className="fs-img" src={feature.image} alt={feature.imageAlt} fill sizes={sizesFor(feature.ratio)} priority={i === 0} style={{ objectFit: 'cover', objectPosition: feature.position }} {...(feature.blur ? { placeholder: 'blur' as const, blurDataURL: feature.blur } : {})} />
               <span className="fs-scrim" aria-hidden="true" />
               <span className="fs-chip">{feature.number} / {total}</span>
             </div>
