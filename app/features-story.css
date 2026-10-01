@@ -1,0 +1,88 @@
+/* Home "art of being here" story (components/sections/Features.tsx + lib/featuresStory.ts).
+   The section is pinned at every breakpoint and a single flex track slides sideways while the page scrolls DOWN.
+   There is no overflow scroller or scroll-snap here. With prefers-reduced-motion it is a plain vertical stack.
+   Sizing: the text keeps its type scale; when the window is short the IMAGE HEIGHT (not width/text) shrinks so
+   image + label + title + description always clear the progress bar (--clear). */
+.fs{--fs-bg:#e8e1d6;--fs-ink:#1f2a24;--fs-body:#33443a;--fs-gold:#5f4b2d;--fs-accent:#8a4a1f;--fs-line:rgba(31,42,36,.22);
+  --top:116px;--bar:calc(56px + env(safe-area-inset-bottom,0px));--clear:72px;--gap:5vw;
+  --ts:clamp(1.9rem,2.6vw,3rem);--ds:clamp(1rem,1.1vw,1.2rem);
+  --pw:clamp(340px,28vw,480px);--iw:clamp(300px,22vw,400px);
+  /* copy block: image gap 16 + label 16 + 8 + title (2 lines) + 10 + description (3 lines) */
+  --th:calc(50px + 2.1 * var(--ts) + 4.8 * var(--ds));
+  --ih:min(calc(var(--iw) * 1.25), 50vh, calc(100svh - var(--top) - var(--bar) - var(--clear) - var(--th) - 4vh));
+  position:relative;background:var(--fs-bg);color:var(--fs-ink);overflow:clip;
+  height:100vh;height:100svh;display:flex;flex-direction:column}
+.fs em{font-style:italic;color:var(--fs-accent)}
+.fs-top{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:72px 5vw 0}
+.fs-eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.22em;color:var(--fs-gold)}
+.fs-more{display:inline-flex;align-items:center;min-height:44px;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--fs-accent)}
+.fs-head{display:none}
+
+/* Viewport clips sideways overflow only (never vertically, so staggered panels are not cut off) */
+.fs-viewport{position:relative;flex:1;min-height:0;overflow-x:clip;overflow-y:visible;padding-bottom:var(--clear)}
+.fs-track{display:flex;align-items:center;width:max-content;height:100%;padding:0 8vw}
+.fs-track:focus-visible{outline:3px solid var(--fs-accent);outline-offset:-3px}
+.fs-intro,.fs-outro{flex:none;width:min(46vw,680px);display:flex;flex-direction:column;justify-content:center;padding-right:var(--gap)}
+.fs-intro h2,.fs-outro h2{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6vw,112px);line-height:.95;letter-spacing:-.025em}
+.fs-scroll{display:flex;align-items:center;gap:12px;margin-top:28px;font-size:.75rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--fs-gold)}
+.fs-scroll span{display:inline-block;animation:fs-nudge 1.8s ease-in-out infinite}
+.fs-cta{display:inline-flex;align-items:center;gap:14px;align-self:flex-start;min-height:48px;margin-top:28px;padding:0 28px;background:var(--fs-ink);color:#f4f1ec;font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:2px}
+.fs-cta:hover{background:var(--fs-accent)}
+.fs-outro{padding-right:0}
+
+/* Item panel: image (rounded, soft shadow) with label, title and description beneath */
+.fs-panel.fs-item{position:relative;flex:none;width:var(--pw);margin-right:var(--gap);display:flex;flex-direction:column;transform-origin:center;will-change:transform,opacity}
+.is-up{top:-2vh}.is-down{top:2vh} /* ~4vh stagger between neighbours */
+.fs-media{position:relative;width:var(--iw);margin:0;filter:drop-shadow(0 24px 60px rgba(31,42,36,.18))} /* drop-shadow follows the clip-path-revealed shape */
+.fs-mask{position:relative;z-index:1;overflow:hidden;width:100%;height:var(--ih);border-radius:12px;background:#c9c3b6}
+.fs-img{inset:0 -7% !important;width:114% !important;max-width:none !important;transform-origin:center} /* overscan so the parallax shift never shows the mask edge */
+.fs-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,rgba(10,16,14,.72) 0%,rgba(10,16,14,.28) 26%,transparent 50%)}
+.fs-chip{position:absolute;left:16px;bottom:14px;z-index:2;font-size:.75rem;font-weight:600;letter-spacing:.2em;color:#fff}
+/* Outlined numeral behind the image's top-left corner (offset -12% / -8%); sized to stay inside the image width, never reaching the next panel */
+.fs-num{position:absolute;z-index:0;left:-12%;top:-8%;opacity:.18;font-family:var(--serif);font-weight:500;font-size:calc(var(--iw) * .6);line-height:1;color:transparent;-webkit-text-stroke:2px var(--fs-ink);user-select:none;pointer-events:none}
+.fs-copy{position:relative;z-index:2;width:100%;margin-top:16px}
+.fs-label{margin:0 0 8px;font-size:.75rem;font-weight:600;letter-spacing:.2em;white-space:nowrap;color:var(--fs-gold)}
+.fs-copy h3{font-family:var(--serif);font-weight:400;font-size:var(--ts);line-height:1.05;letter-spacing:-.01em}
+.fs-text{max-width:34ch;margin-top:10px;font-size:var(--ds);line-height:1.6;color:var(--fs-body)}
+
+.fs-bottom{flex:none;display:flex;align-items:center;gap:18px;min-height:56px;padding:0 5vw calc(18px + env(safe-area-inset-bottom,0px))}
+.fs-counter{font-family:var(--serif);font-size:22px;letter-spacing:.04em;white-space:nowrap}
+.fs-bar{position:relative;flex:1;height:2px;background:var(--fs-line)}
+.fs-bar i{position:absolute;inset:0;background:var(--fs-ink);transform:scaleX(0);transform-origin:left center}
+@keyframes fs-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(10px)}}
+
+/* Tablet: image 38vw, panel 46vw */
+@media(max-width:1023px){
+  .fs{--ts:clamp(1.6rem,3.4vw,2.2rem);--ds:1rem;--pw:46vw;--iw:38vw}
+}
+/* Mobile: image 72vw (4:5, max 50svh), panel 78vw */
+@media(max-width:767px){
+  .fs{--top:108px;--clear:28px;--gap:6vw;--ts:1.75rem;--ds:1rem;--pw:78vw;--iw:72vw;
+    --ih:min(calc(var(--iw) * 1.25), 50svh, calc(100svh - var(--top) - var(--bar) - var(--clear) - var(--th) - 4vh))}
+  .fs-top{padding:64px 6vw 0}
+  .fs-eyebrow{font-size:.7rem;letter-spacing:.14em;white-space:nowrap}
+  .fs-more{font-size:.7rem;letter-spacing:.08em;white-space:nowrap}
+  .fs-intro,.fs-outro{width:78vw}
+  .fs-intro h2,.fs-outro h2{font-size:clamp(40px,12vw,64px)}
+  .fs-img{inset:0 !important;width:100% !important;max-width:100% !important} /* no parallax on phones */
+  .fs-label{font-size:.7rem;letter-spacing:.2em}
+  .fs-copy{margin-top:12px}
+  .fs-bottom{padding:0 6vw calc(18px + env(safe-area-inset-bottom,0px))}
+}
+
+/* Reduced motion: no pinning or sideways travel, a normal vertical stack */
+@media(prefers-reduced-motion:reduce){
+  .fs{height:auto;display:block;padding:88px 0 56px;overflow:visible}
+  .fs-top{padding:0 6vw}
+  .fs-head{display:block;padding:20px 6vw 32px}
+  .fs-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(42px,9vw,84px);line-height:.98;letter-spacing:-.02em}
+  .fs-viewport{overflow:visible;padding-bottom:0}
+  .fs-track{display:block;width:auto;height:auto;padding:0 6vw}
+  .fs-intro,.fs-outro{display:none}
+  .fs-panel.fs-item{width:auto;margin:0 0 56px;top:0}
+  .fs-media,.fs-copy{width:min(80vw,400px)}
+  .fs-mask{height:auto;aspect-ratio:4/5}
+  .fs-img{inset:0 !important;width:100% !important;max-width:100% !important}
+  .fs-bottom{display:none}
+  .fs-scroll span{animation:none}
+}

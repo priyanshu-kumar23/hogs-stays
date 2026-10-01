@@ -4,13 +4,15 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { cameraPath, sceneState } from '@/lib/cameraPath';
+import { initFeaturesStory } from '@/lib/featuresStory';
 export default function Motion() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
-    media.add({ desktop:'(min-width: 701px)', mobile:'(max-width: 700px)', featurePin:'(min-width: 1100px) and (min-height: 800px)', manifestoPin:'(min-width: 1100px) and (min-height: 640px)', manifestoTablet:'(min-width: 701px) and (max-width: 1099px)', reduce:'(prefers-reduced-motion: reduce)' }, context => {
-      const { desktop, reduce, featurePin, manifestoPin, manifestoTablet } = context.conditions!;
+    media.add({ desktop:'(min-width: 701px)', mobile:'(max-width: 700px)', manifestoPin:'(min-width: 1100px) and (min-height: 640px)', manifestoTablet:'(min-width: 701px) and (max-width: 1099px)', reduce:'(prefers-reduced-motion: reduce)' }, context => {
+      const { desktop, reduce, manifestoPin, manifestoTablet } = context.conditions!;
       const lenis = reduce ? null : new Lenis({ duration:1.35, anchors:true, smoothWheel:true });
+      let story:(()=>void)|null=null;
       const tick=(time:number)=>lenis?.raf(time*1000);
       lenis?.on('scroll',ScrollTrigger.update); gsap.ticker.add(tick);
       if (!reduce) {
@@ -47,19 +49,19 @@ export default function Motion() {
               gsap.fromTo(fig,{yPercent:-speeds[i%3]},{yPercent:speeds[i%3],ease:'none',scrollTrigger:{trigger:fig,start:'top bottom',end:'bottom top',scrub:1}});
             });
           }
-          if(featurePin){
-          const strip=document.querySelector<HTMLElement>('.feature-track')!;
-          gsap.to(strip,{x:()=>-(strip.scrollWidth-innerWidth+innerWidth*.1),ease:'none',scrollTrigger:{trigger:'.features',start:'top top',end:()=>'+='+(strip.scrollWidth-innerWidth),pin:true,scrub:1,invalidateOnRefresh:true}});
-          }
+          // Pinned horizontal features story; created here (before the gallery/camera triggers) so pin spacing resolves in page order.
+          story=initFeaturesStory({pinned:true,lenis});
           gsap.fromTo('.gallery-grid',{xPercent:3},{xPercent:-5,ease:'none',scrollTrigger:{trigger:'.gallery',start:'top bottom',end:'bottom top',scrub:1}});
         }
       }
+      // Phones are pinned too (they have no gallery trigger to order against); reduced motion gets the plain vertical stack from CSS.
+      if(!story) story=initFeaturesStory({pinned:!reduce,lenis});
       cameraPath.slice(1).forEach((frame,index)=>{
         if(desktop && frame.section==='cafe') return;
         const previous=cameraPath[index];const target=document.getElementById(frame.section);if(!target)return;
         gsap.fromTo(sceneState,{x:previous.position[0],y:previous.position[1],z:previous.position[2],tx:previous.target[0],ty:previous.target[1],tz:previous.target[2],phase:previous.phase},{x:frame.position[0],y:frame.position[1],z:frame.position[2],tx:frame.target[0],ty:frame.target[1],tz:frame.target[2],phase:frame.phase,immediateRender:false,ease:'none',scrollTrigger:{trigger:target,start:'top bottom',end:'top top',scrub:reduce?true:1.5}});
       });
-      return ()=>{lenis?.destroy();gsap.ticker.remove(tick);};
+      return ()=>{story?.();lenis?.destroy();gsap.ticker.remove(tick);};
     });
     const refresh=()=>ScrollTrigger.refresh();window.addEventListener('load',refresh);document.fonts.ready.then(refresh);
     return ()=>{window.removeEventListener('load',refresh);media.revert();};

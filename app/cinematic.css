@@ -238,3 +238,8 @@ main:not(.subpage) .about-copy>p{color:rgba(255,255,255,.95);font-weight:400;tex
 main:not(.subpage) .about .founders{color:#f0cf9c;text-shadow:0 1px 10px rgba(0,0,0,.5)}
 main:not(.subpage) .about .story-line:nth-child(2){color:#f0c98f}
 main:not(.subpage) .about .text-link{text-shadow:0 1px 10px rgba(0,0,0,.5)}
+
+/* --- Manifesto: headline accent + supporting line --- */
+.manifesto h2 em{font-style:italic;color:inherit}
+.manifesto-support{max-width:36ch;margin-top:24px;font-family:var(--sans);font-size:clamp(15px,1.15vw,18px);line-height:1.65;color:rgba(31,42,36,.8)}
+@media(max-width:700px){.manifesto h2{font-size:clamp(2.4rem,11vw,3.5rem)}.manifesto-support{margin-top:18px;font-size:16px}}
