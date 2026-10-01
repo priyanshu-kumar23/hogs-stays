@@ -1,0 +1,26 @@
+// HOGS Panorama photography. The data itself is generated (lib/gallery.generated.ts, from scripts/gallery-manifest.json by
+// `npm run images`) so file names, dimensions, alt text and blur placeholders can never drift from what is on disk.
+import { galleryImages, type GalleryCategory, type GalleryImage } from './gallery.generated';
+export type { GalleryCategory, GalleryImage, GalleryOrientation } from './gallery.generated';
+
+export const gallery: readonly GalleryImage[] = galleryImages;
+
+export const galleryFilters = [
+  { id: 'all', label: 'All' },
+  { id: 'rooms', label: 'Rooms' },
+  { id: 'views', label: 'Views' },
+  { id: 'outdoor', label: 'Outdoor' },
+  { id: 'common-room', label: 'Common Room' },
+] as const;
+export type GalleryFilter = (typeof galleryFilters)[number]['id'];
+
+export const galleryByCategory = (category: GalleryCategory) => gallery.filter(image => image.category === category);
+export const galleryFeatured = gallery.filter(image => image.featured);
+
+/** Look a photo up by its descriptive subject (the file name without the "-hogs-panorama-manali-nn" suffix). Throws at import
+ *  time if it does not exist, so a typo or a removed photo fails the build instead of rendering a broken image. */
+export function findImage(subject: string): GalleryImage {
+  const image = gallery.find(item => item.id.startsWith(`${subject}-hogs-panorama-manali-`));
+  if (!image) throw new Error(`gallery: no image with subject "${subject}". Check scripts/gallery-manifest.json and run \`npm run images\`.`);
+  return image;
+}

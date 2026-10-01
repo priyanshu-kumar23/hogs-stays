@@ -1,3 +1,4 @@
+import { findImage, type GalleryImage } from './gallery';
 // TODO(owner): replace all illustrative photographs with licensed HOGS photography.
 // No prices, room counts, or unconfirmed amenities are published.
 // Central registry of real photography. Components reference these, never raw paths.
@@ -9,6 +10,8 @@ export const images = {
   mountains: { src: '/images/mountains.jpg', alt: 'Layers of Himalayan mountain ridges in soft light', position: 'center 40%' },
   valley: { src: '/images/valley.jpg', alt: 'A green mountain valley with forest and distant peaks', position: 'center 55%' },
 };
+// Real HOGS Panorama photography (generated data in lib/gallery.generated.ts). Cards use the 1000px variant; hero/slider use full size.
+const photo = (subject: string, full = false) => { const g: GalleryImage = findImage(subject); return { src: full ? g.src : g.srcMd, alt: g.alt, position: g.position, blur: g.blurDataURL }; };
 export const site = { origin: process.env.NEXT_PUBLIC_SITE_URL || 'https://hogsstays.com' };
 // Primary navigation. Every href here is a real App Router route (see app/).
 export const navLinks = [
@@ -31,6 +34,7 @@ export const content = {
     features: { eyebrow: 'THE HOGS WAY', heading: ['Less rush.', 'More vaataavaran.'], description: ['It’s the feeling that stays with you.', 'The small things. The open-hearted moments.'],
       // Home-page horizontal story (components/sections/Features.tsx).
       story: { index: '03 / THE HOGS WAY', label: 'THE ART OF BEING HERE', more: 'Explore the HOGS way →', intro: ['Come for the', 'mountains.', 'Stay for the', 'feeling.'], scroll: 'Scroll', outroCta: 'Explore the HOGS way', progress: 'Experience progress', region: 'The art of being here' } },
+    panorama: { eyebrow: 'PHOTOGRAPHS', seeAll: 'See all photos →', sections: { rooms: 'Rooms', views: 'Views', outdoor: 'Outdoor', common: 'Common Room' } },
     gallery: { eyebrow: 'POSTCARDS FROM THE MOUNTAINS', index: '03 — STAY A LITTLE LONGER', heading: ['Some places are felt.', 'Not just seen.'], description: 'A glimpse of the world we call home.', note: 'A moodboard of mountain life. Photographs are illustrative; HOGS property photography is coming soon.' },
     about: { eyebrow: 'THE SOUL BEHIND THE STAYS', heading: ['Open roads.', 'Open hearts.', 'A place to belong.'], byline: 'HOUSE OF GS · EST. IN THE MOUNTAINS', founders: 'GAZAL & SALONI / THE HEART OF HOGS' },
     booking: { eyebrow: 'THE MOUNTAINS ARE CALLING', heading: ['Let the mountains', 'welcome you.'], contact: 'A CONVERSATION IS A GOOD START', submit: 'Enquire About Your Stay', whatsapp: 'Continue on WhatsApp' },
@@ -42,20 +46,20 @@ export const content = {
   staysIntro: 'Discover two unique experiences curated by HOGS: a mountain stay with panoramic valley views, and Cafe Do Nthng, a slow-morning cafe surrounded by nature.',
   // TODO(owner): Cafe Do Nthng is new — confirm type/description/highlights/bookable below before launch.
   properties: [
-    { id: 'panorama', path: '/stays/panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [images.hogs1, images.hogs2, images.hogs3], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
+    { id: 'panorama', path: '/stays/panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [images.hogs1, images.hogs2, images.hogs3, photo('balcony-with-prayer-flags-valley-view', true), photo('modern-room-with-large-window-and-teal-armchairs', true), photo('lounge-sofas-and-wooden-coffee-table', true), photo('garden-and-wooden-building-with-mountain-view', true)], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
     { id: 'cafe', path: '/cafe', name: 'Cafe Do Nthng', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe Do Nthng — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
   ],
   intro: { image: images.hogs3 },
   // Layered collage for the "Make room for what matters" moment (depth 1 = nearest).
   manifesto: {
     label: 'Make room for what matters', headline: ['Where the road', 'slows down.'], support: 'Leave the noise at the bend. Here, mornings are long, chai is always warm, and nobody is in a hurry.', marquee: 'VAATAAVARAN · MANALI · SLOW LIVING · ',
-    collage: [{ ...images.hogs2, depth: 1 }, { ...images.mountains, depth: 3 }, { ...images.valley, depth: 2 }],
+    collage: [{ ...photo('lounge-sofas-and-wooden-coffee-table'), depth: 1 }, { ...photo('garden-seating-with-himalayan-valley-view'), depth: 3 }, { ...photo('balcony-view-over-orchards-and-mountains'), depth: 2 }],
   },
   // TODO(owner): confirm these experience descriptions before launch; not an amenities list.
   features: [
-    { number: '01', title: 'Views worth pausing for', text: 'Mountains that remind you to look up, breathe deep, and take your time.', icon: 'mountain', image: '/images/mountains.jpg', imageAlt: 'Illustrative snow-covered mountain peaks', position: images.mountains.position },
+    { number: '01', title: 'Views worth pausing for', text: 'Mountains that remind you to look up, breathe deep, and take your time.', icon: 'mountain', image: photo('balcony-with-prayer-flags-and-wicker-chair').src, imageAlt: photo('balcony-with-prayer-flags-and-wicker-chair').alt, position: photo('balcony-with-prayer-flags-and-wicker-chair').position, blur: photo('balcony-with-prayer-flags-and-wicker-chair').blur },
     { number: '02', title: 'A rider’s kind of place', text: 'Born from a love of open roads and the people we meet along the way.', icon: 'road', image: '/images/valley.jpg', imageAlt: 'Illustrative valley on a mountain journey', position: images.valley.position },
-    { number: '03', title: 'Room for connection', text: 'Shared stories, new friendships, and conversations without a clock.', icon: 'home', image: images.hogs2.src, imageAlt: images.hogs2.alt, position: images.hogs2.position },
+    { number: '03', title: 'Room for connection', text: 'Shared stories, new friendships, and conversations without a clock.', icon: 'home', image: photo('wooden-lounge-sofa-seating').src, imageAlt: photo('wooden-lounge-sofa-seating').alt, position: photo('wooden-lounge-sofa-seating').position, blur: photo('wooden-lounge-sofa-seating').blur },
     { number: '04', title: 'The little rituals', text: 'A warm cup, a mountain morning, and nowhere else you need to be.', icon: 'cup', image: images.cafe.src, imageAlt: images.cafe.alt, position: images.cafe.position },
     { number: '05', title: 'Permission to slow down', text: 'Less on the itinerary. More in the moment.', icon: 'sun', image: '/images/stays/retreat.jpg', imageAlt: 'Illustrative forest retreat', position: 'center 50%' },
   ],

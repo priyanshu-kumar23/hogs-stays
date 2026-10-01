@@ -13,7 +13,7 @@ export default function Manifesto() {
         <Link className="manifesto-cue" href="/features">Follow the feeling <span aria-hidden="true">→</span></Link>
       </div>
       <div className="manifesto-collage">
-        {collage.map((image, index) => <figure key={image.src} className={`mc mc-${index + 1}`} data-depth={image.depth}><div className="mc-mask"><Image src={image.src} alt={image.alt} fill sizes="(max-width:700px) 78vw, (max-width:1099px) 44vw, 30vw" style={{ objectPosition: image.position }} /></div></figure>)}
+        {collage.map((image, index) => <figure key={image.src} className={`mc mc-${index + 1}`} data-depth={image.depth}><div className="mc-mask"><Image src={image.src} alt={image.alt} fill sizes="(max-width:700px) 78vw, (max-width:1099px) 44vw, 30vw" style={{ objectPosition: image.position }} placeholder="blur" blurDataURL={image.blur} /></div></figure>)}
       </div>
     </div>
   </section>;

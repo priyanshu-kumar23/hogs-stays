@@ -1,0 +1,12 @@
+/* /stays/panorama photo strips (components/stays/PanoramaPhotos.tsx) */
+.ps-section{padding-top:clamp(40px,7vh,80px);padding-bottom:clamp(24px,4vh,48px)}
+.ps-head{margin-bottom:22px}
+.ps-head .eyebrow{color:#e3b06f;margin-bottom:10px}
+.ps-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05}
+/* Justified rows: width is shared by aspect ratio, so every photo in a row has the same height and keeps its real ratio. */
+.ps-row{--h:clamp(190px,24vw,320px);list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:14px}
+.ps-item{flex:calc(var(--ar) * 100) 1 calc(var(--ar) * var(--h));min-width:0;max-width:calc(var(--ar) * 440px)} /* a photo alone on its row stays a sensible size instead of stretching full width */
+.ps-item figure{position:relative;margin:0;overflow:hidden;border-radius:6px;background:#2b3830 center/cover no-repeat}
+.ps-item img{display:block;width:100%;height:100%}
+.ps-all{padding:clamp(16px,3vh,32px) max(6%,calc((100vw - 1400px)/2)) clamp(56px,9vh,100px)}
+@media(max-width:700px){.ps-row{gap:10px}.ps-item.is-portrait{flex-basis:calc(var(--ar) * 190px)}}

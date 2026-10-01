@@ -30,7 +30,7 @@ export default function Features() {
           <figure className="fs-media">
             <span className="fs-num" aria-hidden="true">{feature.number}</span>
             <div className="fs-mask">
-              <Image className="fs-img" src={feature.image} alt={feature.imageAlt} fill sizes="(min-width:1024px) 26vw, (min-width:768px) 40vw, 68vw" style={{ objectFit: 'cover', objectPosition: feature.position }} />
+              <Image className="fs-img" src={feature.image} alt={feature.imageAlt} fill sizes="(min-width:1024px) 26vw, (min-width:768px) 40vw, 68vw" style={{ objectFit: 'cover', objectPosition: feature.position }} {...(feature.blur ? { placeholder: 'blur' as const, blurDataURL: feature.blur } : {})} />
               <span className="fs-scrim" aria-hidden="true" />
               <span className="fs-chip">{feature.number} / {total}</span>
             </div>
