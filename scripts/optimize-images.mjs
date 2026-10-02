@@ -35,9 +35,10 @@ const pipeline = (input, size) => sharp(input, { failOn: 'none' }).rotate().resi
 // Assign -nn per category in manifest order.
 const counters = {};
 const entries = manifest.map(item => {
-  const n = (counters[item.category] = (counters[item.category] || 0) + 1);
-  const slug = `${item.subject}-hogs-panorama-manali-${String(n).padStart(2, '0')}`;
-  return { ...item, slug, dir: item.category, n };
+  // `slug`/`dir` in the manifest override the default `{subject}-hogs-panorama-manali-{nn}` name and the category folder.
+  const n = item.slug ? 0 : (counters[item.category] = (counters[item.category] || 0) + 1);
+  const slug = item.slug || `${item.subject}-hogs-panorama-manali-${String(n).padStart(2, '0')}`;
+  return { ...item, slug, dir: item.dir || item.category, n };
 });
 
 const skipped = [];

@@ -20,7 +20,7 @@ export const galleryFeatured = gallery.filter(image => image.featured);
 /** Look a photo up by its descriptive subject (the file name without the "-hogs-panorama-manali-nn" suffix). Throws at import
  *  time if it does not exist, so a typo or a removed photo fails the build instead of rendering a broken image. */
 export function findImage(subject: string): GalleryImage {
-  const image = gallery.find(item => item.id.startsWith(`${subject}-hogs-panorama-manali-`));
+  const image = gallery.find(item => item.id === subject || item.id.startsWith(`${subject}-hogs-panorama-manali-`));
   if (!image) throw new Error(`gallery: no image with subject "${subject}". Check scripts/gallery-manifest.json and run \`npm run images\`.`);
   return image;
 }

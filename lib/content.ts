@@ -48,7 +48,7 @@ export const content = {
     { id: 'panorama', path: '/stays/panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [photo('bedroom-with-valley-view', true), photo('window-seats-with-mountain-view', true), photo('attic-lounge-with-timber-ceiling', true), photo('room-with-corner-windows-and-green-armchairs', true), photo('room-with-large-window-and-hillside-view', true)], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
     { id: 'cafe', path: '/cafe', name: 'Cafe Do Nthng', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe Do Nthng — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
   ],
-  intro: { image: photo('entrance-night-lights', true) },
+  intro: { image: photo('hogs-panorama-entrance-night-lights-manali') },
   // Layered collage for the "Make room for what matters" moment (depth 1 = nearest).
   manifesto: {
     label: 'Make room for what matters', headline: ['Where the road', 'slows down.'], support: 'Leave the noise at the bend. Here, mornings are long, chai is always warm, and nobody is in a hurry.', marquee: 'VAATAAVARAN · MANALI · SLOW LIVING · ',

@@ -9,6 +9,22 @@ export type GalleryImage = {
 };
 export const galleryImages: GalleryImage[] = [
   {
+    "id": "hogs-panorama-entrance-night-lights-manali",
+    "src": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali.webp",
+    "srcAvif": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali.avif",
+    "srcMd": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali-md.webp",
+    "srcSm": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali-sm.webp",
+    "srcMdAvif": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali-md.avif",
+    "srcSmAvif": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali-sm.avif",
+    "width": 1024,
+    "height": 1536,
+    "orientation": "portrait",
+    "category": "outdoor",
+    "alt": "Illuminated entrance of HOGS Panorama in Manali at night, with warm fairy lights and a wooden archway",
+    "blurDataURL": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABwBACdASoQABgAPu1iqU2ppaOiMAgBMB2JbAC7AdwA9EEBUxyH0+sJBKx/AAD+8p+p3d5t8p1Wr3kjvEzaxYush97WklPwKaPgRyInY/hfrbFKpPBUqcsSjyizFboxJimq3PJl397RZ9+1w5vDjATTtezHske7sSvvC7y85ERirU27ZCj2qHIBXwC0xqUCwdeeQesTCvFw3gAEZDpTHzhAAAA=",
+    "position": "center 40%"
+  },
+  {
     "id": "balcony-with-mountain-and-orchard-view-hogs-panorama-manali-01",
     "src": "/images/hogs-panorama/signature-view/balcony-with-mountain-and-orchard-view-hogs-panorama-manali-01.webp",
     "srcAvif": "/images/hogs-panorama/signature-view/balcony-with-mountain-and-orchard-view-hogs-panorama-manali-01.avif",
