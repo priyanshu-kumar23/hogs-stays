@@ -7,10 +7,10 @@ import '@/app/panorama-photos.css';
 // ones, never cropped); the flex row distributes width by aspect ratio so every photo in a row shares one height.
 const { panorama } = content.ui;
 const sections: { key: keyof typeof panorama.sections; subjects: string[] }[] = [
-  { key: 'rooms', subjects: ['wooden-double-bedroom-with-curtained-window', 'double-bedroom-with-pink-curtains', 'bedroom-with-carved-wooden-wardrobe', 'modern-room-with-large-window-and-teal-armchairs', 'modern-room-double-bed-with-wall-lamps'] },
-  { key: 'views', subjects: ['balcony-with-prayer-flags-and-wicker-chair', 'balcony-view-over-orchards-and-mountains', 'balcony-with-two-wicker-chairs-and-prayer-flags', 'balcony-wicker-chair-with-mountain-view'] },
-  { key: 'outdoor', subjects: ['garden-and-wooden-building-with-mountain-view', 'garden-seating-with-himalayan-valley-view', 'stone-building-with-balconies-and-garden-seating'] },
-  { key: 'common', subjects: ['lounge-sofas-and-wooden-coffee-table', 'wooden-lounge-sofa-seating', 'wooden-dining-table-beside-staircase', 'sofa-lounge-with-timber-staircase', 'open-lounge-and-dining-area'] },
+  { key: 'signature', subjects: ['window-seats-with-mountain-view', 'bedroom-with-balcony-door-and-mountain-view', 'bedroom-with-balcony-and-wall-lights', 'bedroom-with-valley-view'] },
+  { key: 'valley', subjects: ['room-with-large-window-and-hillside-view', 'room-with-mountain-window', 'room-with-corner-windows-and-green-armchairs', 'room-with-balcony-door-and-bedside-table'] },
+  { key: 'outdoor', subjects: ['entrance-arch-lit-at-night', 'terrace-walkway-with-fairy-lights', 'entrance-night-lights', 'terrace-seating-at-night', 'terrace-seating-by-glass-doors'] },
+  { key: 'common', subjects: ['lounge-sofa-seating', 'attic-lounge-with-timber-ceiling', 'dining-nook-with-table-and-chairs', 'lounge-sofas-and-orange-armchairs', 'lounge-with-wooden-slat-partition'] },
 ];
 const sizesFor = (image: GalleryImage) => (image.orientation === 'portrait' ? '(max-width: 768px) 70vw, 28vw' : '(max-width: 768px) 100vw, 50vw');
 export default function PanoramaPhotos() {

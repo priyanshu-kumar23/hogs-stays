@@ -7,10 +7,10 @@ export const gallery: readonly GalleryImage[] = galleryImages;
 
 export const galleryFilters = [
   { id: 'all', label: 'All' },
-  { id: 'rooms', label: 'Rooms' },
-  { id: 'views', label: 'Views' },
+  { id: 'common-area', label: 'Common Area' },
+  { id: 'signature-view', label: 'Signature View' },
+  { id: 'valley-view', label: 'Valley View' },
   { id: 'outdoor', label: 'Outdoor' },
-  { id: 'common-room', label: 'Common Room' },
 ] as const;
 export type GalleryFilter = (typeof galleryFilters)[number]['id'];
 

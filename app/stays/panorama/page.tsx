@@ -9,7 +9,7 @@ import { content, site } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 const property = content.properties.find(item => item.id === 'panorama')!;
 // Hero = the best landscape view photo.
-const hero = findImage('balcony-with-prayer-flags-valley-view');
+const hero = findImage('balcony-with-mountain-and-orchard-view');
 export const metadata = pageMetadata({ title: 'HOGS Panorama — Mountain Stay in Manali', description: 'HOGS Panorama is a mountain stay in Manali with panoramic valley views and Himalayan hospitality — a front-row seat to the Himalayas.', path: property.path, image: hero.og, imageMeta: { width: 1200, height: 630, alt: hero.alt } });
 export default function PanoramaPage() {
   const schema = { '@context': 'https://schema.org', '@type': 'LodgingBusiness', name: property.name, url: `${site.origin}${property.path}`, description: property.description, image: galleryFeatured.map(image => `${site.origin}${image.src}`), telephone: content.phone, email: content.email, address: { '@type': 'PostalAddress', addressLocality: 'Manali', addressRegion: 'Himachal Pradesh', addressCountry: 'IN' } };
