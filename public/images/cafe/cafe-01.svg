@@ -1,4 +1,4 @@
-<!-- TODO(owner): placeholder only — replace with real Cafe Do Nthng photography before launch. -->
+<!-- TODO(owner): placeholder only — replace with real Cafe DO NTHNG photography before launch. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -15,5 +15,5 @@
   <rect x="230" y="330" width="740" height="420" rx="6" fill="#3a2a1e" />
   <rect x="270" y="380" width="260" height="240" rx="4" fill="#d9822b" opacity=".85" />
   <rect x="670" y="380" width="260" height="240" rx="4" fill="#1f2a24" opacity=".55" />
-  <text x="600" y="820" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#f4f1ecb0">Cafe Do Nthng — placeholder</text>
+  <text x="600" y="820" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#f4f1ecb0">Cafe DO NTHNG — placeholder</text>
 </svg>

@@ -1,8 +1,8 @@
 import { findImage, type GalleryImage } from './gallery';
 // No prices, room counts, or unconfirmed amenities are published.
-// HOGS Panorama photography comes from lib/gallery.generated.ts (see `photo`/`pic` below); only the Cafe Do Nthng photo lives here.
+// HOGS Panorama photography comes from lib/gallery.generated.ts (see `photo`/`pic` below); only the Cafe DO NTHNG photo lives here.
 export const images = {
-  cafe: { src: '/images/cafe.jpeg', alt: 'Cafe Do Nthng at night, its neon sign glowing above a stone entrance with terrace seating and potted plants', position: 'center 46%' },
+  cafe: { src: '/images/cafe.jpeg', alt: 'Cafe DO NTHNG at night, its neon sign glowing above a stone entrance with terrace seating and potted plants', position: 'center 46%' },
 };
 // Real HOGS Panorama photography (generated data in lib/gallery.generated.ts). Cards use the 1000px variant; hero/slider use full size.
 const photo = (subject: string, full = false) => { const g: GalleryImage = findImage(subject); return { src: full ? g.src : g.srcMd, full: g.src, alt: g.alt, position: g.position, blur: g.blurDataURL, landscape: g.orientation === 'landscape', ratio: g.width / g.height }; };
@@ -21,32 +21,33 @@ export const navLinks = [
 ] as const;
 export const footerLinks = [
   { title: 'Home', href: '/' }, { title: 'Our Stays', href: '/stays' }, { title: 'HOGS Panorama', href: '/stays/panorama' },
-  { title: 'Cafe Do Nthng', href: '/cafe' }, { title: 'Gallery', href: '/gallery' }, { title: 'Features', href: '/features' },
-  { title: 'About Us', href: '/about' }, { title: 'Book Now', href: '/book' },
+  { title: 'Cafe DO NTHNG', href: '/cafe' }, { title: 'Gallery', href: '/gallery' }, { title: 'Features', href: '/features' },
+  { title: 'About Us', href: '/about' }, { title: 'Manali Packages', href: '/packages' }, { title: 'Book Now', href: '/book' },
 ] as const;
 export const content = {
   ui: {
     heroLines: ['Experience the', 'Himalayas', 'the HOGS Way'], heroShort: ['A little closer to nature.', 'A little closer to yourself.'],
     heroCta: 'Book Your Stay', heroFooter: 'Rooted in Manali. Made for belonging.', scrollPrompt: 'SCROLL TO FIND YOUR VAATAAVARAN',
     intro: { eyebrow: 'WELCOME TO OUR WORLD', heading: ['Not just a place.', 'A state of being.'], definition: 'VAATAAVARAN / वातावरण / THE FEELING OF A PLACE' },
-    stays: { eyebrow: 'THE STAYS', index: '01 — TWO WAYS TO BELONG', heading: ['A stay, and a cafe.', 'Two ways to belong.'], cardEyebrow: 'YOUR MOUNTAIN ADDRESS', cafeLabel: 'THE CAFE', cta: 'Book this stay', cafeCta: 'Visit the Cafe', cafeDirections: 'Get directions' },
+    stays: { eyebrow: 'THE STAYS', index: '02 — TWO WAYS TO BELONG', heading: ['A stay, and a cafe.', 'Two ways to belong.'], cardEyebrow: 'YOUR MOUNTAIN ADDRESS', cafeLabel: 'THE CAFE', cta: 'Book this stay', cafeCta: 'Visit the Cafe', cafeDirections: 'Get directions' },
     features: { eyebrow: 'THE HOGS WAY', heading: ['Less rush.', 'More vaataavaran.'], description: ['It’s the feeling that stays with you.', 'The small things. The open-hearted moments.'],
       // Home-page horizontal story (components/sections/Features.tsx).
-      story: { index: '03 / THE HOGS WAY', label: 'THE ART OF BEING HERE', more: 'Explore the HOGS way →', intro: ['Come for the', 'mountains.', 'Stay for the', 'feeling.'], scroll: 'Scroll', outroCta: 'Explore the HOGS way', progress: 'Experience progress', region: 'The art of being here' } },
+      story: { index: '04 / THE HOGS WAY', label: 'THE ART OF BEING HERE', more: 'Explore the HOGS way →', intro: ['Come for the', 'mountains.', 'Stay for the', 'feeling.'], scroll: 'Scroll', outroCta: 'Explore the HOGS way', progress: 'Experience progress', region: 'The art of being here' } },
     panorama: { eyebrow: 'PHOTOGRAPHS', seeAll: 'See all photos →', sections: { signature: 'Signature View', valley: 'Valley View', outdoor: 'Outdoor', common: 'Common Area' } },
-    gallery: { eyebrow: 'POSTCARDS FROM THE MOUNTAINS', index: '03 — STAY A LITTLE LONGER', heading: ['Some places are felt.', 'Not just seen.'], description: 'A glimpse of the world we call home.', note: 'A moodboard of mountain life, photographed at HOGS Panorama in Manali.' },
+    gallery: { eyebrow: 'POSTCARDS FROM THE MOUNTAINS', index: '05 — STAY A LITTLE LONGER', heading: ['Some places are felt.', 'Not just seen.'], description: 'A glimpse of the world we call home.', note: 'A moodboard of mountain life, photographed at HOGS Panorama in Manali.' },
     about: { eyebrow: 'THE SOUL BEHIND THE STAYS', heading: ['Open roads.', 'Open hearts.', 'A place to belong.'], byline: 'HOUSE OF GS · EST. IN THE MOUNTAINS', founders: 'GAZAL & SALONI / THE HEART OF HOGS' },
     booking: { eyebrow: 'THE MOUNTAINS ARE CALLING', heading: ['Let the mountains', 'welcome you.'], contact: 'A CONVERSATION IS A GOOD START', submit: 'Enquire About Your Stay', whatsapp: 'Continue on WhatsApp' },
     footer: { heading: ['Come for the mountains.', 'Stay for the feeling.'], credit: 'Made of mountains, stories & a little chai.' },
   },
+  journeyCredit: 'Journey photography: HOGS, plus freely licensed images from Wikimedia Commons (CC BY / CC BY-SA).',
   landscape: { credit: 'Manali elevation: Mapzen / Tilezen · SRTM data courtesy of the U.S. Geological Survey.', textures: 'Contains modified Copernicus Sentinel data 2024. PBR detail: Amal Kumar / Poly Haven (CC0).', note: 'Terrain and surface imagery depict the Manali region. Additional snow, trees, river and property markers are artistic interpretations.' },
   brand: 'HOGS', tagline: 'Of Himalayan Homes', location: 'Manali, Himachal Pradesh',
   hero: { title: 'Experience the Himalayas the HOGS Way', description: 'Welcome to HOGS – Of Himalayan Homes, a collection of thoughtfully crafted mountain stays in Manali. From scenic valley views to peaceful mountain retreats, every property is designed to bring you closer to the beauty of the Himalayas.' },
-  staysIntro: 'Discover two unique experiences curated by HOGS: a mountain stay with panoramic valley views, and Cafe Do Nthng, a slow-morning cafe surrounded by nature.',
-  // TODO(owner): Cafe Do Nthng is new — confirm type/description/highlights/bookable below before launch.
+  staysIntro: 'Discover two unique experiences curated by HOGS: a mountain stay with panoramic valley views, and Cafe DO NTHNG, a slow-morning cafe surrounded by nature.',
+  // TODO(owner): Cafe DO NTHNG is new — confirm type/description/highlights/bookable below before launch.
   properties: [
     { id: 'panorama', path: '/stays/panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [photo('bedroom-with-valley-view', true), photo('window-seats-with-mountain-view', true), photo('attic-lounge-with-timber-ceiling', true), photo('room-with-corner-windows-and-green-armchairs', true), photo('room-with-large-window-and-hillside-view', true)], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
-    { id: 'cafe', path: '/cafe', name: 'Cafe Do Nthng', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe Do Nthng — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
+    { id: 'cafe', path: '/cafe', name: 'Cafe DO NTHNG', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe DO NTHNG — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
   ],
   intro: { image: photo('hogs-panorama-entrance-night-lights-manali') },
   // Layered collage for the "Make room for what matters" moment (depth 1 = nearest).

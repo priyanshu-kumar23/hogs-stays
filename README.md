@@ -37,7 +37,7 @@ HOGS Panorama photography lives in `source-images/` (git-ignored originals, one 
 Photographic sources:
 
 - HOGS Panorama photos: supplied by HOGS.
-- `cafe/cafe-01.svg`, `cafe/cafe-02.svg`: TODO(owner) placeholders for Cafe Do Nthng — generated vector mood graphics, not real photography. Replace before launch.
+- `cafe/cafe-01.svg`, `cafe/cafe-02.svg`: TODO(owner) placeholders for Cafe DO NTHNG — generated vector mood graphics, not real photography. Replace before launch.
 
 Fonts are self-hosted Cormorant Garamond and Manrope from Google Fonts; see `public/fonts/`. The cloud sprite is an original, mathematically generated radial alpha texture. Font license notices are included alongside the font files.
 

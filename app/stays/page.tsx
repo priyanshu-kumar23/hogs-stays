@@ -6,7 +6,7 @@ import Icon from '@/components/ui/Icon';
 import { content, pic } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 const hero = pic('bedroom-with-valley-view');
-export const metadata = pageMetadata({ title: 'Our Stays', description: 'Two ways to belong in Manali: HOGS Panorama, a mountain stay with panoramic valley views, and Cafe Do Nthng, a slow-morning cafe surrounded by nature.', path: '/stays', image: hero.og });
+export const metadata = pageMetadata({ title: 'Our Stays', description: 'Two ways to belong in Manali: HOGS Panorama, a mountain stay with panoramic valley views, and Cafe DO NTHNG, a slow-morning cafe surrounded by nature.', path: '/stays', image: hero.og });
 export default function StaysPage() {
   const { ui, properties } = content;
   return <main id="main" className="subpage"><PageHero eyebrow={ui.stays.eyebrow} title={<>{ui.stays.heading[0]}<br /><em>{ui.stays.heading[1]}</em></>} lede={content.staysIntro} image={hero.src} alt={hero.alt} position={hero.position} />

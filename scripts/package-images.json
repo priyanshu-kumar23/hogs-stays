@@ -1,0 +1,218 @@
+{
+  "hadimba": {
+    "src": "/images/manali/Hadimba-Temple-1.png",
+    "alt": "Hadimba Devi Temple's tiered wooden roofs rising among tall deodar trees under a blue sky",
+    "caption": "HADIMBA DEVI TEMPLE, AMONG THE DEODARS",
+    "position": "center 55%"
+  },
+  "oldManali": {
+    "src": "/images/manali/Old-Manali.png",
+    "alt": "A weathered wooden mountain house with a stacked slate roof and a painted doorway, set against a forested hillside",
+    "caption": "SLATE ROOFS & WOODEN BALCONIES",
+    "position": "center 50%"
+  },
+  "mallRoad": {
+    "src": "/images/manali/Mall-Road.png",
+    "alt": "Mall Road in central Manali at dusk, with a bronze statue, rooftop cafes and shop signs under a blue sky",
+    "caption": "MALL ROAD, AT DUSK",
+    "position": "center 45%"
+  },
+  "solang": {
+    "src": "/images/manali/Solang-Valley.png",
+    "alt": "Paragliders over a wide snow-covered valley at Solang, with pine slopes and white peaks behind",
+    "caption": "SOLANG VALLEY IN SNOW",
+    "position": "center 55%"
+  },
+  "atal": {
+    "src": "/images/manali/Atal-Tunnel.png",
+    "alt": "The wooden-roofed Atal Tunnel, Rohtang gateway beneath snow-dusted mountains and tall pines",
+    "caption": "ATAL TUNNEL, ROHTANG",
+    "position": "center 45%"
+  },
+  "atalGreen": {
+    "src": "/images/manali/Gm-4.png",
+    "alt": "The Atal Tunnel, Rohtang gateway in the green season, with patches of snow on the peaks behind",
+    "caption": "ATAL TUNNEL, IN THE GREEN SEASON",
+    "position": "center 50%"
+  },
+  "sissu": {
+    "src": "/images/manali/Sissu.png",
+    "alt": "A scooter rounding a curve on a quiet mountain road beside snow-covered slopes dotted with pines",
+    "caption": "THE ROAD TOWARDS SISSU",
+    "position": "center 60%"
+  },
+  "peaks": {
+    "src": "/images/manali/Manali.png",
+    "alt": "A snow-dusted Himalayan ridge glowing blue above dark pines at the edge of a misty valley",
+    "caption": "THE RIDGELINE ABOVE MANALI",
+    "position": "center 60%"
+  },
+  "paraglider": {
+    "src": "/images/manali/Kullu-Valley.png",
+    "alt": "A single paraglider drifting above pine forest, with snow-covered peaks and heavy clouds behind",
+    "caption": "A PARAGLIDER OVER THE VALLEY",
+    "position": "center 40%"
+  },
+  "cafe": {
+    "src": "/images/cafe.jpeg",
+    "alt": "Cafe DO NTHNG at night, its neon sign glowing above a stone entrance with terrace seating and potted plants",
+    "caption": "CAFE DO NTHNG, AFTER DARK",
+    "position": "center 46%"
+  },
+  "sajla": {
+    "src": "/images/packages/sajla/sajla-forest-trail.webp",
+    "alt": "Deodar forest, a small bridge and walkers on the trail leading towards Sajla, with green mountain slopes behind",
+    "caption": "THE FOREST TRAIL TOWARDS SAJLA",
+    "position": "center 60%",
+    "credit": {
+      "author": "Vinayaraj",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kanoi_nalha_-Sajla_waterfall_Manali_around_vrtmrgmpksk_(6).jpg"
+    }
+  },
+  "sethan": {
+    "src": "/images/packages/sethan/sethan-snow-valley.webp",
+    "alt": "A wide snow-covered meadow below a granite cliff and a pointed snowy peak at Sethan, with dark conifers on the far slope",
+    "caption": "SETHAN, UNDER WINTER SNOW",
+    "position": "center 50%",
+    "credit": {
+      "author": "Catherine Lunaa",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Sethan.jpg"
+    }
+  },
+  "hamta": {
+    "src": "/images/packages/hamta/hampta-valley-meadow.webp",
+    "alt": "A walker and grazing sheep on a green mountain meadow beneath steep rock walls and forested slopes in Hampta Valley",
+    "caption": "HAMPTA VALLEY, IN THE WARMER MONTHS",
+    "position": "center 55%",
+    "credit": {
+      "author": "mkasiak",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hampta_Valley_-_panoramio.jpg"
+    }
+  },
+  "naggarCourtyard": {
+    "src": "/images/packages/naggar/naggar-castle-courtyard.webp",
+    "alt": "Carved wooden balconies and slate roofs around the courtyard of Naggar Castle, with deodar forest rising behind",
+    "caption": "NAGGAR CASTLE, CARVED WOOD & SLATE",
+    "position": "center 60%",
+    "credit": {
+      "author": "Pratishkhedekar",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Naggar_Castle_-_2.jpg"
+    }
+  },
+  "naggarBalcony": {
+    "src": "/images/packages/naggar/naggar-castle-balcony.webp",
+    "alt": "A carved timber balcony of Naggar Castle looking out over the green Kullu Valley and misty mountains",
+    "caption": "NAGGAR CASTLE, A BALCONY OVER THE VALLEY",
+    "position": "center 50%",
+    "credit": {
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kullu_Valley,_Naggar_Castle,_India.jpg"
+    }
+  },
+  "roerich": {
+    "src": "/images/packages/naggar/roerich-estate.webp",
+    "alt": "A two-storey wooden house with a white-railed veranda, half hidden by deodars and flowering shrubs, at the Roerich estate in Naggar",
+    "caption": "THE ROERICH ESTATE, NAGGAR",
+    "position": "center 50%",
+    "credit": {
+      "author": "Debashritaiitmandi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Roerich_Art_Gallery_Naggar_DSC01335.jpg"
+    }
+  },
+  "jana": {
+    "src": "/images/packages/jana/jana-waterfall.webp",
+    "alt": "A slender waterfall tumbling over moss-covered boulders into a dark, leafy forest pool at Jana",
+    "caption": "JANA WATERFALL",
+    "position": "center 45%",
+    "credit": {
+      "author": "AjayParkash",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Jana_Waterfall.jpg"
+    }
+  },
+  "beas": {
+    "src": "/images/packages/kullu-valley/beas-valley-palchan.webp",
+    "alt": "The green, orchard-dotted Kullu Valley north of Manali, with a snow-covered Himalayan range under a blue sky",
+    "caption": "THE KULLU VALLEY, NORTH OF MANALI",
+    "position": "center 55%",
+    "credit": {
+      "author": "Biswarup Ganguly (derivative: UnpetitproleX)",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Beas_Valley_-_Palchan_-_Kullu_2014-05-10_2279_01.jpg"
+    }
+  },
+  "vashishtTemple": {
+    "src": "/images/packages/vashisht/vashisht-temple.webp",
+    "alt": "The carved wooden porch and slate-stone roofs of the Vashisht Temple, with a forested hillside rising behind",
+    "caption": "VASHISHT TEMPLE, CARVED WOOD & SLATE",
+    "position": "center 45%",
+    "credit": {
+      "author": "Sharvipul",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Vashisht_temple_near_manali.jpg"
+    }
+  },
+  "hotSpring": {
+    "src": "/images/packages/vashisht/vashisht-hot-spring-baths.webp",
+    "alt": "A stone-walled bathing tank at the Vashisht hot-water spring, with a carved stone spout set into the old wall",
+    "caption": "THE VASHISHT HOT-WATER SPRING BATHS",
+    "position": "center 55%",
+    "credit": {
+      "author": "John Hill",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hot_Springs_near_Manali._2020.jpg"
+    }
+  },
+  "manuTemple": {
+    "src": "/images/packages/old-manali/manu-temple.webp",
+    "alt": "The tiered timber roof and white stone tower of the Manu Temple in Old Manali, seen against a blue sky",
+    "caption": "MANU TEMPLE, OLD MANALI",
+    "position": "center 40%",
+    "credit": {
+      "author": "Birte Fritsch",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Birte_Fritsch,_Manu_Temple_in_Old_Manali_(45).jpg"
+    }
+  },
+  "dhungri": {
+    "src": "/images/packages/dhungri/cedar-forest-hadimba.webp",
+    "alt": "Tall deodar trees rising into a misty sky in the cedar forest around Hadimba Devi Temple, with visitors on the path below",
+    "caption": "THE DEODARS AROUND HADIMBA",
+    "position": "center 30%",
+    "credit": {
+      "author": "TheSlumPanda",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Cedar_Forest_around_Hadimba_Devi_Temple,_Manali.jpg"
+    }
+  },
+  "sissuFalls": {
+    "src": "/images/packages/sissu/sissu-waterfall.webp",
+    "alt": "A thin waterfall dropping down a dark cliff into a green Lahaul valley, seen from the road near Sissu",
+    "caption": "THE WATERFALL ABOVE SISSU",
+    "position": "center 35%",
+    "credit": {
+      "author": "Lalitgupta isgec",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Sissu_Water_Fall.jpg"
+    }
+  }
+}
