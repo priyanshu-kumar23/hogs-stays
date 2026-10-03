@@ -4,14 +4,16 @@ import PackageCard from '@/components/packages/PackageCard';
 import Rail from '@/components/packages/Rail';
 import DayArticle from '@/components/packages/DayArticle';
 import DayNavigator from '@/components/packages/DayNavigator';
-import EnquiryForm from '@/components/packages/EnquiryForm';
+import BookingCard from '@/components/booking/BookingCard';
+import BookingHost from '@/components/booking/BookingHost';
+import BookButton from '@/components/booking/BookButton';
 import HogsStrip from '@/components/packages/HogsStrip';
 import AttractionsSection, { type ActivityChip, type PlaceCard } from '@/components/packages/AttractionsSection';
 import FaqSection from '@/components/packages/FaqSection';
 import { duration, durationLong, getPackage, otherPackages, packageCopy, packageHref, packageTitle, packages } from '@/lib/packages';
 import { site } from '@/lib/content';
 import { activitiesFor, attractionTypes, attractionsFor } from '@/lib/attractions';
-import { faqCategories, faqJsonLd, faqsFor, visibleFaqs, whatsappHref } from '@/lib/faqs';
+import { faqCategories, faqJsonLd, faqsFor, seasonNotes, visibleFaqs, whatsappHref } from '@/lib/faqs';
 import { pageMetadata } from '@/lib/seo';
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -41,7 +43,7 @@ export default async function PackagePage({ params }: Props) {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(allFaqs)).replace(/</g, '\u003c') }} />
     <PageHero eyebrow={`JOURNEY ${num} / ${total} — ${durationLong(pkg).toUpperCase()}`} title={<>{pkg.title[0]}<br /><em>{pkg.title[1]}</em></>} lede={pkg.tagline} image={hero.src} alt={hero.alt} position={hero.position}>
       <div className="pk-hero-meta"><span className="pk-badge pk-badge-static">{duration(pkg)}</span><ul className="chips pk-chips" aria-label="Perfect for">{pkg.perfectFor.map(label => <li className="chip" key={label}>{label}</li>)}</ul><span className="pk-price">{packageCopy.priceLabel}</span></div>
-      <a className="pk-btn pk-btn-lg" href="#enquire">Enquire about this journey <span aria-hidden="true">↗</span></a>
+      <BookButton className="pk-btn pk-btn-lg">Book this journey <span aria-hidden="true">↗</span></BookButton>
     </PageHero>
     <section className="section pk-glance" aria-label="At a glance">
       <div className="section-topline"><p className="eyebrow">AT A GLANCE</p><span className="section-index">{num} — THE SHAPE OF THE JOURNEY</span></div>
@@ -55,7 +57,7 @@ export default async function PackagePage({ params }: Props) {
         <div className="section-topline"><p className="eyebrow">THE ITINERARY</p><span className="section-index">DAY BY DAY</span></div>
         {pkg.itinerary.map((day, i) => <DayArticle key={day.dayNumber} day={day} total={pkg.itinerary.length} priority={i === 0} places={placeSlugs} />)}
       </div>
-      <aside id="enquire" className="pk-aside" aria-label="Enquire about this journey" data-lenis-prevent><EnquiryForm slug={pkg.slug} /></aside>
+      <aside id="enquire" className="pk-aside" aria-label="Request to book this journey"><BookingCard pkg={pkg} /></aside>
       </div>
       <div className="pk-wide">
         <AttractionsSection places={places} activities={chips} types={types} eyebrow="04 / ALONG THE WAY" heading={['Places you’ll', 'meet', 'on this journey.']} intro="Every place below appears in the itinerary. Open one to see what to do there, when it’s at its best, and a tip from your hosts." />
@@ -63,6 +65,7 @@ export default async function PackagePage({ params }: Props) {
       </div>
     </div>
     <HogsStrip />
+    <BookingHost currentSlug={pkg.slug} packages={packages.map(item => ({ slug: item.slug, name: packageTitle(item).replace(/\.$/, ''), nights: item.nights, days: item.days, thumb: item.cardImage.src, season: seasonNotes(item) }))} />
     <section className="section pk-more-journeys" aria-labelledby="pk-other-title">
       <div className="section-topline"><p className="eyebrow">OTHER JOURNEYS</p><span className="section-index">{packageCopy.index}</span></div>
       <h2 id="pk-other-title" data-reveal>Other roads,<br /><em>same mountains.</em></h2>

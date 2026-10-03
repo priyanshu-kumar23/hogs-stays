@@ -45,7 +45,7 @@ export default function AttractionsSection({ places, activities, types, eyebrow,
   const finish = useCallback(() => {
     openRef.current = null; setOpen(null);
     const target = pending.current; pending.current = null;
-    if (target) requestAnimationFrame(() => scrollTo(target)); else if (trigger.current?.isConnected) trigger.current.focus();
+    if (target === 'book') requestAnimationFrame(() => window.dispatchEvent(new CustomEvent('hogs:book'))); else if (target) requestAnimationFrame(() => scrollTo(target)); else if (trigger.current?.isConnected) trigger.current.focus();
   }, []);
   // Back-button safe: opening pushes a history entry, so Back closes the drawer instead of leaving the page.
   const openPlace = useCallback((slug: string, from?: HTMLElement | null) => {

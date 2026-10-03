@@ -91,3 +91,11 @@ export function generalFaqs(): FaqItem[] {
 export const siteFaqs = (): FaqItem[] => [...generalFaqs(), ...packages.flatMap(pkg => faqsFor(pkg).filter(item => !item.shared))];
 export const whatsappHref = (pkg?: TourPackage) => `https://wa.me/${content.whatsapp}?text=${encodeURIComponent(pkg ? `Hello HOGS! I have a question about the journey: ${packageTitle(pkg).replace(/\.$/, '')} (${pkg.nights}N/${pkg.days}D).` : 'Hello HOGS! I have a question about your Manali journeys.')}`;
 export const faqJsonLd = (items: FaqItem[]) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: publishedFaqs(items).map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a.join(' ') } })) });
+/** Honest seasonal notes for the booking sheet's dates step, taken from the itinerary (no dates or closures are invented). */
+export function seasonNotes(pkg: TourPackage): string[] {
+  const notes: string[] = [];
+  if (hasText(pkg, /sethan|hamta/)) notes.push('Sethan and Hamta Valley: a snow experience in winter, meadows and village walks in the warmer months.');
+  if (hasText(pkg, /solang/)) notes.push('Solang Valley: snow and adventure activities depend on the season.');
+  if (hasText(pkg, /atal tunnel|sissu|sethan|hamta/)) notes.push('Atal Tunnel, Sissu, Sethan and Hamta days depend on weather and road conditions, so we keep them flexible.');
+  return notes;
+}

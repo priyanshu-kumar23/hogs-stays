@@ -5,6 +5,7 @@ import './cinematic.css';
 import './pages.css';
 import './packages.css';
 import './package-extras.css';
+import './booking-flow.css';
 import Navigation from '@/components/ui/Navigation';
 import StickyBookBar from '@/components/ui/StickyBookBar';
 import Cursor from '@/components/ui/Cursor';

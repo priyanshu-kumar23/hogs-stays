@@ -25,7 +25,7 @@ export default function AttractionDrawer({ place, onClose, onGoTo }: { place: Pl
         <aside className="pk-callout is-recommendation"><p className="eyebrow">HOGS tip</p><p>{place.tip}</p></aside>
         <h3 className="eyebrow">Seen on</h3>
         <ul className="pk-drawer-days">{days.map(day => <li key={day.n}><a href={`#day-${day.n}`} onClick={event => { event.preventDefault(); onGoTo(`day-${day.n}`); }}><span>Day {String(day.n).padStart(2, '0')}</span> {day.title} <span aria-hidden="true">→</span></a></li>)}</ul>
-        <a className="pk-btn pk-btn-lg" href="#enquire" onClick={event => { event.preventDefault(); onGoTo('enquire'); }}>Enquire about this journey <span aria-hidden="true">↗</span></a>
+        <a className="pk-btn pk-btn-lg" href="#enquire" onClick={event => { event.preventDefault(); onGoTo('book'); }}>Book this journey <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </dialog>;
