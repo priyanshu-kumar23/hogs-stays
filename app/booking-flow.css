@@ -57,7 +57,7 @@
 .bk-field{margin-bottom:20px;min-width:0}
 .bk-label{display:block;margin-bottom:9px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#c6ccc1}
 .bk-opt{text-transform:none;letter-spacing:.02em;color:#8e9a94;font-weight:400}
-.bk input[type=text],.bk input[type=tel],.bk input[type=email],.bk select,.bk textarea{width:100%;min-height:50px;padding:12px 14px;background:#ffffff0d;border:1px solid #ffffff33;border-radius:0;color:var(--snow);font-size:16px;color-scheme:dark}
+.bk input:not([type]),.bk input[type=text],.bk input[type=tel],.bk input[type=email],.bk select,.bk textarea{width:100%;min-height:50px;padding:12px 14px;background:#ffffff0d;border:1px solid #ffffff33;border-radius:0;color:var(--snow);font-size:16px;color-scheme:dark}
 .bk textarea{resize:vertical;min-height:84px}
 .bk input:not([type=checkbox]):not([type=radio]),.bk select,.bk textarea{font-family:var(--sans)}
 .bk input:focus-visible,.bk select:focus-visible,.bk textarea:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
@@ -165,3 +165,31 @@
   .bk,.bk::backdrop,.bk-stamp{animation:none}
   .bk-choice,.bk-pill,.bk-switch-track,.bk-switch-track:after,.bk-choice-tick{transition:none}
 }
+
+/* Panorama enquiry: stays-page booking drawer. */
+.panorama-book-trigger{background:transparent;border:0;border-bottom:1px solid #d9822b;cursor:pointer;color:inherit;font:inherit;padding:12px 0;display:inline-flex;align-items:center;gap:24px}
+.panorama-book-band{text-align:center;padding:100px 6%;background:radial-gradient(ellipse at 50% 100%,#a4612e22,transparent 65%),#14231c;border-top:1px solid #ffffff18}
+.panorama-book-band h2{font-size:clamp(42px,6vw,84px);line-height:1.05;margin:25px 0;letter-spacing:-.04em}
+.panorama-book-band h2 em{color:#e3b06f}
+.panorama-book-band>p:not(.eyebrow){max-width:470px;margin:0 auto 30px;color:#bcc9bd}
+.bk-panorama{width:min(680px,100vw);background:radial-gradient(ellipse at 100% 50%,#344b382b,transparent 70%),#101a17}
+.bk-panorama .bk-top{padding:14px 28px 16px;background:#101a17}
+.bk-destination{position:relative;isolation:isolate;height:148px;border-radius:16px;overflow:hidden;margin:0 0 18px}
+.bk-destination img{object-fit:cover;object-position:center 45%;z-index:-2}
+.bk-destination:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#08150dd9,#08150d20),linear-gradient(0deg,#08150d88,transparent);z-index:-1}
+.bk-destination>div{position:absolute;left:22px;bottom:20px}
+.bk-destination .eyebrow{font-size:9px;color:#e4c59e;letter-spacing:.19em}
+.bk-destination p{font-family:var(--serif);font-size:34px;line-height:1.05;margin-top:8px;color:#fff8ec}
+.bk-destination em{display:block;font-size:17px;margin-top:6px;color:#e4d5bb}
+.bk-panorama .bk-pkg-compact{display:none}
+.bk-panorama .bk-body{padding:24px 28px}
+.bk-panorama .bk-choice{border-radius:12px;background:#ffffff04;transition:border-color .2s,background .2s,transform .2s}
+.bk-panorama .bk-choice:hover{background:#ffffff08;border-color:#e3b06f77;transform:translateY(-1px)}
+.bk-panorama .bk-choice.is-on{background:linear-gradient(110deg,#d9822b20,#d9822b08);border-color:#e3b06f}
+.bk-panorama .bk-field input,.bk-panorama .bk-field select,.bk-panorama .bk-field textarea,.bk-panorama .bk-stepper{border-radius:10px}
+.bk-panorama .bk-field input:focus-visible,.bk-panorama .bk-field select:focus-visible,.bk-panorama .bk-field textarea:focus-visible{outline:2px solid #e3b06f;outline-offset:3px}
+.bk-panorama .bk-foot{background:#0c1613ed;border-top:1px solid #e3b06f30}
+.bk-panorama .pk-btn{border-radius:10px;background:#e3b06f;color:#14231c;box-shadow:0 8px 30px #d9822b20}
+.bk-panorama .bk-steps button[aria-current="step"]{color:#f3c997}
+@media(max-width:767px){.bk-panorama{width:100vw}.bk-panorama .bk-top{padding:10px 18px 12px}.bk-panorama .bk-body{padding:22px 18px}.bk-destination{height:112px;border-radius:12px;margin-bottom:12px}.bk-destination>div{left:16px;bottom:15px}.bk-destination p{font-size:29px}.bk-destination em{font-size:15px}.panorama-book-band{padding:65px 7%}}
+@media(prefers-reduced-motion:reduce){.bk-panorama .bk-choice{transition:none}.bk-panorama .bk-choice:hover{transform:none}}

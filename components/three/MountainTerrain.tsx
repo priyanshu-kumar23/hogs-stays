@@ -9,7 +9,7 @@ export default function MountainTerrain({low}:{low:boolean}) {
   const textures=maps.map((map,index)=>{const t=map.clone();t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(index>0&&index<4?90:1,index>0&&index<4?100:1);t.anisotropy=low?2:8;t.needsUpdate=true;return t;});
   textures[0].colorSpace=THREE.SRGBColorSpace;textures[4].colorSpace=THREE.SRGBColorSpace;textures[5].colorSpace=THREE.SRGBColorSpace;
   const m=new THREE.MeshStandardMaterial({map:textures[0],normalMap:textures[1],normalScale:new THREE.Vector2(.16,.16),roughnessMap:textures[2],aoMap:low?null:textures[3],aoMapIntensity:.18,roughness:.96,metalness:0});
-  m.customProgramCacheKey=()=>'himalayan-canopy-v4-'+low;
+  m.customProgramCacheKey=()=>'himalayan-canopy-v5-'+low;
   const time={value:0};m.userData.time=time;
   m.onBeforeCompile=shader=>{
    shader.uniforms.uWeatherTime=time;shader.uniforms.uCanopy={value:textures[4]};shader.uniforms.uRockDetail={value:textures[5]};
@@ -31,7 +31,7 @@ export default function MountainTerrain({low}:{low:boolean}) {
     float summit=smoothstep(32.,44.,vTerrain.y);
     float snow=clamp(altitude*mix(slope,1.,summit*.72),0.,1.);
     float luminance=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));
-    vec3 rock=mix(diffuseColor.rgb,vec3(luminance)*vec3(.83,.94,1.07),.72)*.92;
+    vec3 rock=mix(diffuseColor.rgb,vec3(luminance)*vec3(.94,.98,1.02),.18);
     float treeLine=1.-smoothstep(17.,27.,vTerrain.y);
     float vegetation=treeLine*smoothstep(.28,.65,vSlope);
     float canopy=snowNoise(vTerrain.xz*6.);
@@ -42,11 +42,12 @@ export default function MountainTerrain({low}:{low:boolean}) {
     vec3 organic=mix(canopyDetail,canopyVariation,.27);
     organic*=mix(.75,1.3,smoothstep(.015,.2,luminance));
     vec3 stone=texture2D(uRockDetail,vTerrain.xz*.17+vTerrain.yy*.12).rgb;
-    rock=mix(rock,stone*vec3(.72,.79,.83),.26*(1.-vegetation));
-    rock=mix(rock,organic,vegetation*.84);
-    rock*=mix(.73,1.15,canopy*vegetation+(1.-vegetation)*.65);
+    rock=mix(rock,stone*vec3(.86,.89,.91),.12*(1.-vegetation));
+    // Keep the registered satellite color dominant: detail must not hide real geology.
+    rock=mix(rock,organic,vegetation*.28);
+    rock*=mix(.92,1.07,canopy*vegetation+(1.-vegetation)*.65);
     float ice=smoothstep(.58,.83,drift)*smoothstep(26.,40.,vTerrain.y)*(1.-smoothstep(.72,.95,vSlope));
-    vec3 snowColor=mix(vec3(.48,.59,.71),vec3(.73,.81,.87),drift);
+    vec3 snowColor=mix(vec3(.65,.74,.82),vec3(.94,.96,.98),drift);
     snowColor=mix(snowColor,vec3(.44,.64,.75),ice*.45);
     snowColor*=mix(.87,1.04,smoothstep(.02,.42,luminance));
     diffuseColor.rgb=mix(rock,snowColor,snow*.92);

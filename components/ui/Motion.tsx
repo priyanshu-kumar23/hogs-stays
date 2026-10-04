@@ -16,6 +16,17 @@ export default function Motion() {
       const tick=(time:number)=>lenis?.raf(time*1000);
       lenis?.on('scroll',ScrollTrigger.update); gsap.ticker.add(tick);
       if (!reduce) {
+        gsap.to('.hero-content',{yPercent:desktop?-16:-9,opacity:.12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom 15%',scrub:1}});
+        gsap.to('.hero-bottom',{y:35,opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'45% top',scrub:true}});
+        // Every chapter gets a gentle depth transition, including the final booking section.
+        gsap.utils.toArray<HTMLElement>('#main > section:not(.hero)').forEach(section=>{
+          const heading=section.querySelector('h2');
+          if(heading)gsap.from(heading,{y:desktop?55:28,opacity:0,duration:1,ease:'power2.out',scrollTrigger:{trigger:heading,start:'top 92%',toggleActions:'play none none reverse'}});
+        });
+        gsap.utils.toArray<HTMLElement>('.stay-visual img, .gallery-item img').forEach(img=>{
+          gsap.fromTo(img,{scale:1.12,yPercent:-3},{scale:1.04,yPercent:3,ease:'none',scrollTrigger:{trigger:img.parentElement,start:'top bottom',end:'bottom top',scrub:1.2}});
+        });
+        gsap.fromTo('.footer-wordmark',{yPercent:22,opacity:.25},{yPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:'.footer',start:'top bottom',end:'bottom bottom',scrub:1}});
         gsap.from('.hero-word',{yPercent:40,filter:'blur(12px)',opacity:0,stagger:.14,duration:1.7,ease:'power3.out'});
         gsap.to('.scene-fallback img',{yPercent:5,scale:1.07,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
         gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach(el=>gsap.from(el,{clipPath:'inset(0 0 100% 0)',y:45,duration:1.3,clearProps:'clipPath',scrollTrigger:{trigger:el,start:'top 92%',once:true}}));

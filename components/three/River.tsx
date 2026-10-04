@@ -18,6 +18,6 @@ export default function River({field}:{field:HeightField}) {
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();return g;
  },[field]);
  const normal=useMemo(()=>{const n=64,data=new Uint8Array(n*n*4);for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=(y*n+x)*4;data[i]=128+Math.sin(x*.7+y*.3)*28;data[i+1]=128+Math.cos(y*.8+x*.2)*28;data[i+2]=248;data[i+3]=255;}const t=new THREE.DataTexture(data,n,n);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.needsUpdate=true;return t;},[]);
- useFrame((_,delta)=>{normal.offset.y+=delta*.018;if(mat.current)mat.current.color.set(sceneState.phase>.8?'#8fa5c2':sceneState.phase>.4?'#b7ae90':'#abc4c7');});
- return <mesh geometry={geometry}><meshPhysicalMaterial ref={mat} color="#abc4c7" roughness={.2} metalness={.35} clearcoat={1} normalMap={normal} normalScale={[.15,.15]} envMapIntensity={1.2} side={THREE.DoubleSide}/></mesh>;
+ useFrame((_,delta)=>{normal.offset.y+=delta*.018;if(mat.current)mat.current.color.set(sceneState.phase>.8?'#263e53':sceneState.phase>.4?'#677b79':'#527d85');});
+ return <mesh geometry={geometry}><meshPhysicalMaterial ref={mat} color="#527d85" roughness={.12} metalness={0} ior={1.333} clearcoat={1} clearcoatRoughness={.16} normalMap={normal} normalScale={[.28,.28]} envMapIntensity={1.7} side={THREE.DoubleSide}/></mesh>;
 }

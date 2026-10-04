@@ -7,7 +7,7 @@ import type { BookPackage } from './BookingSheet';
 const BookingSheet = dynamic(() => import('./BookingSheet'), { ssr: false });
 // Mounted once on each /packages/[slug] page. Opens the "Request to book" sheet for that package from: the sticky bar, the navbar Book Now,
 // any BookButton, and the #book / #enquire deep links. Opening pushes a history entry so the Back button closes the sheet.
-export default function BookingHost({ packages, currentSlug }: { packages: BookPackage[]; currentSlug: string }) {
+export default function BookingHost({ packages, currentSlug, property }: { packages: BookPackage[]; currentSlug: string; property?: { name: string; image: string } }) {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false); const pushed = useRef(false); const trigger = useRef<Element | null>(null);
   const finish = useCallback(() => {
@@ -30,5 +30,5 @@ export default function BookingHost({ packages, currentSlug }: { packages: BookP
     onHash(); addEventListener(BOOK_EVENT, onBook); addEventListener('hashchange', onHash); addEventListener('popstate', onPop);
     return () => { removeEventListener(BOOK_EVENT, onBook); removeEventListener('hashchange', onHash); removeEventListener('popstate', onPop); document.body.classList.remove('booking-open'); };
   }, [show, finish]);
-  return open ? <BookingSheet packages={packages} initialSlug={currentSlug} onClose={close} /> : null;
+  return open ? <BookingSheet packages={packages} initialSlug={currentSlug} property={property} onClose={close} /> : null;
 }

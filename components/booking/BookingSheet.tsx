@@ -29,7 +29,7 @@ function Stepper({ id, label, value, min, max, onChange, error }: { id: string; 
   return <div className="bk-field"><span className="bk-label" id={`${id}-l`}>{label}</span><div className="bk-stepper" role="group" aria-labelledby={`${id}-l`}><button type="button" aria-label={`Remove one: ${label}`} disabled={value <= min} onClick={() => onChange(value - 1)}>−</button><output aria-live="polite">{value}</output><button type="button" aria-label={`Add one: ${label}`} disabled={value >= max} onClick={() => onChange(value + 1)}>+</button></div>{error && <span className="bk-error" role="alert">{error}</span>}</div>;
 }
 
-export default function BookingSheet({ packages, initialSlug, onClose }: { packages: BookPackage[]; initialSlug: string; onClose: () => void }) {
+export default function BookingSheet({ packages, initialSlug, onClose, property }: { packages: BookPackage[]; initialSlug: string; onClose: () => void; property?: { name: string; image: string } }) {
   const restored = useMemo(() => load(initialSlug), [initialSlug]);
   const [data, setData] = useState<BookingForm>(() => restored?.data ?? defaultBooking(initialSlug));
   const [view, setView] = useState(restored?.view ?? 0); const [furthest, setFurthest] = useState(restored?.view ?? 0); const [roomsTouched, setRoomsTouched] = useState(restored?.roomsTouched ?? false);
@@ -96,8 +96,8 @@ export default function BookingSheet({ packages, initialSlug, onClose }: { packa
 
   const stepBody = () => {
     if (view === 0) return <>
-      <div className="bk-pkg"><div className="bk-pkg-thumb"><Image src={pkg.thumb} alt="" fill sizes="64px" /></div><div><p className="bk-pkg-name">{pkg.name}</p><p className="bk-meta">{pkg.nights}N / {pkg.days}D · Price on request</p></div><button type="button" className="bk-link" aria-expanded={changing} onClick={() => setChanging(value => !value)}>{changing ? 'Done' : 'Change'}</button></div>
-      {changing && <div className="bk-group" role="radiogroup" aria-label="Choose a journey">{packages.filter(item => item.slug !== data.packageSlug).map(item => <Choice key={item.slug} type="radio" name="bk-package" checked={false} onChange={() => { set({ packageSlug: item.slug }); setChanging(false); }} label={item.name} note={`${item.nights}N / ${item.days}D`} />)}</div>}
+      <div className="bk-pkg"><div className="bk-pkg-thumb"><Image src={pkg.thumb} alt="" fill sizes="64px" /></div><div><p className="bk-pkg-name">{pkg.name}</p><p className="bk-meta">{pkg.nights}N / {pkg.days}D · Price on request</p></div>{!property && <button type="button" className="bk-link" aria-expanded={changing} onClick={() => setChanging(value => !value)}>{changing ? 'Done' : 'Change'}</button>}</div>
+      {(changing || property) && <div className="bk-group" role="radiogroup" aria-label="Choose a journey">{packages.filter(item => property || item.slug !== data.packageSlug).map(item => <Choice key={item.slug} type="radio" name="bk-package" checked={item.slug === data.packageSlug} onChange={() => { set({ packageSlug: item.slug }); setChanging(false); }} label={item.name} note={`${item.nights} nights · ${item.days} days at HOGS Panorama`} />)}</div>}
       <fieldset className="bk-group"><legend className="bk-label">How would you like the pace?</legend>{paces.map(item => <Choice key={item.id} type="radio" name="bk-pace" checked={data.pace === item.id} onChange={() => set({ pace: item.id })} label={item.label} />)}</fieldset>
       <fieldset className="bk-group"><legend className="bk-label">Optional add-ons</legend>{addons.map(item => <Choice key={item.id} type="checkbox" name="bk-addon" checked={data.addons.includes(item.id)} onChange={() => set({ addons: data.addons.includes(item.id) ? data.addons.filter(entry => entry !== item.id) : [...data.addons, item.id] })} label={item.label} note={item.note} />)}</fieldset>
       <div className="bk-field"><label className="bk-label" htmlFor="bk-note">Anything you’d like to add or skip? <span className="bk-opt">(optional)</span></label><textarea id="bk-note" rows={3} value={data.note} onChange={event => set({ note: event.target.value })} {...inv('note')} />{err('note')}</div>
@@ -118,7 +118,7 @@ export default function BookingSheet({ packages, initialSlug, onClose }: { packa
       <fieldset className="bk-group"><legend className="bk-label">Arriving by</legend>{arrivals.map(item => <Choice key={item.id} type="radio" name="bk-arrival" checked={data.arrival === item.id} onChange={() => set({ arrival: item.id })} label={item.label} />)}{err('arrival')}<p className="bk-hint">We’ll share options for getting to us. Pickup isn’t promised here.</p></fieldset>
     </>;
     if (view === 3) return <>
-      <div className="bk-field"><label className="bk-label" htmlFor="bk-name">Your name</label><input id="bk-name" autoComplete="name" value={data.name} onChange={event => set({ name: event.target.value })} {...inv('name')} />{err('name')}</div>
+      <div className="bk-field"><label className="bk-label" htmlFor="bk-name">Your name</label><input id="bk-name" type="text" autoComplete="name" value={data.name} onChange={event => set({ name: event.target.value })} {...inv('name')} />{err('name')}</div>
       <div className="bk-two bk-stack"><div className="bk-field"><label className="bk-label" htmlFor="bk-phone">Phone</label><input id="bk-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="+91 98765 43210" value={data.phone} onChange={event => set({ phone: event.target.value })} {...inv('phone')} />{err('phone')}</div>
         <div className="bk-field"><label className="bk-label" htmlFor="bk-email">Email</label><input id="bk-email" type="email" inputMode="email" autoComplete="email" value={data.email} onChange={event => set({ email: event.target.value })} {...inv('email')} />{err('email')}</div></div>
       <fieldset className="bk-group"><legend className="bk-label">Best way to reach you</legend><div className="bk-pills">{contactMethods.map(method => <label key={method} className={`bk-pill${data.contactMethod === method ? ' is-on' : ''}`}><input type="radio" name="bk-contact" checked={data.contactMethod === method} onChange={() => set({ contactMethod: method })} />{method}</label>)}</div></fieldset>
@@ -154,11 +154,12 @@ export default function BookingSheet({ packages, initialSlug, onClose }: { packa
   };
 
   const showNav = view < SUCCESS;
-  return <dialog ref={dialog} className="bk" aria-labelledby="bk-title" data-lenis-prevent onKeyDown={trap} onCancel={event => { event.preventDefault(); onClose(); }} onClick={event => { if (event.target === dialog.current) onClose(); }}>
+  return <dialog ref={dialog} className={`bk${property ? ' bk-panorama' : ''}`} aria-labelledby="bk-title" data-lenis-prevent onKeyDown={trap} onCancel={event => { event.preventDefault(); onClose(); }} onClick={event => { if (event.target === dialog.current) onClose(); }}>
     <div className="bk-sheet">
       <header className="bk-top" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}>
         <span className="bk-handle" aria-hidden="true" />
-        <div className="bk-top-row"><p className="eyebrow">Request to book</p><button type="button" className="icon-button bk-close" aria-label="Close booking request" onClick={onClose}><span aria-hidden="true">×</span></button></div>
+        <div className="bk-top-row"><p className="eyebrow">{property ? 'YOUR PANORAMA ESCAPE' : 'Request to book'}</p><button type="button" className="icon-button bk-close" aria-label="Close booking request" onClick={onClose}><span aria-hidden="true">×</span></button></div>
+        {property && <div className="bk-destination"><Image src={property.image} alt="Mountain views from HOGS Panorama" fill sizes="(max-width:767px) 100vw, 620px" /><div><span className="eyebrow">MANALI · HIMACHAL PRADESH</span><p>{property.name}<em>Your next mountain chapter.</em></p></div></div>}
         <div className="bk-pkg-compact"><div className="bk-pkg-thumb"><Image src={pkg.thumb} alt="" fill sizes="48px" /></div><div><p className="bk-pkg-name">{pkg.name}</p><p className="bk-meta">{pkg.nights}N / {pkg.days}D · Price on request</p></div></div>
         {showNav && <ol className="bk-steps" aria-label="Booking steps">{STEPS.map((label, i) => <li key={label}><button type="button" aria-current={view === i ? 'step' : undefined} disabled={i > furthest || sending} onClick={() => edit(i)} className={view > i || (view >= REVIEW) ? 'is-done' : ''}><span>{String(i + 1).padStart(2, '0')}</span>{label}</button></li>)}</ol>}
       </header>
@@ -172,7 +173,7 @@ export default function BookingSheet({ packages, initialSlug, onClose }: { packa
           : <button type="button" className="pk-btn bk-send" onClick={() => void submit()} disabled={sending}>{sending ? 'Sending your request…' : 'Send booking request'} <span aria-hidden="true">↗</span></button>}
         <p className="bk-foot-note">{view === REVIEW ? 'A request, not a booking. Nothing is charged.' : 'Price on request. We’ll send a personalised quote.'}</p>
       </footer>}
-      {view >= SUCCESS && <footer className="bk-foot">{view === SUCCESS && <><button type="button" className="pk-btn" onClick={onClose}>Back to the itinerary <span aria-hidden="true">→</span></button><Link className="bk-link" href="/cafe">Explore DO NTHNG <span aria-hidden="true">↗</span></Link></>}{view === FALLBACK && <button type="button" className="bk-back" onClick={onClose}>Close</button>}</footer>}
+      {view >= SUCCESS && <footer className="bk-foot">{view === SUCCESS && <><button type="button" className="pk-btn" onClick={onClose}>{property ? 'Back to the stays' : 'Back to the itinerary'} <span aria-hidden="true">→</span></button><Link className="bk-link" href="/cafe">Explore DO NTHNG <span aria-hidden="true">↗</span></Link></>}{view === FALLBACK && <button type="button" className="bk-back" onClick={onClose}>Close</button>}</footer>}
     </div>
   </dialog>;
 }
