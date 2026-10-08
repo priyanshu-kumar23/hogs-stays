@@ -247,3 +247,7 @@ main:not(.subpage) .about .text-link{text-shadow:0 1px 10px rgba(0,0,0,.5)}
 /* --- Home gallery rail: caption scrim for the darker, warmer HOGS interiors (does not touch the card tilt/scroll mechanics) --- */
 .gallery:not(.gallery--full) .gallery-item::after{content:'';position:absolute;left:0;right:0;bottom:0;height:68%;z-index:0;pointer-events:none;background:linear-gradient(to top,rgba(8,12,10,.86) 0%,rgba(8,12,10,.7) 34%,rgba(8,12,10,.32) 66%,transparent 100%)}
 .gallery:not(.gallery--full) .gallery-item span{z-index:1;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.45);background:linear-gradient(to top,rgba(8,12,10,.88) 0%,rgba(8,12,10,.74) calc(100% - 40px),rgba(8,12,10,0) 100%)} /* fully dark behind the text itself (>=.74), fading out only in the padding above it: white text stays >=4.5:1 even over a white pixel */
+/* Loader safety net: fades out by itself after 4s even if JS never hydrates, and is skipped on repeat visits in a session. */
+.landscape-boot{animation:boot-out .5s ease 4s forwards}
+.hogs-intro-seen .landscape-boot{display:none}
+@keyframes boot-out{to{opacity:0;visibility:hidden}}
