@@ -10,3 +10,10 @@
 .ps-item img{display:block;width:100%;height:100%}
 .ps-all{padding:clamp(16px,3vh,32px) max(6%,calc((100vw - 1400px)/2)) clamp(56px,9vh,100px)}
 @media(max-width:700px){.ps-row{gap:10px}.ps-item.is-portrait{flex-basis:calc(var(--ar) * 190px)}}
+/* Outdoor mosaic: 4 columns x 3 rows, exactly filled: 2x2 lead, 2x1 wide, 1x2 tall, two 1x1, 2x1 wide. Two columns on mobile (wide = full row, tall + two singles share two rows). */
+.ps-mosaic{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(140px,17vw,240px);gap:14px}
+.ps-tile{min-width:0}
+.ps-tile.is-lead{grid-column:span 2;grid-row:span 2}.ps-tile.is-wide-a,.ps-tile.is-wide-b{grid-column:span 2}.ps-tile.is-tall{grid-row:span 2}
+@media(min-width:701px){.ps-tile.is-wide-a{grid-column:3/5;grid-row:1}.ps-tile.is-tall{grid-column:3;grid-row:2/4}.ps-tile.is-one-a{grid-column:4;grid-row:2}.ps-tile.is-one-b{grid-column:4;grid-row:3}.ps-tile.is-wide-b{grid-column:1/3;grid-row:3}}
+.ps-tile figure{position:relative;margin:0;width:100%;height:100%;overflow:hidden;border-radius:6px;background:#2b3830 center/cover no-repeat}
+@media(max-width:700px){.ps-mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(130px,42vw,220px);gap:10px}}

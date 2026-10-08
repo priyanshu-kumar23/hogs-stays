@@ -9,6 +9,8 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "images": "node scripts/optimize-images.mjs",
+    "images:cafe": "node scripts/optimize-cafe-images.mjs",
+    "images:about": "node scripts/optimize-about-images.mjs",
     "package-images": "node scripts/package-images.mjs"
   },
   "dependencies": {

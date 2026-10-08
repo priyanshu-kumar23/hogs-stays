@@ -1,9 +1,23 @@
-import { findImage, type GalleryImage } from './gallery';
+import { findImage, findPanoramaView, panoramaCoverImage, type GalleryImage } from './gallery';
+import { SHOW_GUEST_PHOTOS, findCafeImage } from './cafeImages';
+import { rooms } from './rooms';
 // No prices, room counts, or unconfirmed amenities are published.
 // HOGS Panorama photography comes from lib/gallery.generated.ts (see `photo`/`pic` below); only the Cafe DO NTHNG photo lives here.
+// Cafe DO NTHNG photos come from lib/cafeImages.generated.ts (run `npm run images:cafe`).
+const cafeHero = findCafeImage('cafe-do-nthng-manali-mountain-terrace-prayer-flags-cover');
+const cafeCup = findCafeImage('cafe-do-nthng-manali-latte-art-coffee');
+const cafeMural = findCafeImage('cafe-do-nthng-manali-terrace-motorbike-mural-wicker-seating');
+// Card 04 shows guests; if SHOW_GUEST_PHOTOS is switched off it falls back to the latte-art photo.
+const cafeMeal = SHOW_GUEST_PHOTOS ? findCafeImage('cafe-do-nthng-manali-guests-sharing-a-meal') : cafeCup;
+const cafeLantern = findCafeImage('cafe-do-nthng-manali-lantern-fairy-lights-dusk');
+const cafeDusk = findCafeImage('cafe-do-nthng-manali-terrace-lanterns-prayer-flags-dusk');
+const viewShot = (id: string, position?: string) => { const v = findPanoramaView(id); const src = v.srcSet[v.srcSet.length - 1].src; return { src, full: src, alt: v.alt, position: position ?? v.position, blur: v.blurDataURL, landscape: v.width > v.height, ratio: v.width / v.height }; };
+const widest = (image: { srcSet: { src: string }[] }) => image.srcSet[image.srcSet.length - 1].src;
 export const images = {
-  cafe: { src: '/images/cafe.jpeg', alt: 'Cafe DO NTHNG at night, its neon sign glowing above a stone entrance with terrace seating and potted plants', position: 'center 46%' },
+  cafe: { src: cafeHero.srcSet[cafeHero.srcSet.length - 1].src, alt: cafeHero.alt, position: cafeHero.position, blur: cafeHero.blurDataURL, width: cafeHero.width, height: cafeHero.height },
 };
+// HOGS Panorama cover (lib/cafeImages.generated.ts too, see lib/gallery.ts): same shape as `photo()` so it can lead the stays slider.
+const panoramaCover = { src: panoramaCoverImage.srcSet[panoramaCoverImage.srcSet.length - 1].src, full: panoramaCoverImage.srcSet[panoramaCoverImage.srcSet.length - 1].src, alt: panoramaCoverImage.alt, position: panoramaCoverImage.position, blur: panoramaCoverImage.blurDataURL, landscape: true, ratio: panoramaCoverImage.width / panoramaCoverImage.height };
 // Real HOGS Panorama photography (generated data in lib/gallery.generated.ts). Cards use the 1000px variant; hero/slider use full size.
 const photo = (subject: string, full = false) => { const g: GalleryImage = findImage(subject); return { src: full ? g.src : g.srcMd, full: g.src, alt: g.alt, position: g.position, blur: g.blurDataURL, landscape: g.orientation === 'landscape', ratio: g.width / g.height }; };
 /** Full-size photo for a page hero / OG: `og` is the 1200x630 crop when the photo is featured, otherwise the full image. */
@@ -24,13 +38,23 @@ export const footerLinks = [
   { title: 'Cafe DO NTHNG', href: '/cafe' }, { title: 'Gallery', href: '/gallery' }, { title: 'Features', href: '/features' },
   { title: 'About Us', href: '/about' }, { title: 'Manali Packages', href: '/packages' }, { title: 'Book Now', href: '/book' },
 ] as const;
+// One location for the stay and its in-house cafe. Verified coordinates can be supplied here.
+export const panoramaLocation = {
+  directionsUrl: 'https://maps.app.goo.gl/WT7Xnq1hsoJjRCs48',
+  embedUrl: 'https://maps.google.com/maps?q=HOGS%20Panorama%2C%20Shuru%20Road%2C%20Prini%2C%20Manali&t=&z=16&ie=UTF8&iwloc=&output=embed',
+  label: 'Inside HOGS Panorama, Manali',
+  displayAddress: 'HOGS Panorama, Shuru Road, Prini, near Mata Sharvari Temple, Manali, Himachal Pradesh 175143',
+  address: { '@type': 'PostalAddress', streetAddress: 'Shuru Road, Prini, near Mata Sharvari Temple', addressLocality: 'Manali', addressRegion: 'Himachal Pradesh', postalCode: '175143', addressCountry: 'IN' },
+  geo: null as { '@type': 'GeoCoordinates'; latitude:number; longitude:number } | null,
+};
+export const cafeAmbienceEnabled = false;
 export const content = {
   ui: {
     heroLines: ['Experience the', 'Himalayas', 'the HOGS Way'], heroShort: ['A little closer to nature.', 'A little closer to yourself.'],
     heroCta: 'Book Your Stay', heroFooter: 'Rooted in Manali. Made for belonging.', scrollPrompt: 'SCROLL TO FIND YOUR VAATAAVARAN',
     intro: { eyebrow: 'WELCOME TO OUR WORLD', heading: ['Not just a place.', 'A state of being.'], definition: 'VAATAAVARAN / वातावरण / THE FEELING OF A PLACE' },
     stays: { eyebrow: 'THE STAYS', index: '02 — TWO WAYS TO BELONG', heading: ['A stay, and a cafe.', 'Two ways to belong.'], cardEyebrow: 'YOUR MOUNTAIN ADDRESS', cafeLabel: 'THE CAFE', cta: 'Book this stay', cafeCta: 'Visit the Cafe', cafeDirections: 'Get directions' },
-    features: { eyebrow: 'THE HOGS WAY', heading: ['Less rush.', 'More vaataavaran.'], description: ['It’s the feeling that stays with you.', 'The small things. The open-hearted moments.'],
+    features: { eyebrow: 'THE HOGS WAY', heading: ['Less rush.', 'More Vaataavaran.'], description: ['It’s the feeling that stays with you.', 'The small things. The open-hearted moments.'],
       // Home-page horizontal story (components/sections/Features.tsx).
       story: { index: '04 / THE HOGS WAY', label: 'THE ART OF BEING HERE', more: 'Explore the HOGS way →', intro: ['Come for the', 'mountains.', 'Stay for the', 'feeling.'], scroll: 'Scroll', outroCta: 'Explore the HOGS way', progress: 'Experience progress', region: 'The art of being here' } },
     panorama: { eyebrow: 'PHOTOGRAPHS', seeAll: 'See all photos →', sections: { signature: 'Signature View', valley: 'Valley View', outdoor: 'Outdoor', common: 'Common Area' } },
@@ -46,10 +70,10 @@ export const content = {
   staysIntro: 'Discover two unique experiences curated by HOGS: a mountain stay with panoramic valley views, and Cafe DO NTHNG, a slow-morning cafe surrounded by nature.',
   // TODO(owner): Cafe DO NTHNG is new — confirm type/description/highlights/bookable below before launch.
   properties: [
-    { id: 'panorama', path: '/stays/panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [photo('bedroom-with-valley-view', true), photo('window-seats-with-mountain-view', true), photo('attic-lounge-with-timber-ceiling', true), photo('room-with-corner-windows-and-green-armchairs', true), photo('room-with-large-window-and-hillside-view', true)], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
-    { id: 'cafe', path: '/cafe', name: 'Cafe DO NTHNG', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe DO NTHNG — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: null as string | null },
+    { id: 'panorama', path: '/stays/panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [panoramaCover, photo('window-seats-with-mountain-view', true), photo('attic-lounge-with-timber-ceiling', true), photo('room-with-corner-windows-and-green-armchairs', true), photo('room-with-large-window-and-hillside-view', true)], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: panoramaLocation.directionsUrl },
+    { id: 'cafe', path: '/cafe', name: 'Cafe DO NTHNG', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe DO NTHNG — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: panoramaLocation.directionsUrl },
   ],
-  intro: { image: photo('hogs-panorama-entrance-night-lights-manali') },
+  intro: { image: { src: widest(cafeLantern), alt: cafeLantern.alt, position: '50% 30%', blur: cafeLantern.blurDataURL } },
   // Layered collage for the "Make room for what matters" moment (depth 1 = nearest).
   manifesto: {
     label: 'Make room for what matters', headline: ['Where the road', 'slows down.'], support: 'Leave the noise at the bend. Here, mornings are long, chai is always warm, and nobody is in a hurry.', marquee: 'VAATAAVARAN · MANALI · SLOW LIVING · ',
@@ -57,25 +81,47 @@ export const content = {
   },
   // TODO(owner): confirm these experience descriptions before launch; not an amenities list.
   features: [
-    { number: '01', title: 'Views worth pausing for', text: 'Mountains that remind you to look up, breathe deep, and take your time.', icon: 'mountain', ...panelImage(photo('bedroom-with-balcony-door-and-mountain-view')) },
-    { number: '02', title: 'A rider’s kind of place', text: 'Born from a love of open roads and the people we meet along the way.', icon: 'road', ...panelImage(photo('terrace-seating-at-night')) },
-    { number: '03', title: 'Room for connection', text: 'Shared stories, new friendships, and conversations without a clock.', icon: 'home', ...panelImage(photo('dining-nook-with-slatted-wood-panel')) },
-    { number: '04', title: 'The little rituals', text: 'A warm cup, a mountain morning, and nowhere else you need to be.', icon: 'cup', ...panelImage({ src: images.cafe.src, alt: images.cafe.alt, position: '58% 50%', ratio: 1272 / 1189 }) },
-    { number: '05', title: 'Permission to slow down', text: 'Less on the itinerary. More in the moment.', icon: 'sun', ...panelImage(photo('bedroom-with-balcony-and-wall-lights')) },
+    { number: '01', title: 'Views worth pausing for', text: 'Mountains that remind you to look up, breathe deep, and take your time.', icon: 'mountain', ...panelImage({ ...photo('balcony-with-mountain-and-orchard-view', true), position: '30% 50%' }) },
+    { number: '02', title: 'A rider’s kind of place', text: 'Born from a love of open roads and the people we meet along the way.', icon: 'road', ...panelImage({ src: widest(cafeMural), alt: cafeMural.alt, position: '18% 50%', blur: cafeMural.blurDataURL, ratio: cafeMural.width / cafeMural.height }) },
+    { number: '03', title: 'Room for connection', text: 'Shared stories, new friendships, and conversations without a clock.', icon: 'home', ...panelImage({ ...photo('bedroom-with-balcony-door-and-mountain-view', true), position: '50% 55%' }) },
+    { number: '04', title: 'The little rituals', text: 'A warm cup, a mountain morning, and nowhere else you need to be.', icon: 'cup', ...panelImage({ src: widest(cafeMeal), alt: cafeMeal.alt, position: cafeMeal === cafeCup ? cafeCup.position : '45% 75%', blur: cafeMeal.blurDataURL, ratio: cafeMeal.width / cafeMeal.height }) },
+    { number: '05', title: 'Permission to slow down', text: 'Less on the itinerary. More in the moment.', icon: 'sun', ...panelImage({ ...photo('attic-lounge-with-timber-ceiling', true), position: '55% 55%' }) },
   ],
   // Home curved rail: real HOGS Panorama photos only (md variant for the cards, full size for the lightbox). Keep exactly four, in this
   // order: the card tilt in app/cinematic.css is defined per :nth-child(1-4). Cards are ~3:4, so portraits are preferred; landscapes are
   // cropped with a subject-aware object-position.
   gallery: [
-    { id: 'perspective', caption: 'A different kind of perspective', ...photo('balcony-with-mountain-and-orchard-view') },
+    { id: 'perspective', caption: 'A different kind of perspective', ...viewShot('hogs-panorama-manali-snow-peaks-valley-village-perspective') },
     { id: 'settle-in', caption: 'Somewhere to settle in', ...photo('lounge-sofa-seating') },
-    { id: 'long-way-home', caption: 'Take the long way home', ...photo('terrace-walkway-at-night') },
-    { id: 'mornings', caption: 'Mornings, unhurried', ...photo('terrace-seating-by-glass-doors') },
+    { id: 'long-way-home', caption: 'Take the long way home', src: widest(cafeDusk), full: widest(cafeDusk), alt: cafeDusk.alt, position: '50% 45%', blur: cafeDusk.blurDataURL, landscape: false, ratio: cafeDusk.width / cafeDusk.height },
+    { id: 'mornings', caption: 'Mornings, unhurried', ...viewShot('hogs-panorama-manali-sunrise-over-mountains') },
   ],
-  about: "HOGS (House of GS) was born from two souls who found freedom on open roads and comfort in conversations with strangers who soon became friends. Gazal and Saloni are riders at heart, always chasing mountains, stories, and moments that don't fit into plans. Somewhere between bike rides, shared sunsets, and chai conversations, they realised that travel isn't just about places, it's about people and vaataavaran.",
-  storyLines: ['House of GS is not just a homestay.', "It's a feeling.", 'A place where riders rest without questions, travellers feel understood, and conversations flow as easily as mountain air.', "Here, you don't just stay. You arrive, you belong, and you carry the vaataavaran with you when you leave."],
+  about: "HOGS (House of GS) was born from two souls who found freedom on open roads and comfort in conversations with strangers who soon became friends. Gazal and Saloni are riders at heart, always chasing mountains, stories, and moments that don't fit into plans. Somewhere between bike rides, shared sunsets, and chai conversations, they realised that travel isn't just about places, it's about people and Vaataavaran.",
+  // TODO(owner): placeholder one-liners for the /about founder cards. Edit freely.
+  founderTaglines: { gazal: 'Rider. Storyteller. Chai enthusiast.', saloni: 'Rider. Host. Collector of sunsets.' },
+  storyLines: ['House of GS is not just a homestay.', "It's a feeling.", 'A place where riders rest without questions, travellers feel understood, and conversations flow as easily as mountain air.', "Here, you don't just stay. You arrive, you belong, and you carry the Vaataavaran with you when you leave."],
   booking: "Whether you're planning a romantic getaway, family vacation, or peaceful retreat in the Himalayas, HOGS offers the perfect place to stay in Manali. Choose your property, pick your dates, and let the mountains welcome you.",
-  email: 'info@hogsstays.com', phone: '+91 92511 15478', whatsapp: '919251115478', instagram: null as string | null,
+  email: 'info@hogsstays.com', phone: '+91 92511 15478', whatsapp: '919251115478', instagram: 'https://www.instagram.com/hogsstays/', cafeInstagram: 'https://www.instagram.com/cafedonthng.manali/',
   policies: [ { slug: 'privacy-policy', title: 'Privacy Policy' }, { slug: 'terms-and-conditions', title: 'Terms & Conditions' }, { slug: 'cancellation-refund-policy', title: 'Cancellation & Refund Policy' }, { slug: 'house-rules', title: 'House Rules / Guest Guidelines' }, { slug: 'faqs', title: 'FAQs' } ],
 };
 
+/** Everything the HOGS Panorama enquiry panel needs: the WhatsApp number / email (above) and the room list (edit rooms in lib/rooms.ts). */
+export const panoramaEnquiry = { propertyName: 'HOGS Panorama', whatsapp: content.whatsapp, email: content.email, rooms };
+
+/** Cafe scroll story. Owner-editable copy and location; no menu items or hours assumed. */
+export const cafeStory = {
+  arrival: 'Leave the noise at the door.', name: 'Cafe DO NTHNG', subtitle: 'Slow mornings, good coffee, zero agenda.',
+  location: 'MANALI · OF HIMALAYAN HOMES', visitCta: 'Visit the cafe', instagramCta: 'Follow on Instagram', scroll: 'TAKE YOUR TIME · SCROLL SLOWLY',
+  chaos: ['traffic', 'deadlines', 'notifications', 'honking'],
+  ritual: {label:'01 / THE RITUAL',title:'A little less doing.',accent:'A little more being.',lines:['Order slow.', 'Sit longer.', 'Do nothing — properly.'],note:'A warm cup. A mountain breeze. Permission to pause.',cupLabel:'A slowly turning ceramic coffee cup with rising steam'},
+  menu: {label:'02 / ON THE MENU',title:'Something to',accent:'linger over.',note:'A glimpse from our counter. The full menu is coming soon.',items:[
+    {image:'cafe-do-nthng-manali-latte-art-coffee',name:'TODO: coffee name',description:'TODO: signature coffee description'},
+    {image:'cafe-do-nthng-manali-berry-mocktail',name:'TODO: mocktail name',description:'TODO: mocktail description'},
+    {image:'cafe-do-nthng-manali-orange-citrus-cooler-mountains',name:'TODO: cooler name',description:'TODO: citrus cooler description'}]},
+  terrace: {label:'03 / THE TERRACE',title:'Nowhere else',accent:'to be.',caption:'Pick a chair. Any chair.',swipe:'Swipe to find your corner',images:['cafe-do-nthng-manali-terrace-mural-swing','cafe-do-nthng-manali-egg-chair-forest-view','cafe-do-nthng-manali-terrace-walkway-prayer-flags-tables','cafe-do-nthng-manali-terrace-lanterns-prayer-flags-dusk']},
+  dusk: {label:'04 / DAY TO DUSK',title:'Let the evening',accent:'take its time.',text:'By evening, the lanterns come on and the guitars come out.',note:'A glimpse of evenings at DO NTHNG. Ask us about upcoming music sessions.',stages:['Daylight','Lantern glow','After dark'],images:['cafe-do-nthng-manali-terrace-mountain-view','cafe-do-nthng-manali-lantern-fairy-lights-dusk','cafe-do-nthng-manali-live-singer-guitar-mic-night','cafe-do-nthng-manali-candlelit-dinner-table-rose-petals']},
+  people: {label:'05 / THE PEOPLE',title:'The people',accent:'behind the cups.',text:'The hands behind every cup, every quiet morning and every evening session at Cafe DO NTHNG.',caption:'Good company. Warm cups. Our kind of place.'},
+  moments: {label:'06 / LITTLE MOMENTS',title:'Stay for',accent:'the feeling.'},
+  visit: {label:'07 / FIND YOUR WAY HERE',title:'Your chair',accent:'is waiting.',hoursLabel:'Opening hours',hours:'TODO: confirm opening days and hours',addressLabel:'Find us',address:panoramaLocation.displayAddress,mapPlaceholder:'Our map is coming soon. Message us for the exact location.',directions:'Get directions',directionsMessage:'Hi! Could you share directions to Cafe DO NTHNG in Manali?',reserve:'Reserve a table',message:"Hi! I'd like to reserve a table at Cafe DO NTHNG",note:'A table request, subject to availability. We’ll confirm with you on WhatsApp.',mapEmbedUrl:panoramaLocation.embedUrl},
+  ambience: {off:'♪ Cafe sounds',on:'♫ Sounds on',missing:'Cafe sounds will be available soon.',path:'/audio/cafe-ambience.mp3',available:false},
+};

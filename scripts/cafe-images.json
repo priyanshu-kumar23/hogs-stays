@@ -1,0 +1,354 @@
+{
+  "ogSource": {
+    "source": "cafe/mountain-cafe-terrace-prayer-flags.png",
+    "slug": "cafe-do-nthng-manali-mountain-terrace-prayer-flags-cover",
+    "position": "50% 55%",
+    "outDir": "cafe-do-nthng/og"
+  },
+  "images": [
+    {
+      "source": "cafe/mountain-cafe-terrace-prayer-flags.png",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-mountain-terrace-prayer-flags-cover",
+      "featured": true,
+      "position": "50% 55%",
+      "caption": "THE TERRACE, FACING THE PEAKS",
+      "alt": "Sunny terrace at Cafe DO NTHNG in Manali, with cream wicker chairs, strings of prayer flags and fairy lights, a wooden swing and forested mountains behind"
+    },
+    {
+      "source": "cafe/SAL_0711.JPG",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-terrace-motorbike-mural-wicker-seating",
+      "position": "50% 45%",
+      "caption": "A MURAL FOR THE RIDERS",
+      "alt": "Cafe DO NTHNG terrace in Manali, with a painted mural of a mountain and a motorbike, and wicker chairs around glass tables"
+    },
+    {
+      "source": "cafe/SAL_0715.JPG",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-egg-chair-mural-terrace-seating",
+      "position": "50% 40%",
+      "caption": "THE EGG CHAIR, BESIDE THE MURAL",
+      "alt": "A hanging egg chair beside a hand-painted mountain mural and wicker chairs on the terrace at Cafe DO NTHNG, Manali"
+    },
+    {
+      "source": "cafe/SAL_0717.JPG",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-egg-chair-forest-view",
+      "position": "50% 50%",
+      "caption": "THE EGG CHAIR, FACING THE FOREST",
+      "alt": "A hanging egg chair and wicker seating on the Cafe DO NTHNG terrace in Manali, framed by green trees and the valley"
+    },
+    {
+      "source": "cafe/SAL_0846.JPG",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-terrace-walkway-prayer-flags-tables",
+      "position": "50% 40%",
+      "caption": "THE LONG WAY ALONG THE TERRACE",
+      "alt": "A glass-railed walkway on the Cafe DO NTHNG terrace in Manali, with tables, prayer flags and a mural among green trees"
+    },
+    {
+      "source": "cafe/Mountain Terrace Retreat with Prayer Flags.png",
+      "category": "terrace",
+      "widths": [
+        640,
+        1280,
+        1536
+      ],
+      "slug": "cafe-do-nthng-manali-sunny-terrace-mural-prayer-flags",
+      "featured": true,
+      "position": "65% 50%",
+      "caption": "THE TERRACE, IN FULL SUN",
+      "alt": "Sunny terrace at Cafe DO NTHNG, Manali, with wicker chairs, prayer flags, a mountain mural and valley views"
+    },
+    {
+      "source": "cafe/Cozy Mountain Terrace at Dusk.png",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-terrace-lanterns-prayer-flags-dusk",
+      "position": "50% 40%",
+      "caption": "THE TERRACE AT BLUE HOUR",
+      "alt": "Cafe DO NTHNG terrace in Manali at dusk, with glowing bamboo lanterns, prayer flags and mountain views"
+    },
+    {
+      "source": "cafe/SAL_9406.JPG",
+      "category": "exterior",
+      "slug": "cafe-do-nthng-manali-building-exterior-hogs-gate",
+      "position": "center 55%",
+      "caption": "THE HOGS GATE, ON A MISTY DAY",
+      "alt": "The HOGS building and its wooden gateway in Manali on a misty day, with cloud-hung mountains behind"
+    },
+    {
+      "source": "cafe/SAL_0707.JPG",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-terrace-mountain-view",
+      "featured": true,
+      "position": "center 50%",
+      "caption": "THE TERRACE, FACING THE MOUNTAINS",
+      "alt": "The terrace at Cafe DO NTHNG in Manali, with cream wicker chairs, strings of prayer flags and forested mountains beyond"
+    },
+    {
+      "source": "cafe/SAL_0712.JPG",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-terrace-mural-swing",
+      "featured": true,
+      "position": "center 50%",
+      "caption": "A MURAL, A SWING, A VALLEY",
+      "alt": "Cafe DO NTHNG's terrace in Manali, with a painted mountain mural, a wooden swing and wicker seating facing the valley"
+    },
+    {
+      "source": "cafe/SAL_0839.JPG",
+      "category": "terrace",
+      "slug": "cafe-do-nthng-manali-swing-chair-mountain-sky",
+      "position": "center 50%",
+      "caption": "A SWING UNDER THE CLOUDS",
+      "alt": "A hanging wicker swing chair with blue cushions against cloudy mountains at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0607.jpg",
+      "category": "terrace",
+      "trim": true,
+      "slug": "cafe-do-nthng-manali-terrace-chai-prayer-flags",
+      "position": "center 40%",
+      "caption": "CHAI UNDER THE PRAYER FLAGS",
+      "alt": "Two guests sipping chai at a wicker table on the Cafe DO NTHNG terrace in Manali, under prayer flags with mountains behind"
+    },
+    {
+      "source": "cafe/SAL_9399.JPG",
+      "category": "food-drinks",
+      "slug": "cafe-do-nthng-manali-latte-art-coffee",
+      "featured": true,
+      "position": "center 45%",
+      "caption": "A CUP WITH A LITTLE ART",
+      "alt": "Overhead view of a cappuccino with leaf-shaped latte art on a teal saucer with a small biscuit, at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafe/SAL_9444.JPG",
+      "category": "food-drinks",
+      "slug": "cafe-do-nthng-manali-green-mocktail-prayer-flags",
+      "position": "center 60%",
+      "caption": "MINT, ICE, PRAYER FLAGS",
+      "alt": "A green mint mocktail with a pink paper umbrella, prayer flags softly blurred behind, at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafe/SAL_9472.JPG",
+      "category": "food-drinks",
+      "slug": "cafe-do-nthng-manali-berry-mocktail",
+      "position": "center 45%",
+      "caption": "A BERRY MOCKTAIL",
+      "alt": "A red berry and mint mocktail with a pink paper umbrella and a yellow straw at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafe/SAL_9488.JPG",
+      "category": "food-drinks",
+      "slug": "cafe-do-nthng-manali-orange-citrus-cooler-mountains",
+      "position": "center 50%",
+      "caption": "A CITRUS COOLER, MOUNTAIN SIDE",
+      "alt": "A tall citrus cooler with orange slices and a paper umbrella, with mountains behind it, at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0380.JPG",
+      "category": "live-music",
+      "slug": "cafe-do-nthng-manali-live-acoustic-guitar-session",
+      "featured": true,
+      "position": "center 40%",
+      "caption": "AN EVENING SESSION",
+      "alt": "A musician in a denim jacket playing acoustic guitar at an evening session at Cafe DO NTHNG in Manali, with prayer flags overhead"
+    },
+    {
+      "source": "cafedonthng/SAL_0043.JPG",
+      "category": "live-music",
+      "slug": "cafe-do-nthng-manali-live-singer-guitar-mic-night",
+      "position": "center 50%",
+      "caption": "LIVE, AFTER DARK",
+      "alt": "A singer with an acoustic guitar and a microphone performing at night at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafe/cafe-neon-sign-night-entrance.jpeg",
+      "category": "ambience-night",
+      "slug": "cafe-do-nthng-manali-neon-sign-night-entrance",
+      "position": "center 46%",
+      "caption": "THE NEON SIGN, AFTER DARK",
+      "alt": "Cafe DO NTHNG at night in Manali, its neon sign glowing above a stone entrance with terrace seating and potted plants"
+    },
+    {
+      "source": "cafe/SAL_0492.JPG",
+      "category": "ambience-night",
+      "slug": "cafe-do-nthng-manali-lantern-fairy-lights-dusk",
+      "featured": true,
+      "position": "center 35%",
+      "caption": "LANTERN LIGHT AT DUSK",
+      "alt": "A glowing lantern and fairy lights over the terrace at dusk at Cafe DO NTHNG, with prayer flags and the Manali valley behind"
+    },
+    {
+      "source": "cafedonthng/SAL_0647 (1).jpg",
+      "category": "ambience-night",
+      "trim": true,
+      "slug": "cafe-do-nthng-manali-candlelit-dinner-table-rose-petals",
+      "featured": true,
+      "position": "center 50%",
+      "caption": "A TABLE SET BY CANDLELIGHT",
+      "alt": "A candlelit dinner table scattered with rose petals, set up at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0662 (1).jpg",
+      "category": "ambience-night",
+      "trim": true,
+      "slug": "cafe-do-nthng-manali-candlelit-dinner-couple",
+      "position": "center 50%",
+      "caption": "DINNER, UNHURRIED",
+      "alt": "A couple smiling across a candlelit dinner table strewn with rose petals at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0366.JPG",
+      "category": "ambience-night",
+      "slug": "cafe-do-nthng-manali-night-terrace-fairy-lights",
+      "position": "center 40%",
+      "caption": "THE TERRACE AFTER DARK",
+      "alt": "The Cafe DO NTHNG terrace at night in Manali, with fairy lights, a hanging lantern and guests seated around the tables"
+    },
+    {
+      "source": "cafe/SAL_9670.JPG",
+      "category": "team",
+      "slug": "cafe-do-nthng-manali-barista-at-work",
+      "position": "center 30%",
+      "caption": "BEHIND THE COUNTER",
+      "alt": "A barista in a green apron working at the counter at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0025.JPG",
+      "category": "team",
+      "slug": "cafe-do-nthng-manali-team-neon-sign-entrance",
+      "position": "center 45%",
+      "caption": "THE TEAM, AT THE DOOR",
+      "alt": "The Cafe DO NTHNG team and guests posing together at the cafe's flower-arched entrance in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0405.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-family-pointing-at-sign",
+      "position": "center 40%",
+      "caption": "FOUND US",
+      "alt": "A family pointing at the wooden HOGS sign and smiling, at HOGS Panorama in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0463.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-couple-at-hogs-sign",
+      "position": "center 40%",
+      "caption": "ARRIVED",
+      "alt": "A couple smiling and gesturing at the wooden HOGS sign at HOGS Panorama in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0193.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-group-of-five-at-sign",
+      "position": "center 40%",
+      "caption": "FIVE FRIENDS, ONE SIGN",
+      "alt": "Five guests standing together beside the HOGS sign at HOGS Panorama in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0298.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-older-couple-at-sign",
+      "position": "center 40%",
+      "caption": "A WARM WELCOME",
+      "alt": "An older couple smiling beside the wooden HOGS sign at HOGS Panorama in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0478.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-friends-pointing-at-sign",
+      "position": "center 40%",
+      "caption": "THIS IS THE PLACE",
+      "alt": "Three friends pointing at the HOGS sign at HOGS Panorama in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0166.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-friends-laughing",
+      "position": "center 35%",
+      "caption": "LAUGHTER, UNPLANNED",
+      "alt": "Four friends laughing together on the terrace at HOGS Panorama in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_0449.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-friends-valley-view",
+      "position": "center 40%",
+      "caption": "THE VALLEY BEHIND US",
+      "alt": "Five friends posing on the terrace at HOGS in Manali with the valley and a green-roofed cottage behind them"
+    },
+    {
+      "source": "cafedonthng/SAL_0136.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-group-mountain-backdrop",
+      "position": "center 40%",
+      "caption": "A GOOD DAY IN THE HILLS",
+      "alt": "A group of women posing together with the Himalayan mountains behind them at HOGS in Manali"
+    },
+    {
+      "source": "cafedonthng/SAL_9913.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-friends-snow-peaks",
+      "position": "center 40%",
+      "caption": "SNOW PEAKS, GOOD COMPANY",
+      "alt": "Five friends posing at HOGS in Manali with snow-capped peaks behind them"
+    },
+    {
+      "source": "cafedonthng/SAL_0445.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-big-group-entrance",
+      "position": "center 40%",
+      "caption": "THE WHOLE GANG",
+      "alt": "A large group of guests and staff gathered at the entrance of HOGS in Manali"
+    },
+    {
+      "source": "cafe/SAL_0512.JPG",
+      "category": "guests",
+      "slug": "hogs-panorama-manali-guests-terrace-group-photo",
+      "position": "center 50%",
+      "caption": "ON THE TERRACE",
+      "alt": "Guests posing in a group on the Cafe DO NTHNG terrace in Manali, with mountains and prayer flags behind them"
+    },
+    {
+      "source": "cafe/SAL_9917.JPG",
+      "category": "guests",
+      "slug": "cafe-do-nthng-manali-guests-sharing-a-meal",
+      "position": "45% 75%",
+      "caption": "A LONG TABLE, A SLOW MEAL",
+      "alt": "Guests sharing a meal around a long dining table beside tall windows at Cafe DO NTHNG in Manali, several smiling at the camera"
+    }
+  ],
+  "panoramaOgSource": {
+    "source": "hogs-panorama/Cozy Mountain View Hotel Bedroom.png",
+    "slug": "hogs-panorama-manali-cozy-bedroom-mountain-view",
+    "position": "50% 45%",
+    "outDir": "hogs-panorama/og"
+  },
+  "panorama": [
+    {
+      "source": "hogs-panorama/Cozy Mountain View Hotel Bedroom.png",
+      "category": "signature-view",
+      "slug": "hogs-panorama-manali-cozy-bedroom-mountain-view",
+      "position": "50% 45%",
+      "caption": "A COZY ROOM WITH A VALLEY VIEW",
+      "alt": "Cozy bedroom at HOGS Panorama, Manali, with warm lighting and floor-to-ceiling windows overlooking the valley"
+    },
+    {
+      "source": "hogs-panorama/different_perspective.jpg",
+      "category": "views",
+      "slug": "hogs-panorama-manali-snow-peaks-valley-village-perspective",
+      "position": "50% 55%",
+      "caption": "A DIFFERENT KIND OF PERSPECTIVE",
+      "alt": "Snow-capped peaks above a Himalayan village of colourful tin roofs in the valley, seen from HOGS Panorama in Manali"
+    },
+    {
+      "source": "hogs-panorama/morning_unhurried_sunrise.jpg",
+      "category": "views",
+      "slug": "hogs-panorama-manali-sunrise-over-mountains",
+      "position": "50% 40%",
+      "caption": "MORNINGS, UNHURRIED",
+      "alt": "Sunrise glowing through layered clouds over blue mountain ridges, with green trees and tin rooftops in the foreground, seen from HOGS Panorama in Manali"
+    }
+  ]
+}

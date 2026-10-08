@@ -9,22 +9,6 @@ export type GalleryImage = {
 };
 export const galleryImages: GalleryImage[] = [
   {
-    "id": "hogs-panorama-entrance-night-lights-manali",
-    "src": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali.webp",
-    "srcAvif": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali.avif",
-    "srcMd": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali-md.webp",
-    "srcSm": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali-sm.webp",
-    "srcMdAvif": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali-md.avif",
-    "srcSmAvif": "/images/hogs-panorama/entrance/hogs-panorama-entrance-night-lights-manali-sm.avif",
-    "width": 1024,
-    "height": 1536,
-    "orientation": "portrait",
-    "category": "outdoor",
-    "alt": "Illuminated entrance of HOGS Panorama in Manali at night, with warm fairy lights and a wooden archway",
-    "blurDataURL": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABwBACdASoQABgAPu1iqU2ppaOiMAgBMB2JbAC7AdwA9EEBUxyH0+sJBKx/AAD+8p+p3d5t8p1Wr3kjvEzaxYush97WklPwKaPgRyInY/hfrbFKpPBUqcsSjyizFboxJimq3PJl397RZ9+1w5vDjATTtezHske7sSvvC7y85ERirU27ZCj2qHIBXwC0xqUCwdeeQesTCvFw3gAEZDpTHzhAAAA=",
-    "position": "center 40%"
-  },
-  {
     "id": "balcony-with-mountain-and-orchard-view-hogs-panorama-manali-01",
     "src": "/images/hogs-panorama/signature-view/balcony-with-mountain-and-orchard-view-hogs-panorama-manali-01.webp",
     "srcAvif": "/images/hogs-panorama/signature-view/balcony-with-mountain-and-orchard-view-hogs-panorama-manali-01.avif",
@@ -79,24 +63,6 @@ export const galleryImages: GalleryImage[] = [
     "og": "/images/hogs-panorama/og/attic-lounge-with-timber-ceiling-hogs-panorama-manali-01-og.jpg"
   },
   {
-    "id": "entrance-arch-lit-at-night-hogs-panorama-manali-01",
-    "src": "/images/hogs-panorama/outdoor/entrance-arch-lit-at-night-hogs-panorama-manali-01.webp",
-    "srcAvif": "/images/hogs-panorama/outdoor/entrance-arch-lit-at-night-hogs-panorama-manali-01.avif",
-    "srcMd": "/images/hogs-panorama/outdoor/entrance-arch-lit-at-night-hogs-panorama-manali-01-md.webp",
-    "srcSm": "/images/hogs-panorama/outdoor/entrance-arch-lit-at-night-hogs-panorama-manali-01-sm.webp",
-    "srcMdAvif": "/images/hogs-panorama/outdoor/entrance-arch-lit-at-night-hogs-panorama-manali-01-md.avif",
-    "srcSmAvif": "/images/hogs-panorama/outdoor/entrance-arch-lit-at-night-hogs-panorama-manali-01-sm.avif",
-    "width": 2000,
-    "height": 1918,
-    "orientation": "landscape",
-    "category": "outdoor",
-    "alt": "Entrance arch at night with an illuminated H.O.G.S sign and warm string lights along the wooden posts",
-    "blurDataURL": "data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAABQBgCdASoYABcAPu1qrFEppaQiqAqpMB2JaACdM3bEQszKMYL1C5rcaW+CMc+Su8s2p383KKNr7IrAAAD+8qt0+P3OXD/nSmb4ofIeMFtRy2CXH6SLPUe7W8+tjLMyXA1ofqgT5Z+GpV72Ru3StJmbJb5vE3y22qKUm0cOHF7WEUPKNl7+0+25i0X765i2HlnsAYLafhMgg+UHq8Lnb+24UNsfddRj2w/eYk16C/HlOgXrRlIBmDYIQCAGG3xSUfMemELTOK6oKVC+ajsom4L3gaJyg4AA",
-    "position": "50% 45%",
-    "featured": true,
-    "og": "/images/hogs-panorama/og/entrance-arch-lit-at-night-hogs-panorama-manali-01-og.jpg"
-  },
-  {
     "id": "room-with-large-window-and-hillside-view-hogs-panorama-manali-01",
     "src": "/images/hogs-panorama/valley-view/room-with-large-window-and-hillside-view-hogs-panorama-manali-01.webp",
     "srcAvif": "/images/hogs-panorama/valley-view/room-with-large-window-and-hillside-view-hogs-panorama-manali-01.avif",
@@ -147,13 +113,13 @@ export const galleryImages: GalleryImage[] = [
     "og": "/images/hogs-panorama/og/window-seats-with-mountain-view-hogs-panorama-manali-03-og.jpg"
   },
   {
-    "id": "terrace-walkway-with-fairy-lights-hogs-panorama-manali-02",
-    "src": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-02.webp",
-    "srcAvif": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-02.avif",
-    "srcMd": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-02-md.webp",
-    "srcSm": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-02-sm.webp",
-    "srcMdAvif": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-02-md.avif",
-    "srcSmAvif": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-02-sm.avif",
+    "id": "terrace-walkway-with-fairy-lights-hogs-panorama-manali-01",
+    "src": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-01.webp",
+    "srcAvif": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-01.avif",
+    "srcMd": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-01-md.webp",
+    "srcSm": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-01-sm.webp",
+    "srcMdAvif": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-01-md.avif",
+    "srcSmAvif": "/images/hogs-panorama/outdoor/terrace-walkway-with-fairy-lights-hogs-panorama-manali-01-sm.avif",
     "width": 2000,
     "height": 1333,
     "orientation": "landscape",
@@ -162,7 +128,7 @@ export const galleryImages: GalleryImage[] = [
     "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZACsACHRyAeot/fVBAAA/vDHnR43cwt8i+rGh+LTcs5L+3s4oscP9BV6CS/h/qUF2QnDgmP782qNEAv/ijbj7rsEv73OohsX8D7qM+lS95EY50bLS6xDPFEO1QAA",
     "position": "50% 50%",
     "featured": true,
-    "og": "/images/hogs-panorama/og/terrace-walkway-with-fairy-lights-hogs-panorama-manali-02-og.jpg"
+    "og": "/images/hogs-panorama/og/terrace-walkway-with-fairy-lights-hogs-panorama-manali-01-og.jpg"
   },
   {
     "id": "room-with-mountain-window-hogs-panorama-manali-02",
@@ -195,22 +161,6 @@ export const galleryImages: GalleryImage[] = [
     "alt": "Wooden table with four upholstered chairs in front of floor-length curtains",
     "blurDataURL": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACwBACdASoQABgAPu1kq04ppaQiMAgBMB2JaACdMoR3ACxviDSn0IYOb279JZTAAP5lwxSs0jpBewiq8myZBnya2cplpEGAUI80Jcms/HeiNgwm9DXhGU97tk6jzYA9novVjn5EH7f40l74MohRKjgPIXVsLElbLRXisitzz/BvDZ8uKFSAkmcvTEcLnDa2DclGgE57kAAAAA==",
     "position": "50% 60%"
-  },
-  {
-    "id": "entrance-night-lights-hogs-panorama-manali-03",
-    "src": "/images/hogs-panorama/outdoor/entrance-night-lights-hogs-panorama-manali-03.webp",
-    "srcAvif": "/images/hogs-panorama/outdoor/entrance-night-lights-hogs-panorama-manali-03.avif",
-    "srcMd": "/images/hogs-panorama/outdoor/entrance-night-lights-hogs-panorama-manali-03-md.webp",
-    "srcSm": "/images/hogs-panorama/outdoor/entrance-night-lights-hogs-panorama-manali-03-sm.webp",
-    "srcMdAvif": "/images/hogs-panorama/outdoor/entrance-night-lights-hogs-panorama-manali-03-md.avif",
-    "srcSmAvif": "/images/hogs-panorama/outdoor/entrance-night-lights-hogs-panorama-manali-03-sm.avif",
-    "width": 1333,
-    "height": 2000,
-    "orientation": "portrait",
-    "category": "outdoor",
-    "alt": "Night view of the entrance with an illuminated H.O.G.S sign, string lights and the stone building behind",
-    "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JZAC7IDZDA34mbdFoQ9r6u0NwAP70KImay6duc2hCv9Hn9yz0gaDpfbB98aMGCKltVJxN5q0WEhslR8+aZYg1wA4r1lWNxLBqEjK2dnGuv8qvHrsILXZ6uAPfg7FjClo6Z15ev4NOTQjDM+8qiFRRzQTAAA==",
-    "position": "50% 40%"
   },
   {
     "id": "bedroom-with-balcony-door-and-mountain-view-hogs-panorama-manali-04",
@@ -261,13 +211,13 @@ export const galleryImages: GalleryImage[] = [
     "position": "55% 50%"
   },
   {
-    "id": "terrace-seating-at-night-hogs-panorama-manali-04",
-    "src": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-04.webp",
-    "srcAvif": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-04.avif",
-    "srcMd": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-04-md.webp",
-    "srcSm": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-04-sm.webp",
-    "srcMdAvif": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-04-md.avif",
-    "srcSmAvif": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-04-sm.avif",
+    "id": "terrace-seating-at-night-hogs-panorama-manali-02",
+    "src": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-02.webp",
+    "srcAvif": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-02.avif",
+    "srcMd": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-02-md.webp",
+    "srcSm": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-02-sm.webp",
+    "srcMdAvif": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-02-md.avif",
+    "srcSmAvif": "/images/hogs-panorama/outdoor/terrace-seating-at-night-hogs-panorama-manali-02-sm.avif",
     "width": 1333,
     "height": 2000,
     "orientation": "portrait",
@@ -325,13 +275,13 @@ export const galleryImages: GalleryImage[] = [
     "position": "55% 50%"
   },
   {
-    "id": "terrace-seating-by-glass-doors-hogs-panorama-manali-05",
-    "src": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-05.webp",
-    "srcAvif": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-05.avif",
-    "srcMd": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-05-md.webp",
-    "srcSm": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-05-sm.webp",
-    "srcMdAvif": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-05-md.avif",
-    "srcSmAvif": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-05-sm.avif",
+    "id": "terrace-seating-by-glass-doors-hogs-panorama-manali-03",
+    "src": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-03.webp",
+    "srcAvif": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-03.avif",
+    "srcMd": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-03-md.webp",
+    "srcSm": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-03-sm.webp",
+    "srcMdAvif": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-03-md.avif",
+    "srcSmAvif": "/images/hogs-panorama/outdoor/terrace-seating-by-glass-doors-hogs-panorama-manali-03-sm.avif",
     "width": 1333,
     "height": 2000,
     "orientation": "portrait",
@@ -389,13 +339,13 @@ export const galleryImages: GalleryImage[] = [
     "position": "45% 55%"
   },
   {
-    "id": "terrace-walkway-at-night-hogs-panorama-manali-06",
-    "src": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-06.webp",
-    "srcAvif": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-06.avif",
-    "srcMd": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-06-md.webp",
-    "srcSm": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-06-sm.webp",
-    "srcMdAvif": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-06-md.avif",
-    "srcSmAvif": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-06-sm.avif",
+    "id": "terrace-walkway-at-night-hogs-panorama-manali-04",
+    "src": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-04.webp",
+    "srcAvif": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-04.avif",
+    "srcMd": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-04-md.webp",
+    "srcSm": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-04-sm.webp",
+    "srcMdAvif": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-04-md.avif",
+    "srcSmAvif": "/images/hogs-panorama/outdoor/terrace-walkway-at-night-hogs-panorama-manali-04-sm.avif",
     "width": 1333,
     "height": 2000,
     "orientation": "portrait",
@@ -691,5 +641,21 @@ export const galleryImages: GalleryImage[] = [
     "alt": "Framed welcome card on a wooden bedside table beside a bed with cushions and a textured grey wall",
     "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoAChVSMlQceZSmaeAD+7qCtNlOrqNPapGc/xu9NyGnRVFGjVICZEZscPCKYwIRjWQSpG0WwRd0LGFEuM+szS29+znHbna/zj2sNLmWKFIxGjqgmv2Lzd6r6hMtUhuuJdcmVZMAAAAA=",
     "position": "50% 55%"
+  },
+  {
+    "id": "bedroom-floor-to-ceiling-valley-view-hogs-panorama-manali-12",
+    "src": "/images/hogs-panorama/signature-view/bedroom-floor-to-ceiling-valley-view-hogs-panorama-manali-12.webp",
+    "srcAvif": "/images/hogs-panorama/signature-view/bedroom-floor-to-ceiling-valley-view-hogs-panorama-manali-12.avif",
+    "srcMd": "/images/hogs-panorama/signature-view/bedroom-floor-to-ceiling-valley-view-hogs-panorama-manali-12-md.webp",
+    "srcSm": "/images/hogs-panorama/signature-view/bedroom-floor-to-ceiling-valley-view-hogs-panorama-manali-12-sm.webp",
+    "srcMdAvif": "/images/hogs-panorama/signature-view/bedroom-floor-to-ceiling-valley-view-hogs-panorama-manali-12-md.avif",
+    "srcSmAvif": "/images/hogs-panorama/signature-view/bedroom-floor-to-ceiling-valley-view-hogs-panorama-manali-12-sm.avif",
+    "width": 1536,
+    "height": 1024,
+    "orientation": "landscape",
+    "category": "signature-view",
+    "alt": "Bedroom at HOGS Panorama, Manali, with teal armchairs and floor-to-ceiling windows overlooking the valley and snow peaks",
+    "blurDataURL": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAACQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JaACdMoCGA1gBOC1sDbpKoTAWEJgAzgkHVJV28E/mvsln6+NH1MZ3fczIh0yoV+ndA3aFTlAS66hzhcpm1oi2BKkD8aJuCctbuNeQFprw+UKdY8QginXPzUym9VCwcK5WdnGs5reFj98TnSMaJREotlPE+nd2avTrYYXDrPSJpR51fpINPoGoD4OzOvyBDtfmiXbUGQAAAA==",
+    "position": "50% 45%"
   }
 ];

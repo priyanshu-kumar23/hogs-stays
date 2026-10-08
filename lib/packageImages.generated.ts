@@ -85,13 +85,13 @@ export const packageImages: Record<PackageImageKey, PackageImageData> = {
     "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAQABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQQFBv/EACMQAAEDAwIHAAAAAAAAAAAAAAECAxEABAUSURMhIjFBYWL/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8AvNFRR00XWEKTKyEk7mshZZy5ab0h6R9c6adzyRbTw5djz2PvenZEP//Z"
   },
   "cafe": {
-    "src": "/images/cafe.jpeg",
-    "alt": "Cafe DO NTHNG at night, its neon sign glowing above a stone entrance with terrace seating and potted plants",
-    "caption": "CAFE DO NTHNG, AFTER DARK",
-    "position": "center 46%",
-    "width": 1272,
-    "height": 1189,
-    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAPABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQMG/8QAIRAAAgEEAQUBAAAAAAAAAAAAAQIDAAQRIQUTFCMxUZH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABgRAAIDAAAAAAAAAAAAAAAAAAABAhEh/9oADAMBAAIRAxEAPwDHBSTgDNPcbaXDQW5SOLpFvISQGYZ9fanw9ke7QgKWOgrDVOPBcxOAxRYVI0p1+YqXLaFH/9k="
+    "src": "/images/cafe-do-nthng/terrace/cafe-do-nthng-manali-mountain-terrace-prayer-flags-cover-1280.webp",
+    "alt": "Sunny terrace at Cafe DO NTHNG in Manali, with cream wicker chairs, strings of prayer flags and fairy lights, a wooden swing and forested mountains behind",
+    "caption": "CAFE DO NTHNG, IN THE SUN",
+    "position": "50% 55%",
+    "width": 1280,
+    "height": 960,
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgEE/8QAIBAAAgEEAgMBAAAAAAAAAAAAAQIDAAQREiExQVGB4f/EABQBAQAAAAAAAAAAAAAAAAAAAAH/xAAZEQACAwEAAAAAAAAAAAAAAAAAAQIRISL/2gAMAwEAAhEDEQA/AKL+QpssbN6GpP2jNdMigyPnYHB8D96rZbDkqeQvWaV3CksRDqCCMU9SWsKUXiP/2Q=="
   },
   "sajla": {
     "src": "/images/packages/sajla/sajla-forest-trail.webp",

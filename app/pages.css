@@ -15,6 +15,9 @@
 .footer-sitemap a:hover,.footer-links a:hover{color:#f3d3a4}
 
 /* ---------- Page transition + reveal ---------- */
+.page-transition{animation:page-in .45s ease-out both}
+@keyframes page-in{from{opacity:0}}
+@media(prefers-reduced-motion:reduce){.page-transition{animation:none}}
 .reveal-ready [data-reveal]{transition:opacity .8s ease,transform .8s ease}
 .reveal-ready [data-reveal]:not(.is-in){opacity:0;transform:translateY(28px)}
 
@@ -109,10 +112,6 @@
 .vaataavaran .eyebrow{color:#e3b06f;margin-bottom:22px}
 .vaataavaran h2 em{color:#e6dcc6}
 .vaataavaran p:not(.eyebrow){margin-top:26px;max-width:480px;color:#d6dbd2}
-.vaataavaran-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.vaataavaran-photos figure{position:relative;margin:0;aspect-ratio:3/4;overflow:hidden}
-.vaataavaran-photos figure:nth-child(2){margin-top:48px}
-.vaataavaran-photos img{object-fit:cover}
 @media(max-width:860px){.subpage .about{grid-template-columns:minmax(0,1fr)}.vaataavaran{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- /book ---------- */
@@ -164,3 +163,13 @@
 .footer-made a:hover{color:#f3d3a4;text-decoration-color:currentColor}
 @media (max-width:760px){.footer-bottom-end{margin-top:4px;text-align:left;padding-right:64px}}
 .footer-made .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Bright daylight heroes (cafe, panorama): extra left-weighted darkening so the white headline and lede stay readable. */
+.page-hero-scrim--left{background:linear-gradient(90deg,rgba(10,20,18,.75) 0%,rgba(10,20,18,.35) 50%,transparent 80%),linear-gradient(to bottom,rgba(0,0,0,.45) 0%,transparent 30%),linear-gradient(to top,rgba(10,14,12,.9) 0%,rgba(10,14,12,.55) 42%,rgba(10,14,12,.22) 100%)}
+@media(max-width:700px){.page-hero-scrim--left{background:linear-gradient(90deg,rgba(10,20,18,.62) 0%,rgba(10,20,18,.5) 100%),linear-gradient(to bottom,rgba(0,0,0,.45) 0%,transparent 30%),linear-gradient(to top,rgba(10,14,12,.92) 0%,rgba(10,14,12,.6) 50%,rgba(10,14,12,.25) 100%)}}
+
+.location-map{margin:0;width:100%;overflow:hidden;border-radius:18px;border:1px solid #c9bda340;background:#17231d}
+.location-map iframe{display:block;width:100%;height:420px;border:0}
+.location-map figcaption{padding:16px 20px;font-size:12px;line-height:1.6;color:#ded2ba}
+.location-map-warm{background:#24190f;border-color:#d89a4a44;align-self:center}
+.location-map-warm iframe{filter:sepia(.22) saturate(.78)}
+@media(max-width:767px){.location-map iframe{height:320px}}

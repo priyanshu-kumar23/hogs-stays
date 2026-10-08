@@ -30,3 +30,6 @@ npm-debug.log*
 
 # original full-size photos (processed by scripts/optimize-images.mjs; too large for git/Vercel)
 /source-images
+
+# raw cafe photos (full-size originals, never shipped)
+/raw-images

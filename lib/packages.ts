@@ -107,7 +107,7 @@ export const packages: TourPackage[] = [
     highlights: ['Old Manali & Vashisht', 'Soyal & Sajla', 'Sethan & Hamta Valley', 'Naggar, Rumsu & Jana'], route: ['Hadimba', 'Soyal', 'Sethan', 'Naggar', 'Jana'],
     price: 'on-request', startsEndsAt: HOGS,
     itinerary: [
-      { dayNumber: 1, title: 'Arrival · Cafe DO NTHNG', stops: [HOGS, 'Cafe DO NTHNG'], image: hogs('hogs-panorama-entrance-night-lights-manali', 'ARRIVING AT HOGS PANORAMA'),
+      { dayNumber: 1, title: 'Arrival · Cafe DO NTHNG', stops: [HOGS, 'Cafe DO NTHNG'], image: hogs('terrace-walkway-with-fairy-lights', 'ARRIVING AT HOGS PANORAMA'),
         narrative: ['This day has one rule: do less.', 'Check into HOGS Panorama, settle into your room and enjoy the property. Head downstairs to Cafe DO NTHNG for coffee and something to eat. Watch the mountains change colour as evening approaches.', 'No mandatory sightseeing. No rushing to Mall Road because “Day 1 needs to be utilised.”', 'Welcome to HOGS.'] },
       { dayNumber: 2, title: 'Manali Classics, Slowly', stops: ['Hadimba Devi Temple', 'Dhungri Forest', 'Old Manali', 'Vashisht', 'Mall Road'], image: web('oldManali'),
         narrative: ['After breakfast, begin with Hadimba Devi Temple. Walk through Dhungri Forest before continuing towards Old Manali.', 'Explore:'],
@@ -157,7 +157,7 @@ export const packages: TourPackage[] = [
     highlights: ['Solang & Sissu', 'Soyal & Sajla', 'Sethan & Hamta Valley', 'Naggar, Rumsu & Jana'], route: ['Hadimba', 'Solang', 'Sissu', 'Soyal', 'Sethan', 'Jana'],
     price: 'on-request', startsEndsAt: HOGS,
     itinerary: [
-      { dayNumber: 1, title: 'Welcome to HOGS', stops: [HOGS, 'Cafe DO NTHNG'], image: hogs('hogs-panorama-entrance-night-lights-manali', 'ARRIVING AT HOGS PANORAMA'),
+      { dayNumber: 1, title: 'Welcome to HOGS', stops: [HOGS, 'Cafe DO NTHNG'], image: hogs('terrace-walkway-with-fairy-lights', 'ARRIVING AT HOGS PANORAMA'),
         narrative: ['Arrive in Manali and check into HOGS Panorama. Freshen up and spend the rest of the afternoon around the property.', 'Coffee at Cafe DO NTHNG. Common spaces. Mountain views. A relaxed dinner.', 'The holiday starts slowly.'] },
       { dayNumber: 2, title: 'Manali Local', stops: ['Hadimba Devi Temple', 'Old Manali', 'Vashisht', 'Mall Road'], image: web('mallRoad'),
         narrative: ['After breakfast, explore:'],

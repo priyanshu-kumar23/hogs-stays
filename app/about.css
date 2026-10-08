@@ -1,0 +1,39 @@
+/* About page photography: founders, Vaataavaran collage, team, friends, masonry moments. Dark green, serif headings, FIG. captions. */
+.about-fig{margin:0;width:100%}
+.about-photo{position:relative;overflow:hidden;border-radius:6px;background:#2b3830}
+.about-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.about-fig figcaption,.vaataavaran-collage figcaption{margin-top:10px;font-size:10px;letter-spacing:.16em;color:#c9d0c8}
+.about-pair{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,100px);align-items:center;padding-top:clamp(48px,8vh,100px);padding-bottom:clamp(48px,8vh,100px)}
+.about-pair-copy h2{margin:10px 0 0;font-family:var(--serif,serif);font-weight:400;font-size:clamp(34px,5vw,64px);line-height:1.05}
+.about-pair-copy h2 em{font-style:italic;color:#e3b06f}
+.about-pair .about-fig{max-width:460px;justify-self:center}
+.vaataavaran-collage{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;align-items:start}
+.vaataavaran-collage figure{margin:0}
+.vc-frame{position:relative;overflow:hidden;border-radius:4px;background:#2b3830}
+.vc-tall .vc-frame{aspect-ratio:3/4.3}
+.vc-short{margin-top:clamp(40px,8vw,96px)}
+.vc-short .vc-frame{aspect-ratio:1/1}
+.vc-frame img{object-fit:cover}
+.about-moments .moments-grid{columns:2;column-gap:14px;margin:clamp(28px,5vh,56px) 0 36px}
+.moments-grid figure{margin:0 0 14px;break-inside:avoid;overflow:hidden;border-radius:6px;background:#2b3830}
+.moments-grid img{display:block;width:100%;height:auto}
+@media(min-width:700px){.about-moments .moments-grid{columns:3;column-gap:16px}.moments-grid figure{margin-bottom:16px}}
+@media(max-width:860px){.about-pair{grid-template-columns:minmax(0,1fr)}}
+/* Founders story: text left, two staggered portrait cards + group photo right */
+.subpage .about-with-aside{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,90px);align-items:start;display:grid}
+.about-left .about-heading{position:static}
+.subpage .about-left .about-heading h2{font-size:clamp(44px,5vw,78px)}
+.subpage .about-left .story-line,.subpage .about-left .story-line:nth-child(2){font-size:clamp(26px,2.6vw,38px);margin:28px 0}
+.subpage .about-left .story-line:nth-child(2){font-size:clamp(34px,3.4vw,50px)}
+.founder-cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,28px);align-items:start}
+.founder-card{margin:0}
+.founder-card:nth-child(2){margin-top:60px}
+.founder-photo{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:8px;background:#2b3830;box-shadow:0 18px 40px -18px rgba(0,0,0,.55)}
+.founder-photo img{object-fit:cover;transition:transform 600ms ease}
+.founder-card:hover .founder-photo img{transform:scale(1.04)}
+.founder-card figcaption{margin-top:12px;font-size:10px;letter-spacing:.16em;color:#c9d0c8}
+.founder-card figcaption em{display:block;margin-top:6px;font-family:var(--serif,serif);font-size:clamp(15px,1.5vw,19px);letter-spacing:0;font-style:italic;color:#e3b06f;line-height:1.35}
+.founders-group{margin:clamp(40px,6vw,72px) 0 0}
+.founders-group figcaption{margin-top:10px;font-size:10px;letter-spacing:.16em;color:#c9d0c8}
+@media(prefers-reduced-motion:reduce){.founder-photo img{transition:none}.founder-card:hover .founder-photo img{transform:none}}
+@media(max-width:860px){.subpage .about-with-aside{grid-template-columns:minmax(0,1fr)}.founder-card:nth-child(2){margin-top:0}.founder-cards{gap:14px}}

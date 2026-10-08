@@ -1,0 +1,2 @@
+import { panoramaLocation } from '@/lib/content';
+export default function LocationMap({warm=false,caption=panoramaLocation.displayAddress}:{warm?:boolean;caption?:string}){return <figure className={`location-map${warm?' location-map-warm':''}`}><iframe src={panoramaLocation.embedUrl} title="HOGS Panorama and Cafe DO NTHNG location in Manali" loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade"/><figcaption>{caption}</figcaption></figure>;}

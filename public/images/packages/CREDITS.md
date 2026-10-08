@@ -28,5 +28,5 @@ Downloaded, resized to 1600px wide and converted to WebP (the five Vashisht, Man
 
 ## Photographs supplied from the project's own folders
 
-`/images/manali/*` (Hadimba, Old Manali, Mall Road, Solang, Atal Tunnel, Sissu, Manali ridge, valley paraglider) and `/images/cafe.jpeg` are used in place from the folders already in `public/images/`. Their original photographers and licenses are not recorded in the project — confirm you hold the rights before launch.
+`/images/manali/*` (Hadimba, Old Manali, Mall Road, Solang, Atal Tunnel, Sissu, Manali ridge, valley paraglider) are used in place from the folders already in `public/images/`. Their original photographers and licenses are not recorded in the project — confirm you hold the rights before launch.
 HOGS Panorama photographs come from the existing HOGS gallery.
