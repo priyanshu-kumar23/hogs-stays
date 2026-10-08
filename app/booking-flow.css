@@ -193,3 +193,4 @@
 .bk-panorama .bk-steps button[aria-current="step"]{color:#f3c997}
 @media(max-width:767px){.bk-panorama{width:100vw}.bk-panorama .bk-top{padding:10px 18px 12px}.bk-panorama .bk-body{padding:22px 18px}.bk-destination{height:112px;border-radius:12px;margin-bottom:12px}.bk-destination>div{left:16px;bottom:15px}.bk-destination p{font-size:29px}.bk-destination em{font-size:15px}.panorama-book-band{padding:65px 7%}}
 @media(prefers-reduced-motion:reduce){.bk-panorama .bk-choice{transition:none}.bk-panorama .bk-choice:hover{transform:none}}
+.sticky-room{font-family:var(--serif);font-size:15px;letter-spacing:0;opacity:.85;padding-right:12px;margin-right:2px;border-right:1px solid #18221c55}

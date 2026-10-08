@@ -1,0 +1,42 @@
+/* Live open/closed chip + the "View menu & order" button group. */
+.cafe-status{display:inline-flex;align-items:center;gap:9px;min-height:28px;padding:3px 12px 3px 10px;border:1px solid #f4f1ec30;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.04em;line-height:1.2;color:#f4f1ec;background:#ffffff0d;vertical-align:middle;white-space:nowrap}
+.cafe-status i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.cafe-status.is-open{color:#bfe8c4;border-color:#6fbf7a55}
+.cafe-status.is-open i{background:#4cd964;box-shadow:0 0 0 0 #4cd96488;animation:cafe-pulse 2.4s ease-out infinite}
+.cafe-status.is-closed{color:#f3d3a0;border-color:#e3a63c55}
+.cafe-status.is-closed i{background:#f0a92e}
+.cafe-status.is-pending{min-width:112px;border-color:transparent;background:transparent}
+@keyframes cafe-pulse{70%{box-shadow:0 0 0 7px #4cd96400}100%{box-shadow:0 0 0 0 #4cd96400}}
+@media(prefers-reduced-motion:reduce){.cafe-status.is-open i{animation:none}}
+.cafe-menu-cta{display:inline-flex;flex-direction:column;align-items:flex-start;gap:8px}
+.cafe-story .button.is-secondary,.cafe-menu-cta+.button.is-secondary{background:transparent;color:#f4f1ec;border:1px solid #f4f1ec66}
+.cafe-story .button.is-secondary:hover{background:#f4f1ec14;border-color:#f4f1ec}
+.cafe-live{margin:14px 0 4px}
+.cs-menu-order{display:flex;justify-content:center;margin-top:clamp(28px,4vw,48px)}
+.cs-visit dd .cafe-status{margin-left:8px}
+.footer-cafe-hours{display:block;margin-top:10px;font-size:13px;color:#c9d0c8}
+.footer-cafe-hours strong{font-weight:600;color:#f4f1ec}
+
+/* "Scan to order" card: cream, copper border. QR shown at a multiple of its 37 modules (222 = 6 px/module, 148 = 4 px/module), never smoothed. */
+.cafe-qr-card{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"code copy";align-items:center;gap:clamp(22px,3vw,44px);max-width:760px;padding:clamp(22px,3vw,34px);background:#f3e6cf;color:#3e2a1b;border:2px solid #c9792a;border-radius:6px;box-shadow:0 18px 44px #0004}
+.cafe-qr-copy{grid-area:copy;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.cafe-qr-copy h3{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#3e2a1b}
+.cafe-qr-text{margin:0;font-size:15px;line-height:1.6;color:#5a4330}
+.cafe-qr-code{grid-area:code;display:flex;flex-direction:column;align-items:center;gap:0}
+.cafe-qr-code a{display:block;background:#fff;line-height:0;border-radius:2px;box-shadow:0 0 0 1px #3e2a1b22}
+.cafe-qr-code img{display:block;width:222px;height:222px;image-rendering:pixelated;image-rendering:crisp-edges;image-rendering:pixelated}
+.cafe-qr-share{display:none;margin:10px 0 0;font-size:13px;color:#5a4330;text-align:center}
+.cafe-qr-card .button{background:#c9792a;color:#fff9ef}
+.cafe-qr-card.is-compact{max-width:620px;margin:28px 0 8px;padding:20px 22px;gap:22px}
+.cafe-qr-card.is-compact h3{font-size:clamp(24px,2.6vw,30px)}
+.cafe-qr-card.is-compact .cafe-qr-code img{width:148px;height:148px}
+@media(max-width:767px){
+  .cafe-qr-card,.cafe-qr-card.is-compact{grid-template-columns:1fr;grid-template-areas:"copy" "code";justify-items:stretch;gap:20px;padding:22px 20px}
+  .cafe-qr-text{display:none}
+  .cafe-qr-copy .cafe-menu-cta,.cafe-qr-copy .button{width:100%}
+  .cafe-qr-copy .button{justify-content:center}
+  .cafe-qr-share{display:block}
+  .cafe-qr-code img,.cafe-qr-card.is-compact .cafe-qr-code img{width:185px;height:185px}
+}
+
+.cs-offer{margin:6px 0 4px;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2vw,24px);line-height:1.4;color:#ecd4a5}

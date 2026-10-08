@@ -1,5 +1,7 @@
 import { packageHref, packageTitle, packages, type TourPackage } from './packages';
 import { content } from './content';
+import type { PolicyBlock } from './policies';
+import { cafeFullName, policyContact, stayTerms } from './policies';
 // FAQs for the Manali journeys. Answers come only from the itineraries (lib/packages.ts) or existing site pages. Anything not known is
 // a `todo` item written as "TODO(owner): confirm ...": it is HIDDEN in production builds (and left out of the FAQPage JSON-LD) until the
 // owner replaces the todo with a real answer in `a`. `pending` marks a published answer that still needs one extra detail from the owner.
@@ -99,3 +101,49 @@ export function seasonNotes(pkg: TourPackage): string[] {
   if (hasText(pkg, /atal tunnel|sissu|sethan|hamta/)) notes.push('Atal Tunnel, Sissu, Sethan and Hamta days depend on weather and road conditions, so we keep them flexible.');
   return notes;
 }
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
+// Guest FAQs for the /faqs page (the client's own wording, verbatim). Separate from the journey FAQs above. Every item has a stable id so
+// /faqs#pets opens that answer. The old site pasted house-rules text into the outside-food answer by mistake; it is deliberately not here.
+export type GuestFaq = { id: string; q: string; blocks: PolicyBlock[] };
+export type GuestFaqGroup = { id: string; title: string; items: GuestFaq[] };
+const wa = policyContact.whatsappHref;
+export const guestFaqGroups: GuestFaqGroup[] = [
+  { id: 'booking-payments', title: 'Booking & payments', items: [
+    { id: 'check-in', q: 'What are the check-in and check-out timings?', blocks: [
+      { type: 'p', text: `**Check-in time:** ${stayTerms.checkIn}. **Check-out time:** ${stayTerms.checkOut}.` },
+      { type: 'p', text: 'Early check-in or late check-out may be available depending on room availability and may involve additional charges.' } ] },
+    { id: 'booking', q: 'How can I make a booking?', blocks: [
+      { type: 'p', text: 'You can book your stay by:' },
+      { type: 'ul', items: [`[contacting us directly via WhatsApp](${wa}) or phone`, '[booking through our website](/stays/panorama)', 'booking through travel platforms such as Airbnb, Booking.com, etc.'] },
+      { type: 'p', text: 'All bookings are confirmed after the advance payment is received.' } ] },
+    { id: 'payment', q: 'What is the payment process?', blocks: [
+      { type: 'p', text: 'Our standard payment structure:' },
+      { type: 'ul', items: ['40% advance at the time of booking', '30% payment 15 days before check-in', '30% balance 24 hours before check-in'] },
+      { type: 'p', text: 'Payment details are shared at the time of booking.' } ] },
+  ] },
+  { id: 'your-stay', title: 'Your stay', items: [
+    { id: 'parking', q: 'Is parking available?', blocks: [{ type: 'p', text: 'Yes, parking is available at the property for guests arriving by car or bike.' }] },
+    { id: 'pets', q: 'Are pets allowed?', blocks: [{ type: 'p', text: 'Pets may be allowed only with prior approval. Please contact us before your arrival if you plan to travel with pets.' }] },
+    { id: 'wifi', q: 'Is Wi-Fi available?', blocks: [{ type: 'p', text: 'Yes, Wi-Fi is available for guests, making the property suitable for workcations and longer stays.' }] },
+  ] },
+  { id: 'cafe-food', title: 'Café & food', items: [
+    { id: 'cafe', q: 'Do you have an in-house café?', blocks: [
+      { type: 'p', text: `Yes. Our in-house café [${cafeFullName}](/cafe) offers:` },
+      { type: 'ul', items: ['Artisan coffee', 'Signature shakes', 'Mediterranean & comfort food', 'Weekend brunch'] },
+      { type: 'p', text: 'Guests can enjoy food with beautiful mountain and orchard views.' } ] },
+    { id: 'outside-food', q: 'Is outside food allowed?', blocks: [{ type: 'p', text: 'Outside food may be restricted in certain areas since we offer food services through our in-house café.' }] },
+  ] },
+  { id: 'groups', title: 'Groups', items: [
+    { id: 'groups', q: 'Do you host groups or retreats?', blocks: [
+      { type: 'p', text: 'Yes. Our properties are suitable for:' },
+      { type: 'ul', items: ['Group stays', 'Travel communities', 'Retreats', 'Remote work stays'] },
+      { type: 'p', text: 'Please contact us for group booking details.' },
+      { type: 'cta', label: 'Ask about group bookings on WhatsApp', href: `${wa}?text=${encodeURIComponent('Hi! I would like to know about group bookings at HOGS Stays.')}` } ] },
+  ] },
+];
+export const allGuestFaqs = guestFaqGroups.flatMap(group => group.items.map(item => ({ ...item, group: group.title })));
+/** Plain text of an answer (markup stripped) for search and structured data. */
+export const plainText = (value: string) => value.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+export const faqAnswerText = (blocks: PolicyBlock[]) => blocks.map(block => block.type === 'p' ? plainText(block.text) : block.type === 'ul' ? block.items.map(plainText).join('; ') : '').filter(Boolean).join(' ');
+export const guestFaqJsonLdFor = () => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: allGuestFaqs.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: faqAnswerText(item.blocks) } })) });

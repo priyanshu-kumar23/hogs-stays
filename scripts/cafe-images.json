@@ -223,6 +223,22 @@
       "alt": "The Cafe DO NTHNG team and guests posing together at the cafe's flower-arched entrance in Manali"
     },
     {
+      "source": "cafe/SAL_0542.JPG",
+      "category": "guests",
+      "slug": "cafe-do-nthng-manali-guests-terrace-prayer-flags",
+      "position": "center 45%",
+      "caption": "A SLOW AFTERNOON ON THE TERRACE",
+      "alt": "Guests chatting in wicker chairs on the Cafe DO NTHNG terrace in Manali, with prayer flags and apple trees behind"
+    },
+    {
+      "source": "cafe/SAL_0488.JPG",
+      "category": "guests",
+      "slug": "cafe-do-nthng-manali-guests-chatting-terrace-dusk",
+      "position": "center 55%",
+      "caption": "DUSK CONVERSATIONS",
+      "alt": "Two guests chatting at a terrace table at dusk at Cafe DO NTHNG in Manali, with an egg chair and mountains behind"
+    },
+    {
       "source": "cafedonthng/SAL_0405.JPG",
       "category": "guests",
       "slug": "hogs-panorama-manali-guests-family-pointing-at-sign",
@@ -317,6 +333,30 @@
       "position": "45% 75%",
       "caption": "A LONG TABLE, A SLOW MEAL",
       "alt": "Guests sharing a meal around a long dining table beside tall windows at Cafe DO NTHNG in Manali, several smiling at the camera"
+    },
+    {
+      "source": "cafe/SAL_9747.JPG",
+      "category": "behind-the-bar",
+      "slug": "cafe-do-nthng-manali-espresso-machine-black-and-white",
+      "position": "center 50%",
+      "caption": "WHERE EVERY CUP BEGINS",
+      "alt": "Black and white close-up of the espresso machine with cups warming on top at Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafe/SAL_9764.JPG",
+      "category": "behind-the-bar",
+      "slug": "cafe-do-nthng-manali-barista-pulling-espresso-shot",
+      "position": "center 40%",
+      "caption": "PULLED BY HAND",
+      "alt": "Black and white photo of a barista in a HOGS apron preparing an espresso shot at the bar of Cafe DO NTHNG in Manali"
+    },
+    {
+      "source": "cafe/SAL_9767.JPG",
+      "category": "behind-the-bar",
+      "slug": "cafe-do-nthng-manali-barista-at-espresso-machine-black-and-white",
+      "position": "60% 50%",
+      "caption": "A STEADY HAND",
+      "alt": "Black and white photo of a barista working the espresso machine at Cafe DO NTHNG in Manali"
     }
   ],
   "panoramaOgSource": {
@@ -349,6 +389,102 @@
       "position": "50% 40%",
       "caption": "MORNINGS, UNHURRIED",
       "alt": "Sunrise glowing through layered clouds over blue mountain ridges, with green trees and tin rooftops in the foreground, seen from HOGS Panorama in Manali"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogsvalley3.jpeg",
+      "category": "rooms/valley-view",
+      "slug": "hogs-panorama-manali-valley-view-room-bed-teal-armchairs-mountain-window",
+      "position": "center 50%",
+      "caption": "VALLEY VIEW ROOM",
+      "alt": "Valley View room at HOGS Panorama in Manali: a king bed with a grey throw, two teal armchairs and a small table beside a window over misty mountains and green rooftops"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogsvalley2.jpeg",
+      "category": "rooms/valley-view",
+      "slug": "hogs-panorama-manali-valley-view-room-grey-headboard-wall-lights-balcony",
+      "position": "center 50%",
+      "caption": "VALLEY VIEW ROOM",
+      "alt": "Valley View room with a king bed, a grey padded headboard wall, two wall lights and a glass door to a balcony with chairs"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogsvalley4.jpeg",
+      "category": "rooms/valley-view",
+      "slug": "hogs-panorama-manali-valley-view-room-tv-armchairs-valley-window",
+      "position": "center 50%",
+      "caption": "VALLEY VIEW ROOM",
+      "alt": "Valley View room with a television unit, two teal armchairs and a large window onto the misty valley, with the foot of the bed in the foreground"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogsvalley1.jpeg",
+      "category": "rooms/valley-view",
+      "slug": "hogs-panorama-manali-valley-view-room-wardrobe-tv-bed",
+      "position": "center 50%",
+      "caption": "VALLEY VIEW ROOM",
+      "alt": "Valley View room with a wooden wardrobe, a television unit and a king bed, and a glass balcony door at the back"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogssign3.jpeg",
+      "category": "rooms/signature-view",
+      "slug": "hogs-panorama-manali-signature-view-room-floor-to-ceiling-window-balcony-mountains",
+      "position": "center 50%",
+      "caption": "SIGNATURE VIEW ROOM",
+      "alt": "Signature View room with floor-to-ceiling windows and a balcony door onto misty mountains, two teal armchairs, a television unit and a king bed"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogssign2.jpeg",
+      "category": "rooms/signature-view",
+      "slug": "hogs-panorama-manali-signature-view-room-bed-wall-tv-valley-window",
+      "position": "center 50%",
+      "caption": "SIGNATURE VIEW ROOM",
+      "alt": "Signature View room with a king bed and striped cushions, a wall-mounted television on a wood panel and a large window over the mountain valley"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogssign4.jpeg",
+      "category": "rooms/signature-view",
+      "slug": "hogs-panorama-manali-signature-view-room-bed-wall-lights-tray-ceiling",
+      "position": "center 50%",
+      "caption": "SIGNATURE VIEW ROOM",
+      "alt": "Signature View room with a king bed, wall lights and a layered tray ceiling, with two teal armchairs by the window"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogssign1.jpeg",
+      "category": "rooms/signature-view",
+      "slug": "hogs-panorama-manali-signature-view-room-teal-armchairs-desk-mountain-window",
+      "position": "center 50%",
+      "caption": "SIGNATURE VIEW ROOM",
+      "alt": "Signature View room with two teal armchairs and a small table beside a large mountain-view window, a desk and a wooden wardrobe, and the foot of the bed in the foreground"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogsprem4.jpg",
+      "category": "rooms/premium",
+      "slug": "hogs-panorama-manali-premium-room-timber-ceiling-bed-window-armchairs",
+      "position": "center 50%",
+      "caption": "PREMIUM ROOM",
+      "alt": "Premium room under a pitched timber ceiling with a king bed and grey throw, wall lights, two teal armchairs and a large window over the town and mountains"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogsprem3.jpeg",
+      "category": "rooms/premium",
+      "slug": "hogs-panorama-manali-premium-room-timber-ceiling-bed-wall-lights",
+      "position": "center 50%",
+      "caption": "PREMIUM ROOM",
+      "alt": "Premium room under a pitched timber ceiling with a curtained gable window, a king bed with a padded headboard, wall lights and a wooden bedside table"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogsprem2.jpeg",
+      "category": "rooms/premium",
+      "slug": "hogs-panorama-manali-premium-room-balcony-door-valley-view-armchairs",
+      "position": "center 50%",
+      "caption": "PREMIUM ROOM",
+      "alt": "Premium room under a timber ceiling with a glass balcony door and a large window over the valley, a television unit and teal armchairs"
+    },
+    {
+      "source": "hogs-panorama/rooms/hogsprem1.jpeg",
+      "category": "rooms/premium",
+      "slug": "hogs-panorama-manali-premium-room-tv-armchairs-valley-window",
+      "position": "center 50%",
+      "caption": "PREMIUM ROOM",
+      "alt": "Premium room under a timber ceiling with a television unit, two teal armchairs by a large window, and a mirror and door at the back"
     }
   ]
 }

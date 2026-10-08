@@ -7,6 +7,7 @@ import {
   MAX_ADULTS, MAX_CHILDREN, NOTE_MAX, OCCASIONS, UNSURE, addDay, buildEnquiryText, cleanPhone, datesLabel, emptyEnquiry, firstInvalidStep, guestsLabel, mailtoUrl,
   nightsBetween, roomLabel, validateStep, whatsappUrl, type EnquiryState, type Errors,
 } from '@/lib/panoramaEnquiry';
+import { canonicalRoomId } from '@/lib/rooms';
 import { ENQUIRE_EVENT, type EnquireDetail } from './enquiryEvents';
 import '@/app/enquiry.css';
 
@@ -14,7 +15,7 @@ import '@/app/enquiry.css';
 // Desktop: a slide-over drawer from the right. Phones: a bottom sheet with a drag handle. 3 steps (room, when & who, details), then the
 // enquiry opens in WhatsApp (or email) with a prefilled message. Nothing is stored on a server; progress lives in sessionStorage only.
 export type EnquiryRoomOption = { id: string; name: string; tagline: string | null; thumb: string | null; blur: string | null };
-type Props = { property: { name: string; whatsapp: string; email: string }; rooms: EnquiryRoomOption[]; storageKey?: string };
+type Props = { property: { name: string; whatsapp: string; email: string }; rooms: EnquiryRoomOption[]; storageKey?: string; /** Show the floating mobile "Enquire" pill (default). Turn off where another sticky booking button already exists. */ pill?: boolean };
 
 const STEPS = ['Room', 'When & who', 'Your details'] as const;
 const TITLES = ['Choose your room.', 'When & who.', 'Your details.'];
@@ -27,7 +28,7 @@ const readSaved = (key: string): Saved | null => { try { const raw = sessionStor
 const writeSaved = (key: string, saved: Saved) => { try { sessionStorage.setItem(key, JSON.stringify(saved)); } catch { /* storage unavailable: progress just isn't kept */ } };
 const clearSaved = (key: string) => { try { sessionStorage.removeItem(key); } catch { /* ignore */ } };
 
-export default function BookingEnquiry({ property, rooms, storageKey = 'hogs-enquiry-panorama-v1' }: Props) {
+export default function BookingEnquiry({ property, rooms, storageKey = 'hogs-enquiry-panorama-v1', pill = true }: Props) {
   const [open, setOpen] = useState(false); const [closing, setClosing] = useState(false);
   const [state, setState] = useState<EnquiryState>(() => emptyEnquiry());
   const [step, setStep] = useState(0); const [dir, setDir] = useState<'fwd' | 'back'>('fwd');
@@ -45,7 +46,9 @@ export default function BookingEnquiry({ property, rooms, storageKey = 'hogs-enq
     openRef.current = true; trigger.current = detail.trigger ?? document.activeElement;
     const saved = readSaved(storageKey);
     const next = { ...emptyEnquiry(), ...(saved?.state ?? {}) };
-    if (detail.room && rooms.some(room => room.id === detail.room)) next.room = detail.room;
+    next.room = canonicalRoomId(next.room); // a room saved under an old id (jacuzzi-suite) still resolves
+    const wanted = canonicalRoomId(detail.room);
+    if (wanted && rooms.some(room => room.id === wanted)) next.room = wanted;
     setState(next); setStep(Math.min(Math.max(saved?.step ?? 0, 0), 2)); setDir('fwd'); setErrors({}); setDone(false); setClosing(false); setOpen(true);
   }, [rooms, storageKey]);
   const finishClose = useCallback(() => {
@@ -61,7 +64,7 @@ export default function BookingEnquiry({ property, rooms, storageKey = 'hogs-enq
   }, [open]);
   const close = useCallback(() => { if (!openRef.current || closing) return; if (reduced()) { finishClose(); return; } setClosing(true); window.setTimeout(finishClose, CLOSE_MS); }, [closing, finishClose]);
 
-  // Events from buttons, plus the #book deep link: /stays/panorama?room=jacuzzi-suite#book
+  // Events from buttons, plus the #book deep link: /stays/panorama?room=jacuzzi-room#book (the old ?room=jacuzzi-suite still works)
   useEffect(() => {
     const fromUrl = () => { if (location.hash === '#book') show({ room: new URLSearchParams(location.search).get('room') ?? undefined }); };
     const onEvent = (event: Event) => show((event as CustomEvent<EnquireDetail>).detail);
@@ -189,7 +192,7 @@ export default function BookingEnquiry({ property, rooms, storageKey = 'hogs-enq
   </div>;
 
   return <>
-    {!open && <button type="button" className={`enq-pill${heroVisible ? ' is-hidden' : ''}`} aria-haspopup="dialog" tabIndex={heroVisible ? -1 : 0} onClick={event => show({ trigger: event.currentTarget })}>Enquire <span aria-hidden="true">→</span></button>}
+    {pill && !open && <button type="button" className={`enq-pill${heroVisible ? ' is-hidden' : ''}`} aria-haspopup="dialog" tabIndex={heroVisible ? -1 : 0} onClick={event => show({ trigger: event.currentTarget })}>Enquire <span aria-hidden="true">→</span></button>}
     {open && <dialog ref={dialog} className={`enq${closing ? ' is-closing' : ''}`} aria-labelledby="enq-title" data-lenis-prevent onKeyDown={trap}
       onCancel={event => { event.preventDefault(); close(); }} onClick={event => { if (event.target === dialog.current) close(); }}>
       <div className="enq-panel" ref={panel}>
@@ -208,6 +211,7 @@ export default function BookingEnquiry({ property, rooms, storageKey = 'hogs-enq
           </div>
           {!done && <footer className="enq-foot">
             {step === 2 && <p className="enq-reply">We’ll reply on WhatsApp within a few hours. <Link href="/privacy-policy" target="_blank">Privacy Policy</Link></p>}
+            {step === 2 && <p className="enq-reply enq-consent">By enquiring you agree to our <Link href="/terms-conditions" target="_blank">Terms</Link> &amp; <Link href="/cancellation-refund-policy" target="_blank">Cancellation Policy</Link></p>}
             <div className="enq-actions">
               {step > 0 && <button type="button" className="enq-back" onClick={() => go(step - 1)}><span aria-hidden="true">←</span> Back</button>}
               {step < 2 ? <button type="submit" className="enq-primary">Next <span aria-hidden="true">→</span></button>

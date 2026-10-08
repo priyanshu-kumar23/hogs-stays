@@ -14,6 +14,7 @@ export const cafeCategories: { id: Exclude<CafeCategory, 'guests'>; label: strin
   { id: 'food-drinks', label: 'Coffee & Cold Drinks', blurb: 'Latte art, mocktails and coolers.' },
   { id: 'live-music', label: 'Live Music', blurb: 'Guitars and quiet evening sessions.' },
   { id: 'ambience-night', label: 'After Dark', blurb: 'Lanterns, fairy lights and candlelit tables.' },
+  { id: 'behind-the-bar', label: 'Behind the Bar', blurb: 'Every cup, pulled by hand.' },
   { id: 'team', label: 'The Team', blurb: 'The people behind the counter.' },
 ];
 const all = cafeImageList;

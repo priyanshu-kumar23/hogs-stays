@@ -26,3 +26,24 @@
 @media(max-width:767px){.cs-terrace-card{width:70vw}.cs-terrace-photo{height:82vw;aspect-ratio:auto}.cs-terrace-card figcaption{align-items:start;flex-direction:column;gap:8px}}
 @media(max-width:767px) and (prefers-reduced-motion:reduce){.cs-terrace-card{width:70vw}}
 .cs-cup-canvas{transition:opacity .8s ease-out}
+
+/* Behind the bar: a cinematic row of black-and-white shots that slowly warm to sepia on hover / focus. Equal heights (flex-grow = aspect ratio). */
+.cs-bar{border-top:1px solid #d5b58b18}
+.cs-bar-row{display:flex;gap:clamp(10px,1.4vw,22px);margin-top:clamp(28px,5vh,54px)}
+.cs-bar-shot{position:relative;flex-basis:0;min-width:0;margin:0;overflow:hidden;border-radius:3px;background:#1a1410;filter:grayscale(1) contrast(1.06) brightness(.94);transition:filter 1.6s ease,transform 1.6s ease;box-shadow:0 18px 40px #0005}
+.cs-bar-shot:hover,.cs-bar-shot:focus-visible{filter:grayscale(0) sepia(.55) saturate(1.15) contrast(1.04) brightness(1);transform:translateY(-4px)}
+.cs-bar-shot:focus-visible{outline:2px solid var(--cs-honey,#e1b877);outline-offset:3px}
+.cs-people{grid-template-columns:1.1fr 1fr}
+.cs-people-photos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,28px);align-items:start}
+.cs-people-photos .cs-polaroid-second{margin-top:44px;--photo-angle:2.5deg}
+@media(max-width:767px){
+  .cs-bar-row{overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:-6%;padding-right:6%;scrollbar-width:none}
+  .cs-bar-row::-webkit-scrollbar{display:none}
+  .cs-bar-shot{flex:0 0 78%;aspect-ratio:4/5!important;scroll-snap-align:center}
+  .cs-people{grid-template-columns:1fr}
+  .cs-people-photos{gap:12px}
+  .cs-people-photos .cs-polaroid-second{margin-top:26px}
+}
+@media(hover:none){.cs-bar-shot{animation:cs-bar-warm 6s ease-in-out infinite alternate}}
+@keyframes cs-bar-warm{to{filter:grayscale(.45) sepia(.35) contrast(1.04)}}
+@media(prefers-reduced-motion:reduce){.cs-bar-shot{transition:none;animation:none!important}.cs-bar-shot:hover,.cs-bar-shot:focus-visible{transform:none}}

@@ -3,13 +3,16 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Icon from './Icon';
-import { content } from '@/lib/content';
+import { content, panoramaBookingUrl } from '@/lib/content';
+import { roomById } from '@/lib/rooms';
 import { openBooking } from '@/components/booking/BookButton';
 // Mobile-only sticky CTA (see .sticky-book-bar, hidden ≥701px) that appears once the visitor has scrolled past the hero, since BOOK NOW is
 // removed from the mobile navbar. On a journey page (/packages/<slug>) Book Now opens that journey's "Request to book" sheet instead of
 // the general booking page. It also carries the WhatsApp button, so the floating chat bubble is hidden while this bar is showing.
 export default function StickyBookBar() {
   const [visible, setVisible] = useState(false); const pathname = usePathname();
+  const onPanorama = pathname.startsWith('/stays/panorama');
+  const room = pathname.startsWith('/stays/panorama/') ? roomById(pathname.split('/')[3] ?? '') : undefined; // on a room page the bar names the room
   const slug = pathname.match(/^\/packages\/([^/]+)\/?$/)?.[1];
   useEffect(() => {
     setVisible(false);
@@ -20,7 +23,7 @@ export default function StickyBookBar() {
   if (pathname === '/book') return null;
   const tab = visible ? 0 : -1;
   return <div className={`sticky-book-bar${visible ? ' is-visible' : ''}`} aria-hidden={!visible}>
-    <Link href={slug ? `/packages/${slug}#book` : '/book'} className="sticky-book-main" tabIndex={tab} onClick={slug ? event => { event.preventDefault(); openBooking(event.currentTarget); } : undefined}>Book Now <span aria-hidden="true">↗</span></Link>
+    {onPanorama ? <a href={panoramaBookingUrl} target="_blank" rel="noopener noreferrer" className="sticky-book-main" tabIndex={tab} aria-label="Book now: HOGS Panorama, opens the secure booking site in a new tab">{room && <span className="sticky-room">{room.name}</span>}Book Now <span aria-hidden="true">↗</span></a> : <Link href={slug ? `/packages/${slug}#book` : '/book'} className="sticky-book-main" tabIndex={tab} onClick={slug ? event => { event.preventDefault(); openBooking(event.currentTarget); } : undefined}>Book Now <span aria-hidden="true">↗</span></Link>}
     <a className="sticky-book-wa" href={`https://wa.me/${content.whatsapp}`} target="_blank" rel="noopener noreferrer" aria-label="Chat with HOGS on WhatsApp" tabIndex={tab}><Icon name="chat" size={20} /></a>
   </div>;
 }

@@ -3,20 +3,30 @@
 .rooms-head h2 em{font-style:italic;color:#e3b06f}
 .rooms-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:clamp(28px,5vh,56px)}
 .room-card{display:flex;flex-direction:column;background:#17221d;border:1px solid #f4f1ec1f;border-radius:8px;overflow:hidden;scroll-margin-top:110px}
-.room-hero{position:relative;aspect-ratio:4/3;background:#2b3830 center/cover no-repeat}
-.room-placeholder{display:grid;place-items:center;background:linear-gradient(135deg,#1f2a24,#2b3830);color:#c9d0c8;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
-.room-thumbs{list-style:none;margin:0;padding:10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;background:#111b17}
-.room-thumbs button{display:block;width:100%;aspect-ratio:4/3;padding:0;border:2px solid transparent;border-radius:4px;overflow:hidden;background:#2b3830;cursor:pointer;opacity:.7;transition:opacity .3s,border-color .3s}
-.room-thumbs button:hover,.room-thumbs button.is-active{opacity:1}
-.room-thumbs button.is-active{border-color:#e3b06f}
-.room-thumbs img{display:block;width:100%;height:100%;object-fit:cover}
 .room-body{display:flex;flex-direction:column;gap:14px;padding:clamp(20px,3vw,32px);flex:1}
 .room-body h3{margin:0;font-family:var(--serif,serif);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1}
 .room-desc{margin:0;color:#d6dbd2}
-.room-facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin:0}
-.room-facts div{min-width:0}
-.room-facts dt{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#e3b06f}
-.room-facts dd{margin:2px 0 0;color:#d6dbd2}
-.room-amenities{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .room-cta{align-self:flex-start;margin-top:auto}
 @media(max-width:860px){.rooms-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Room photo slider: native scroll-snap (swipe on touch), arrows on desktop, dots. */
+.rs{position:relative;background:#111b17}
+.rs-track{list-style:none;margin:0;padding:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.rs-track::-webkit-scrollbar{display:none}
+.rs-track:focus-visible{outline:2px solid #e3b06f;outline-offset:-2px}
+.rs-slide{position:relative;flex:0 0 100%;aspect-ratio:3/2;scroll-snap-align:start;scroll-snap-stop:always;background:#2b3830}
+.rs-soon{position:absolute;left:14px;top:14px;padding:6px 12px;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f4f1ec;background:#0f1713cc;border:1px solid #f4f1ec33;border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.rs-arrow{position:absolute;top:50%;display:none;place-items:center;width:44px;height:44px;margin-top:-22px;padding:0;color:#f4f1ec;font-size:18px;background:#0f1713b3;border:1px solid #f4f1ec40;border-radius:50%;cursor:pointer;opacity:0;transition:opacity .3s,background .25s,transform .25s;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.rs-prev{left:12px}.rs-next{right:12px}
+.rs-arrow:hover{background:#d9822b;color:#18221c}
+.rs:hover .rs-arrow,.rs:focus-within .rs-arrow{opacity:1}
+@media(hover:hover) and (pointer:fine){.rs-arrow{display:grid}}
+.rs-dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:0;pointer-events:none}
+.rs-dots button{pointer-events:auto;display:grid;place-items:center;width:28px;height:28px;padding:0;background:transparent;border:0;cursor:pointer}
+.rs-dots button::before{content:"";width:8px;height:8px;border-radius:50%;background:#f4f1ec80;box-shadow:0 0 0 1px #0006;transition:transform .3s,background .3s}
+.rs-dots button.is-active::before{background:#e3b06f;transform:scale(1.35)}
+.room-guests{margin:-6px 0 0;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#e3b06f}
+.room-amenities{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.room-amenity{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px 0 11px;font-size:13px;color:#d6dbd2;border:1px solid #f4f1ec2e;border-radius:999px;background:#1d2b23}
+.room-amenity svg{flex:none;color:#e3b06f}
+@media(prefers-reduced-motion:reduce){.rs-arrow,.rs-dots button::before{transition:none}}

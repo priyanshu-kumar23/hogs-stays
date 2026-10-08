@@ -1,2 +1,5 @@
 import { panoramaLocation } from '@/lib/content';
-export default function LocationMap({warm=false,caption=panoramaLocation.displayAddress}:{warm?:boolean;caption?:string}){return <figure className={`location-map${warm?' location-map-warm':''}`}><iframe src={panoramaLocation.embedUrl} title="HOGS Panorama and Cafe DO NTHNG location in Manali" loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade"/><figcaption>{caption}</figcaption></figure>;}
+// Defaults to the HOGS Panorama location; /cafe passes the cafe's own embed (it is a different pin).
+export default function LocationMap({ warm = false, caption = panoramaLocation.displayAddress, embedUrl = panoramaLocation.embedUrl, title = 'HOGS Panorama location in Manali' }: { warm?: boolean; caption?: string; embedUrl?: string; title?: string }) {
+  return <figure className={`location-map${warm ? ' location-map-warm' : ''}`}><iframe src={embedUrl} title={title} loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade" /><figcaption>{caption}</figcaption></figure>;
+}

@@ -110,3 +110,5 @@
 }
 @media(max-width:380px){.enq-two{grid-template-columns:1fr}.enq-room-thumb{width:72px;height:60px}.enq-summary div{grid-template-columns:56px 1fr auto}}
 @media(prefers-reduced-motion:reduce){.enq,.enq-panel,.enq-step,.enq-check circle,.enq-check path{animation:none!important}.enq-check circle,.enq-check path{stroke-dashoffset:0}.enq-room,.enq-tick,.enq-progress i,.enq-pill{transition:none}}
+
+.enq-consent{margin-top:-6px}

@@ -2,9 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { buildEnquiryText, cleanPhone, emptyEnquiry, firstInvalidStep, mailtoUrl, nightsBetween, validateStep, whatsappUrl, type EnquiryState } from '../lib/panoramaEnquiry';
 
-const rooms = [{ id: 'valley-view', name: 'Valley View' }, { id: 'jacuzzi-suite', name: 'Jacuzzi Suite' }];
+const rooms = [{ id: 'valley-view', name: 'Valley View' }, { id: 'jacuzzi-room', name: 'Jacuzzi Room' }];
 const today = '2026-11-01';
-const valid: EnquiryState = { ...emptyEnquiry('jacuzzi-suite'), checkIn: '2026-11-12', checkOut: '2026-11-15', adults: 2, children: 0, occasions: ['Honeymoon'], name: 'Asha Rao', phone: '+91 98765 43210', email: '', message: 'Early check-in if possible' };
+const valid: EnquiryState = { ...emptyEnquiry('jacuzzi-room'), checkIn: '2026-11-12', checkOut: '2026-11-15', adults: 2, children: 0, occasions: ['Honeymoon'], name: 'Asha Rao', phone: '+91 98765 43210', email: '', message: 'Early check-in if possible' };
 
 test('step 0 needs a real room or "not sure"', () => {
   assert.ok(validateStep(0, emptyEnquiry(), rooms, today).room);
@@ -42,7 +42,7 @@ test('phone input is cleaned to 10 digits, with +91 / 91 / 0 prefixes removed', 
 test('the WhatsApp message has the agreed shape and is URL-encoded', () => {
   const text = buildEnquiryText(valid, rooms, 'HOGS Panorama');
   assert.equal(text, [
-    "Hi HOGS! I'd like to enquire about HOGS Panorama.", 'Room: Jacuzzi Suite', 'Dates: 12 Nov 2026 → 15 Nov 2026 (3 nights)', 'Guests: 2 adults, 0 children',
+    "Hi HOGS! I'd like to enquire about HOGS Panorama.", 'Room: Jacuzzi Room', 'Dates: 12 Nov 2026 → 15 Nov 2026 (3 nights)', 'Guests: 2 adults, 0 children',
     'Occasion: Honeymoon', 'Name: Asha Rao', 'Phone: +91 9876543210', 'Note: Early check-in if possible',
   ].join('\n'));
   const url = whatsappUrl('919251115478', text);

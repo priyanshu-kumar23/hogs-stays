@@ -2,8 +2,10 @@
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import type { GalleryImage } from '@/lib/gallery';
+/** The fields the viewer needs: works for gallery photos and for room photos alike. */
+export type LightboxImage = Pick<GalleryImage, 'id' | 'src' | 'alt' | 'width' | 'height' | 'blurDataURL'>;
 // Modal lightbox: arrow keys, Esc, swipe on touch, counter, caption from the photo's alt text. Uses <dialog> for focus trapping.
-export default function Lightbox({ items, index, onIndex, onClose }: { items: readonly GalleryImage[]; index: number; onIndex: (i: number) => void; onClose: () => void }) {
+export default function Lightbox({ items, index, onIndex, onClose }: { items: readonly LightboxImage[]; index: number; onIndex: (i: number) => void; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const swipe = useRef<number | null>(null);
   const total = items.length;

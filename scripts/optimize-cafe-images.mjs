@@ -5,7 +5,7 @@
 // Every output is EXIF-rotated and stripped of ALL metadata (sharp drops it unless .withMetadata() is called), including GPS.
 // Also writes lib/cafeImages.generated.ts (never hand-edit) and 1200x630 Open Graph JPEGs.
 import sharp from 'sharp';
-import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -28,6 +28,9 @@ const resolveSource = s => (s.startsWith('@public/') ? join(ROOT, 'public', s.sl
 
 // Start clean so renamed/removed cafe images never linger in public/. (The panorama folder also holds other photos: never wiped.)
 rmSync(join(PUBLIC_IMAGES, CAFE_DIR), { recursive: true, force: true });
+// Hand-made, lossless assets (e.g. the order-menu QR code, which must never be re-compressed) live in scripts/static/ and are copied back as-is.
+const STATIC_DIR = join(ROOT, 'scripts', 'static');
+if (existsSync(STATIC_DIR)) { mkdirSync(join(PUBLIC_IMAGES, CAFE_DIR), { recursive: true }); for (const name of readdirSync(STATIC_DIR)) copyFileSync(join(STATIC_DIR, name), join(PUBLIC_IMAGES, CAFE_DIR, name)); }
 
 // Decode once: auto-rotate from EXIF, optionally trim a baked-in white frame, return pixels (no metadata kept).
 async function load(path, trim) {

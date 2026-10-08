@@ -1,0 +1,12 @@
+/* HOGS Panorama booking CTA group: primary Book now (Aiosell), "Secure booking" hint, secondary WhatsApp enquiry link. */
+.pb-cta{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.pb-hint{font-size:11px;letter-spacing:.06em;color:#c9d0c8}
+.pb-enquire{min-height:44px;padding:0;margin-top:2px;background:transparent;border:0;font:inherit;font-size:13px;color:#e6dcc6;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#e3b06f88;cursor:pointer;transition:color .25s,text-decoration-color .25s}
+.pb-enquire:hover{color:#fff;text-decoration-color:#e3b06f}
+.page-hero .pb-cta{margin-top:30px}
+.page-hero .pb-cta .button{margin-top:0}
+.room-body .pb-cta{margin-top:auto}
+.room-body .pb-cta .button{align-self:flex-start}
+.pb-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px}
+.pb-view{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#f3d3a4;border-bottom:0}
+.pb-view span{transition:transform .3s}.pb-view:hover span{transform:translateX(5px)}.pb-view:hover{color:var(--room-accent,#e3b06f)}

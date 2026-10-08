@@ -1,6 +1,7 @@
 import { findImage, findPanoramaView, panoramaCoverImage, type GalleryImage } from './gallery';
 import { SHOW_GUEST_PHOTOS, findCafeImage } from './cafeImages';
 import { rooms } from './rooms';
+import { policyPages } from './policies';
 // No prices, room counts, or unconfirmed amenities are published.
 // HOGS Panorama photography comes from lib/gallery.generated.ts (see `photo`/`pic` below); only the Cafe DO NTHNG photo lives here.
 // Cafe DO NTHNG photos come from lib/cafeImages.generated.ts (run `npm run images:cafe`).
@@ -31,7 +32,6 @@ export const navLinks = [
   { title: 'Gallery', href: '/gallery' },
   { title: 'Features', href: '/features' },
   { title: 'About Us', href: '/about' },
-  { title: 'Our Stays', href: '/stays' },
 ] as const;
 export const footerLinks = [
   { title: 'Home', href: '/' }, { title: 'Our Stays', href: '/stays' }, { title: 'HOGS Panorama', href: '/stays/panorama' },
@@ -47,6 +47,31 @@ export const panoramaLocation = {
   address: { '@type': 'PostalAddress', streetAddress: 'Shuru Road, Prini, near Mata Sharvari Temple', addressLocality: 'Manali', addressRegion: 'Himachal Pradesh', postalCode: '175143', addressCountry: 'IN' },
   geo: null as { '@type': 'GeoCoordinates'; latitude:number; longitude:number } | null,
 };
+// Cafe DO NTHNG has its OWN location. Its pin (resolved from the share link) is ~177 m from the HOGS Panorama pin, so the cafe is NOT described as
+// "inside the Panorama premises" and the cafe JSON-LD has no containedInPlace. Panorama values above are unchanged.
+export const cafeMapLink = 'https://maps.app.goo.gl/7RuArhr2pFA4V6Wj9';
+export const cafeGeo = { '@type': 'GeoCoordinates' as const, latitude: 32.21389, longitude: 77.203417 };
+export const cafeMapEmbed = `https://www.google.com/maps?q=${cafeGeo.latitude},${cafeGeo.longitude}&z=17&output=embed`;
+export const cafeLocation = {
+  mapLink: cafeMapLink, embedUrl: cafeMapEmbed, geo: cafeGeo,
+  label: 'Cafe DO NTHNG, Manali',
+  // TODO(owner): add the cafe's full street address here (the share link only holds coordinates).
+  displayAddress: 'Cafe DO NTHNG, Manali, Himachal Pradesh',
+  address: { '@type': 'PostalAddress' as const, addressLocality: 'Manali', addressRegion: 'Himachal Pradesh', addressCountry: 'IN' },
+};
+export const cafeMenu = { url: 'https://dinein.petpooja.com/qr/fkjin5o9m8/Lobby', label: 'View menu & order', ariaLabel: 'View Cafe DO NTHNG menu and order' };
+/** The order-menu QR (lossless PNG, 29x29 modules + 4-module white quiet zone = 37 modules, 16 px each). It encodes cafeMenu.url. Show it at a multiple of 37 CSS px (148 / 185 / 222) with image-rendering: pixelated. */
+export const cafeMenuQr = { src: '/images/cafe-do-nthng/cafe-do-nthng-manali-order-menu-qr.png', width: 592, height: 592, alt: 'QR code to view the Cafe DO NTHNG menu and order', heading: 'Scan. Order. Do nothing.', text: 'Scan with your phone camera to see the menu and order.', share: 'Or share this code with a friend' };
+/** Open every day, 10:00 to 22:00 Asia/Kolkata. The live open/closed chip and the JSON-LD both read this. */
+export const cafeHours = {
+  timeZone: 'Asia/Kolkata', opens: '10:00', closes: '22:00', opensLabel: '10 AM', closesLabel: '10 PM',
+  text: 'Open daily · 10 AM – 10 PM', short: 'Open daily 10 AM – 10 PM', seo: 'open daily 10 AM to 10 PM',
+  days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as string[],
+};
+export const cafeOpeningHoursSpec = { '@type': 'OpeningHoursSpecification' as const, dayOfWeek: cafeHours.days, opens: cafeHours.opens, closes: cafeHours.closes };
+/** HOGS Panorama online booking (Aiosell booking engine). Every Book now / Book this stay on the Panorama side opens this in a new tab. */
+export const panoramaBookingUrl = 'https://be.aiosell.com/book/5b1f04b124';
+export const panoramaBooking = { url: panoramaBookingUrl, label: 'Book now', hint: 'Secure booking ↗', questions: 'Questions? Enquire on WhatsApp' };
 export const cafeAmbienceEnabled = false;
 export const content = {
   ui: {
@@ -71,7 +96,7 @@ export const content = {
   // TODO(owner): Cafe DO NTHNG is new — confirm type/description/highlights/bookable below before launch.
   properties: [
     { id: 'panorama', path: '/stays/panorama', name: 'HOGS Panorama', type: 'stay' as const, bookable: true, subtitle: 'A front-row seat to the Himalayas.', description: 'Open your curtains to a different perspective. A mountain stay with panoramic valley views, and space to take it all in.', images: [panoramaCover, photo('window-seats-with-mountain-view', true), photo('attic-lounge-with-timber-ceiling', true), photo('room-with-corner-windows-and-green-armchairs', true), photo('room-with-large-window-and-hillside-view', true)], highlights: ['Valley views', 'Manali', 'Himalayan hospitality'], price: null, roomCount: null, amenities: [], mapUrl: panoramaLocation.directionsUrl },
-    { id: 'cafe', path: '/cafe', name: 'Cafe DO NTHNG', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'TODO(owner): describe Cafe DO NTHNG — the vibe, the food philosophy, what makes it worth the detour. Placeholder copy only; confirm before launch.', images: [images.cafe], highlights: ['TODO: signature brew', 'TODO: seating & vibe', 'TODO: opening hours'], price: null, roomCount: null, amenities: [], mapUrl: panoramaLocation.directionsUrl },
+    { id: 'cafe', path: '/cafe', name: 'Cafe DO NTHNG', type: 'cafe' as const, bookable: false, subtitle: 'Slow mornings, good coffee, zero agenda.', description: 'Artisan coffee, signature shakes, Mediterranean & comfort food and weekend brunch, with mountain and orchard views.', images: [images.cafe], highlights: ['Artisan coffee', 'Mountain & orchard views', cafeHours.text], price: null, roomCount: null, amenities: [], mapUrl: cafeMapLink },
   ],
   intro: { image: { src: widest(cafeLantern), alt: cafeLantern.alt, position: '50% 30%', blur: cafeLantern.blurDataURL } },
   // Layered collage for the "Make room for what matters" moment (depth 1 = nearest).
@@ -102,7 +127,7 @@ export const content = {
   storyLines: ['House of GS is not just a homestay.', "It's a feeling.", 'A place where riders rest without questions, travellers feel understood, and conversations flow as easily as mountain air.', "Here, you don't just stay. You arrive, you belong, and you carry the Vaataavaran with you when you leave."],
   booking: "Whether you're planning a romantic getaway, family vacation, or peaceful retreat in the Himalayas, HOGS offers the perfect place to stay in Manali. Choose your property, pick your dates, and let the mountains welcome you.",
   email: 'info@hogsstays.com', phone: '+91 92511 15478', whatsapp: '919251115478', instagram: 'https://www.instagram.com/hogsstays/', cafeInstagram: 'https://www.instagram.com/cafedonthng.manali/',
-  policies: [ { slug: 'privacy-policy', title: 'Privacy Policy' }, { slug: 'terms-and-conditions', title: 'Terms & Conditions' }, { slug: 'cancellation-refund-policy', title: 'Cancellation & Refund Policy' }, { slug: 'house-rules', title: 'House Rules / Guest Guidelines' }, { slug: 'faqs', title: 'FAQs' } ],
+  policies: policyPages.map(page => ({ slug: page.slug, title: page.title })),
 };
 
 /** Everything the HOGS Panorama enquiry panel needs: the WhatsApp number / email (above) and the room list (edit rooms in lib/rooms.ts). */
@@ -114,14 +139,15 @@ export const cafeStory = {
   location: 'MANALI · OF HIMALAYAN HOMES', visitCta: 'Visit the cafe', instagramCta: 'Follow on Instagram', scroll: 'TAKE YOUR TIME · SCROLL SLOWLY',
   chaos: ['traffic', 'deadlines', 'notifications', 'honking'],
   ritual: {label:'01 / THE RITUAL',title:'A little less doing.',accent:'A little more being.',lines:['Order slow.', 'Sit longer.', 'Do nothing — properly.'],note:'A warm cup. A mountain breeze. Permission to pause.',cupLabel:'A slowly turning ceramic coffee cup with rising steam'},
+  bar: {label:'BEHIND THE BAR',line:'Every cup, pulled by hand.',title:'Every cup,',accent:'pulled by hand.',images:['cafe-do-nthng-manali-espresso-machine-black-and-white','cafe-do-nthng-manali-barista-pulling-espresso-shot','cafe-do-nthng-manali-barista-at-espresso-machine-black-and-white']},
   menu: {label:'02 / ON THE MENU',title:'Something to',accent:'linger over.',note:'A glimpse from our counter. The full menu is coming soon.',items:[
-    {image:'cafe-do-nthng-manali-latte-art-coffee',name:'TODO: coffee name',description:'TODO: signature coffee description'},
     {image:'cafe-do-nthng-manali-berry-mocktail',name:'TODO: mocktail name',description:'TODO: mocktail description'},
+    {image:'cafe-do-nthng-manali-green-mocktail-prayer-flags',name:'TODO: mocktail name',description:'TODO: mocktail description'},
     {image:'cafe-do-nthng-manali-orange-citrus-cooler-mountains',name:'TODO: cooler name',description:'TODO: citrus cooler description'}]},
-  terrace: {label:'03 / THE TERRACE',title:'Nowhere else',accent:'to be.',caption:'Pick a chair. Any chair.',swipe:'Swipe to find your corner',images:['cafe-do-nthng-manali-terrace-mural-swing','cafe-do-nthng-manali-egg-chair-forest-view','cafe-do-nthng-manali-terrace-walkway-prayer-flags-tables','cafe-do-nthng-manali-terrace-lanterns-prayer-flags-dusk']},
-  dusk: {label:'04 / DAY TO DUSK',title:'Let the evening',accent:'take its time.',text:'By evening, the lanterns come on and the guitars come out.',note:'A glimpse of evenings at DO NTHNG. Ask us about upcoming music sessions.',stages:['Daylight','Lantern glow','After dark'],images:['cafe-do-nthng-manali-terrace-mountain-view','cafe-do-nthng-manali-lantern-fairy-lights-dusk','cafe-do-nthng-manali-live-singer-guitar-mic-night','cafe-do-nthng-manali-candlelit-dinner-table-rose-petals']},
-  people: {label:'05 / THE PEOPLE',title:'The people',accent:'behind the cups.',text:'The hands behind every cup, every quiet morning and every evening session at Cafe DO NTHNG.',caption:'Good company. Warm cups. Our kind of place.'},
-  moments: {label:'06 / LITTLE MOMENTS',title:'Stay for',accent:'the feeling.'},
-  visit: {label:'07 / FIND YOUR WAY HERE',title:'Your chair',accent:'is waiting.',hoursLabel:'Opening hours',hours:'TODO: confirm opening days and hours',addressLabel:'Find us',address:panoramaLocation.displayAddress,mapPlaceholder:'Our map is coming soon. Message us for the exact location.',directions:'Get directions',directionsMessage:'Hi! Could you share directions to Cafe DO NTHNG in Manali?',reserve:'Reserve a table',message:"Hi! I'd like to reserve a table at Cafe DO NTHNG",note:'A table request, subject to availability. We’ll confirm with you on WhatsApp.',mapEmbedUrl:panoramaLocation.embedUrl},
+  terrace: {label:'03 / THE TERRACE',title:'Nowhere else',accent:'to be.',caption:'Pick a chair. Any chair.',swipe:'Swipe to find your corner',images:['cafe-do-nthng-manali-terrace-mural-swing','cafe-do-nthng-manali-terrace-mountain-view','cafe-do-nthng-manali-terrace-walkway-prayer-flags-tables','cafe-do-nthng-manali-terrace-chai-prayer-flags','cafe-do-nthng-manali-guests-terrace-prayer-flags','cafe-do-nthng-manali-terrace-motorbike-mural-wicker-seating']},
+  dusk: {label:'04 / DAY TO DUSK',title:'Let the evening',accent:'take its time.',text:'By evening, the lanterns come on and the guitars come out.',note:'A glimpse of evenings at DO NTHNG. Ask us about upcoming music sessions.',stages:['Daylight','Lantern glow','After dark'],images:['cafe-do-nthng-manali-egg-chair-forest-view','cafe-do-nthng-manali-lantern-fairy-lights-dusk','cafe-do-nthng-manali-live-acoustic-guitar-session','cafe-do-nthng-manali-candlelit-dinner-couple']},
+  people: {label:'05 / THE PEOPLE',image:'cafe-do-nthng-manali-team-neon-sign-entrance',baristaImage:'cafe-do-nthng-manali-barista-at-work',baristaCaption:'The first cup of the day.',title:'The people',accent:'behind the cups.',text:'The hands behind every cup, every quiet morning and every evening session at Cafe DO NTHNG.',caption:'Good company. Warm cups. Our kind of place.'},
+  moments: {label:'06 / LITTLE MOMENTS',title:'Stay for',accent:'the feeling.',images:['hogs-panorama-manali-guests-friends-laughing','cafe-do-nthng-manali-building-exterior-hogs-gate','hogs-panorama-manali-guests-friends-snow-peaks','cafe-do-nthng-manali-guests-chatting-terrace-dusk','hogs-panorama-manali-guests-older-couple-at-sign','cafe-do-nthng-manali-neon-sign-night-entrance','cafe-do-nthng-manali-guests-sharing-a-meal','hogs-panorama-manali-guests-couple-at-hogs-sign']},
+  visit: {offer:'Artisan coffee · Signature shakes · Mediterranean & comfort food · Weekend brunch',label:'07 / FIND YOUR WAY HERE',title:'Your chair',accent:'is waiting.',hoursLabel:'Opening hours',hours:cafeHours.text,addressLabel:'Find us',address:cafeLocation.displayAddress,mapPlaceholder:'Our map is coming soon. Message us for the exact location.',directions:'Get directions',directionsMessage:'Hi! Could you share directions to Cafe DO NTHNG in Manali?',reserve:'Reserve a table',message:"Hi! I'd like to reserve a table at Cafe DO NTHNG",note:'A table request, subject to availability. We’ll confirm with you on WhatsApp.',mapEmbedUrl:cafeMapEmbed,mapLabel:cafeLocation.label},
   ambience: {off:'♪ Cafe sounds',on:'♫ Sounds on',missing:'Cafe sounds will be available soon.',path:'/audio/cafe-ambience.mp3',available:false},
 };
