@@ -21,6 +21,7 @@ export const galleryFilters = [
   { id: 'signature-view', label: 'Signature View' },
   { id: 'valley-view', label: 'Valley View' },
   { id: 'outdoor', label: 'Outdoor' },
+  { id: 'jacuzzi-room', label: 'Jacuzzi Room' },
 ] as const;
 export type GalleryFilter = (typeof galleryFilters)[number]['id'];
 

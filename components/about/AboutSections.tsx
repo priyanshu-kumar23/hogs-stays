@@ -28,14 +28,20 @@ function Photo({ image, sizes }: { image: AboutImage; sizes: string }) {
   return <Image src={widest(image)} alt={image.alt} width={image.width} height={image.height} sizes={sizes} loading="lazy" placeholder="blur" blurDataURL={image.blurDataURL} style={{ objectPosition: image.position }} />;
 }
 
+/** FIG. 01 / FIG. 02 portraits (1200x1600 originals in public/images/about/). object-position keeps each face and her motorcycle in the 4:5 card. */
+export const founderPhotos = {
+  gazal: { src: '/images/about/gazal.jpg', position: '50% 40%', alt: 'Gazal, co-founder of HOGS, with her motorcycle' },
+  saloni: { src: '/images/about/saloni.jpg', position: '50% 60%', alt: 'Saloni, co-founder of HOGS, on her motorcycle' },
+};
+
 /** Right-hand column of the founders story: two staggered portrait cards, then the wide group photo. */
 export function FounderCards() {
-  const { gazal, saloni, friends } = aboutImages;
-  const cards = [{ image: gazal, name: 'GAZAL', tagline: content.founderTaglines.gazal }, { image: saloni, name: 'SALONI', tagline: content.founderTaglines.saloni }];
+  const { friends } = aboutImages;
+  const cards = [{ photo: founderPhotos.gazal, name: 'GAZAL', tagline: content.founderTaglines.gazal }, { photo: founderPhotos.saloni, name: 'SALONI', tagline: content.founderTaglines.saloni }];
   return <div className="founders-aside">
     <div className="founder-cards">
-      {cards.map(({ image, name, tagline }, index) => <figure className="founder-card" key={name} data-reveal>
-        <div className="founder-photo"><Image src={widest(image)} alt={image.alt} fill sizes="(max-width: 860px) 44vw, 22vw" loading="lazy" placeholder="blur" blurDataURL={image.blurDataURL} style={{ objectPosition: image.position }} /></div>
+      {cards.map(({ photo, name, tagline }, index) => <figure className="founder-card" key={name} data-reveal>
+        <div className="founder-photo"><Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 860px) 44vw, 22vw" loading="lazy" style={{ objectFit: 'cover', objectPosition: photo.position }} /></div>
         <figcaption>FIG. {fig(index + 1)} — {name}<em>{tagline}</em></figcaption>
       </figure>)}
     </div>

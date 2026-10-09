@@ -4,6 +4,8 @@ export default function config(phase:string):NextConfig { return {
   images: { formats: ['image/avif', 'image/webp'], deviceSizes:[360,640,750,1080,1440,1920] },
   poweredByHeader: false, devIndicators:false,
   // Old policy URLs keep working (permanent). Trailing slashes (/faqs/) are redirected to the canonical no-slash URL by Next (trailingSlash is off).
+  // vid1 and vid4 have no file extension, so Next would serve them as application/octet-stream; browsers can refuse that for <video>.
+  async headers() { return [{ source: '/images/:file(vid1|vid4)', headers: [{ key: 'Content-Type', value: 'video/mp4' }] }]; },
   async redirects() { return [
     { source: '/terms-and-conditions', destination: '/terms-conditions', permanent: true },
     { source: '/house-rules', destination: '/house-rules-guest-guidelines', permanent: true },

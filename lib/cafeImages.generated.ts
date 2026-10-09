@@ -1391,5 +1391,331 @@ export const panoramaCoverList: PanoramaCoverImage[] = [
     "position": "center 50%",
     "featured": false,
     "blurDataURL": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JQBOj+AhwBNsKoKtW989xZK2LQAD+3OFKoTPTEmcpgmRT4UwVVDmLpGLAU6cxc4dKkJt9NMre5r6l2A3YYMAmRks6SQg3fSc3Fn6Ymm8GvGG/vVHrzsw3GIFJ1xvNmiRBK2UL2O9UjhMu5l7b00FuHR2Vo6pRuYeDwGOg29Kqm7OKIr25ffjYK2RDqAAA"
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-lit-tub-mountain-view-window",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-lit-tub-mountain-view-window-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-lit-tub-mountain-view-window-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-lit-tub-mountain-view-window-1280.webp"
+      },
+      {
+        "width": 1537,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-lit-tub-mountain-view-window-1537.webp"
+      }
+    ],
+    "width": 1537,
+    "height": 1023,
+    "alt": "In-room jacuzzi with coloured lights beside a large glass door with a Himalayan mountain view at HOGS Panorama, Manali",
+    "caption": "THE JACUZZI, FACING THE MOUNTAINS",
+    "position": "center 62%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAACQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JaACdMoADK1PlwRznBd5EMO/IQaAA/vDevpy30tMNT7zAiKNv8aBx3kKj8anUMfVeZnO73kuRUIvgaS/Btqt0L3xjzoG3dRwXWUTv1VH7kbd7j/+zqfLq2NgthMPht7XV4gR6szAnw+belmItXBTcEWcyh1XnuZpbrHQ7GVhVe73QQ5V9oo3PfO8vl1x7AAAAAA=="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-bubbling-lit-tub-bed-mountain-door",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-bubbling-lit-tub-bed-mountain-door-1023.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-bubbling-lit-tub-bed-mountain-door-640.webp"
+      },
+      {
+        "width": 1023,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-bubbling-lit-tub-bed-mountain-door-1023.webp"
+      }
+    ],
+    "width": 1023,
+    "height": 1537,
+    "alt": "Close view of the lit, bubbling in-room jacuzzi with the bed, armchairs and a mountain-view glass door behind it, Jacuzzi Room at HOGS Panorama, Manali",
+    "caption": "A SOAK AT DUSK",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRjABAABXRUJQVlA4ICQBAABQBwCdASoYACQAPu1irU+ppSQiKrgMATAdiWwAnTKEe1kej/wFucmLDBwTk++1qV9lyMDVhgxZ+WSBgedq3xQaNZUAAP7vQxJzO3CKkQ4xh8QHTcLjLXdGFb/R1/GbyywGZrwXM+/qKzfZ69d19T40PnLVRkQXqvllNe3CjFHu2qd0S1INpnO3bkSqMa9bPdpn9soQqhgPu+nVGkM1ic8KcXwnc9WS+Ciea09RpGcpHNpjy8sp9flVtdr+DLhRfLmrBIsw0Vru0tAv3xYEdqdWPIBAkyrWXmrrWS6i4tPOUNqhto8oKmD16fv/6xm3CyzJGd0DQblNQg3143WtSa3GQz7m4bADNGp4MLGWy6uyinyWhJ1IoiY8rpYOJ30qK2UQAAAA"
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-king-bed-gable-window-mountains",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-king-bed-gable-window-mountains-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-king-bed-gable-window-mountains-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-king-bed-gable-window-mountains-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-king-bed-gable-window-mountains-1920.webp"
+      }
+    ],
+    "width": 2000,
+    "height": 1333,
+    "alt": "In-room jacuzzi in the foreground with a king bed and a gable glass door framing the evening mountains, under a timber ceiling at HOGS Panorama, Manali",
+    "caption": "JACUZZI ROOM",
+    "position": "center 55%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoABZ9/+MY3FVdxgAP7AWYtIBk5E94ir5jfuF+hmPoCp3b0GiQF5MU/ssXI/RM5LzF3YX1K0RV0cI3mxKww+JvB6bzivYSu5UlHHP29rAAXqOqJanLUT/Z4qu0Rjn3+9CZ5rxS61t4nES8C/eVDjpYdExb+dOlgp/kXdSAAA"
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-tub-timber-ceiling-mountain-view",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-tub-timber-ceiling-mountain-view-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-tub-timber-ceiling-mountain-view-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-tub-timber-ceiling-mountain-view-1280.webp"
+      }
+    ],
+    "width": 2000,
+    "height": 3000,
+    "alt": "White in-room jacuzzi under a pitched timber ceiling with a glass door and evening mountain view beyond, Jacuzzi Room at HOGS Panorama, Manali",
+    "caption": "JACUZZI ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAABQBwCdASoYACQAPulmpU2pJiMiMBqtUSAdCWoAtSFBVL4qodBG4GlqzQhzdP9zx+OUM47U3W3TpDaZJb3QQOQ+o8YAAP7vV0tdF3CAY5IBfOkJQtUwVRtLjYEHeC0B+xaFkIZJd00h6JWWwRgVZfU+SaioDTulD6KtuUZk3RMlBSNUKaqiC8juZ/RzVxKN0E3ewWaAVh8GJHDCP+GdFMbMqmWN5GmZAnCIu5FkJvuKg3XfZxbTYktwnmqP8kekn6jOmOVZICGt+T4CqhoKOQOLkYFpwuaKqEmkO0JB0neeSuMRJb9xCCmHiXkJBy8ZbH0fT2LQqegxc5vPXDO1BpHWK2YR6thtdETRvUPmFjwSBMSYAAA="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-beside-king-bed-wood-panelled-wall",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-beside-king-bed-wood-panelled-wall-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-beside-king-bed-wood-panelled-wall-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-beside-king-bed-wood-panelled-wall-1280.webp"
+      },
+      {
+        "width": 1537,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-beside-king-bed-wood-panelled-wall-1537.webp"
+      }
+    ],
+    "width": 1537,
+    "height": 1023,
+    "alt": "Jacuzzi Room at HOGS Panorama with the in-room jacuzzi beside a king bed, a wood-panelled wall, an oval mirror and a timber ceiling",
+    "caption": "JACUZZI ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAACwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZACdIExgwBiEOpKhu9xsLRhFAdnUAP6xC6og3YWWuWidu9LAFyPynx68hR+s778Uylq40JVVxOn8S6krcTLdCMxVUIIEJOlpDCQ3KtMVdlLm7sA6nIy8CS4zpOKIo995d38CSJ3xBqnKuTysT484v+/4x9hS3prWfvvof8wa0FMI4AXM3/nkhFZ98ZcgGrc8XNXJ4qgAAA=="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-and-king-bed-striped-throw-oval-mirror",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-and-king-bed-striped-throw-oval-mirror-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-and-king-bed-striped-throw-oval-mirror-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-and-king-bed-striped-throw-oval-mirror-1280.webp"
+      },
+      {
+        "width": 1537,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-and-king-bed-striped-throw-oval-mirror-1537.webp"
+      }
+    ],
+    "width": 1537,
+    "height": 1023,
+    "alt": "In-room jacuzzi and a king bed with a striped throw, a wood-panelled wall with the HOGS sign and an oval mirror, Jacuzzi Room at HOGS Panorama, Manali",
+    "caption": "JACUZZI ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAADQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JagCdMoRwAdDQ+smEQ3BYYMN9pyN7LAD+siqdZh65wVjXIeFAUV2X3kxjMbH2+jaSADSLYxAl7WDpRv/dIskGBSc5otqFxi47rg+TJdmt9gXrFBm3stpHwDgClWXrLVKFONvyXF/pQwH8em0cNXDXQqtc5IzRnkyTxJlTSf8deq7NjeWLcYUnfBrB2OBSMWSXhIErAm8TDXZpogA="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-room-bed-tub-timber-wall",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-bed-tub-timber-wall-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-bed-tub-timber-wall-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-bed-tub-timber-wall-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-bed-tub-timber-wall-1920.webp"
+      }
+    ],
+    "width": 2000,
+    "height": 1333,
+    "alt": "Jacuzzi Room at HOGS Panorama with the in-room jacuzzi, a king bed on a wooden frame, a wood-panelled wall and an oval mirror",
+    "caption": "JACUZZI ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAACQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JaACdMoADEJdnLiF8ymN4LbihCxgA/I5SaG5OPj/r8dPN73V4E5AfYnzcZLJfWF0/aiBu66y1bkA+jTNAhJ4fxC+ze3G15/YPfRjWQxCcLSlipbO3XQbxq44uTLx5UvWlfZWAO553TH0tOxXzvC07YcRZEI7k5X1CbwQnpzNCVDkBmBnWhrnFg8+QvCQQAAA="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-room-foot-of-bed-tub-mirror",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-foot-of-bed-tub-mirror-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-foot-of-bed-tub-mirror-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-foot-of-bed-tub-mirror-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-foot-of-bed-tub-mirror-1920.webp"
+      }
+    ],
+    "width": 2000,
+    "height": 1333,
+    "alt": "Foot of the king bed with the in-room jacuzzi, an oval mirror and a wood-panelled wall behind, Jacuzzi Room at HOGS Panorama, Manali",
+    "caption": "JACUZZI ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAADQAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JQBOgAxpInPUZfAl/86AA+LW/drqr3aeajMdVg+m527zkE1UJ3fPolvBPIMvABL9DQ1rS+cK2UM0bVL6S6Getk70tBx0l1NAXxodU/vR8clFGdfi8861dya0JJaaO2mjeiUd3xQVy39AvvTpimzcj+baqUaXrAEfr+OAAAAA="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-room-tv-wall-green-armchairs-tub",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-tv-wall-green-armchairs-tub-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-tv-wall-green-armchairs-tub-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-tv-wall-green-armchairs-tub-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-tv-wall-green-armchairs-tub-1920.webp"
+      }
+    ],
+    "width": 2000,
+    "height": 1333,
+    "alt": "Jacuzzi Room with a wall-mounted television on wood panelling, two green armchairs by the balcony door and the jacuzzi at the edge of the frame",
+    "caption": "JACUZZI ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZgCdMoACakgZnhjNLKFjK9+AAP7CQU5fAIGq0W2Sq3qOWI1nmsjhPNI9PRaS6yJqB2lcMP4NT8l0/cfwKV+4ogRc9uTfgn3k3Yd7J+RceQi4K9+6Q1IL0PYE6cJugbWeW0eczlJxIteXHh1RMFoIshYQgAAA"
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-room-king-bed-tv-armchairs-valley-door",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-king-bed-tv-armchairs-valley-door-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-king-bed-tv-armchairs-valley-door-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-king-bed-tv-armchairs-valley-door-1280.webp"
+      },
+      {
+        "width": 1536,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-king-bed-tv-armchairs-valley-door-1536.webp"
+      }
+    ],
+    "width": 1536,
+    "height": 1024,
+    "alt": "King bed with a striped throw, a television on a wooden unit, green armchairs and a balcony glass door with a view over the hills, Jacuzzi Room at HOGS Panorama",
+    "caption": "JACUZZI ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAADQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbACdMoRwIsAKMAQo/I0Ohigj+Dd0AAD+6iydnQIo8YamZtDTJxs1nyxffV6wTINsytg0LGY/T3Q8RnWDf4xQ3Apd/SJjXtdDWs1xnrnSNeIRQYPNM8m6xKOq05FUprst9sa5JadQTNLAG97D/csUuKupX1fOzKrp8oD5R5AMKRF55qIOcd2oe2WYDFbBP52P6w+yunHesfZzKEn0YE0EITkdmjng9qWkJfM1LqnMXVFAAAA="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-room-king-bed-balcony-door-mountains",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-king-bed-balcony-door-mountains-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-king-bed-balcony-door-mountains-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-king-bed-balcony-door-mountains-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-king-bed-balcony-door-mountains-1920.webp"
+      }
+    ],
+    "width": 2000,
+    "height": 1333,
+    "alt": "King bed on a timber frame beside a glass balcony door with evening mountain views, Jacuzzi Room under a pitched timber ceiling at HOGS Panorama",
+    "caption": "JACUZZI ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAACwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JbACdMoR3JoA1gBL5yt1nS2LNQ1kAAP7d+nQ19O3x8Kom5BfFa+TKHCCx381faLjiPe9G2ED3/prNOHmOSIOUI7xD1lcvJjk/95MrDPC7u9CbJG9j/xbR+bnHgg2UOCQdByR55WVMOEorhz6EIUJG2+Y7nRO094XMAGGqOuGQVh/z4Zvk3f8m7erQH/x7Wjhjer6wAAA="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-room-green-armchairs-balcony-door-dusk",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-green-armchairs-balcony-door-dusk-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-green-armchairs-balcony-door-dusk-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-green-armchairs-balcony-door-dusk-1280.webp"
+      },
+      {
+        "width": 1920,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-green-armchairs-balcony-door-dusk-1920.webp"
+      }
+    ],
+    "width": 2000,
+    "height": 1333,
+    "alt": "Two green armchairs and a small table by the glass balcony door, with the mountains at dusk beyond, Jacuzzi Room at HOGS Panorama, Manali",
+    "caption": "THE VIEW FROM THE ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JbAC7MoGv/gLOrDFXD57Ugb44AAD+0cmKiWg0zPj6DqiofvqqRpp9hXt2WavUwgobIK/ESgFGXTDNYTiuHKluReoNoFMKVEXkHOXTIh8IsgCZaRtlbq0XU+8j2YxnoptWH5za1Emc4FYnxW7NINx2RCz94LFyDzmkRG56LoHU14Rem164NSCegUcmxWYwtAA="
+  },
+  {
+    "id": "hogs-panorama-manali-jacuzzi-room-armchair-balcony-door-himalayas",
+    "category": "rooms/jacuzzi-room",
+    "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-armchair-balcony-door-himalayas-1280.webp",
+    "srcSet": [
+      {
+        "width": 640,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-armchair-balcony-door-himalayas-640.webp"
+      },
+      {
+        "width": 1280,
+        "src": "/images/hogs-panorama/rooms/jacuzzi-room/hogs-panorama-manali-jacuzzi-room-armchair-balcony-door-himalayas-1280.webp"
+      }
+    ],
+    "width": 2000,
+    "height": 3000,
+    "alt": "Green armchair and a small table by the balcony glass door looking out to the Himalayas at dusk, under a timber-lined ceiling at HOGS Panorama",
+    "caption": "THE VIEW FROM THE ROOM",
+    "position": "center 50%",
+    "featured": false,
+    "blurDataURL": "data:image/webp;base64,UklGRiYBAABXRUJQVlA4IBoBAAAwBwCdASoYACQAPu1qrU+ppiQiKqoBMB2JbACdMs8tRsrxupD6JHIYrxhrPSPRs+wLHPA4+8ZaxyxaLcx7Xo3VKYAA/uw2O455SEfgaoNykznPwOOWDZfMl6yisa+V8Ly6f6ymek9WGfGmwHw4ZE1OpzYMf9ixUeo8kyjzo0qOcUQsMyl121l5BSpL07Tjes4m/WMeuVvcp0IcSDVEKoXG1PrBYkFmPfDYshAFnuWMrS8PEvfV9dx/EAb74BYFdd9Qi6dukVF+DFTn8uzd9GCpyeovtz+hpSME8+2wJiI+fJV3FH/DmVBdLGb/Ti4E+3HvTgI27oLiG8iPykBMQ22Cupg0TrR4LFNceYPsOWjSPjheuYIcQqZKAAA="
   }
 ];

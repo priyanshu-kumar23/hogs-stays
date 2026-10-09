@@ -23,7 +23,7 @@ export default function PanoramaPage() {
       '@type': 'HotelRoom', '@id': `${site.origin}${property.path}#${room.id}`, name: room.bookingName, description: room.description, url: `${site.origin}${property.path}#${room.id}`,
       occupancy: { '@type': 'QuantitativeValue', maxValue: room.maxGuests, unitText: 'guests' }, bed: { '@type': 'BedDetails', typeOfBed: `${room.bed} bed` },
       amenityFeature: room.amenities.map(amenity => ({ '@type': 'LocationFeatureSpecification', name: amenityLabels[amenity], value: true })),
-      // Only a room's own photos are listed (the Jacuzzi Room has none yet).
+      // Only a room's own photos are listed.
       ...(room.photos.length ? { image: room.photos.map(id => `${site.origin}${findPanoramaView(id).src}`) } : {}),
       containedInPlace: { '@type': 'LodgingBusiness', name: property.name, url: `${site.origin}${property.path}` },
     })) };

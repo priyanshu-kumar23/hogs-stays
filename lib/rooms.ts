@@ -52,13 +52,29 @@ export const rooms: Room[] = [
     ],
   },
   {
-    id: 'jacuzzi-room', name: 'Jacuzzi Room', bookingName: 'HOGS Jacuzzi Room', tagline: 'A king-bed room for two, with a jacuzzi.', accent: { name: 'deep wine plum', color: '#c0719b' }, maxGuests: 2, bed: 'King',
+    id: 'jacuzzi-room', name: 'Jacuzzi Room', bookingName: 'HOGS Jacuzzi Room', tagline: 'A private jacuzzi, with the mountains beyond the glass.', accent: { name: 'deep wine plum', color: '#c0719b' }, maxGuests: 2, bed: 'King',
     amenities: ['jacuzzi', 'balcony', 'bathroom', 'kettle', 'tv', 'wifi', 'parking'],
-    // TODO(owner): confirm this wording. No photos yet, so it only restates the booking-engine details.
-    description: 'A king-bed room for two, with a jacuzzi, a balcony and a private bathroom.',
-    // TODO(owner): add the Jacuzzi Room photos (raw-images/hogs-panorama/rooms/, scripts/cafe-images.json category "rooms/jacuzzi-room"), then list their ids here.
-    photos: [],
-    fallbackCover: 'bedroom-floor-to-ceiling-valley-view',
+    // TODO(owner): price. This site shows no prices: rates and availability are live in the booking engine (see the note at the top of this file).
+    // If you want a "from ₹…" line on the Jacuzzi Room card and page, add a `priceFrom` field to the Room type and fill it in here.
+    // TODO(owner): confirm this wording (written from the photos and your feature list).
+    description: 'A king-bed room for two with an in-room jacuzzi, wooden interiors under a pitched timber ceiling, and a glass door to a private balcony with views of the mountains.',
+    // The first photo is the cover (wide shot: jacuzzi with the mountain view). Jacuzzi shots first, then the bedroom and view shots.
+    photos: [
+      'hogs-panorama-manali-jacuzzi-lit-tub-mountain-view-window',
+      'hogs-panorama-manali-jacuzzi-bubbling-lit-tub-bed-mountain-door',
+      'hogs-panorama-manali-jacuzzi-king-bed-gable-window-mountains',
+      'hogs-panorama-manali-jacuzzi-tub-timber-ceiling-mountain-view',
+      'hogs-panorama-manali-jacuzzi-beside-king-bed-wood-panelled-wall',
+      'hogs-panorama-manali-jacuzzi-and-king-bed-striped-throw-oval-mirror',
+      'hogs-panorama-manali-jacuzzi-room-bed-tub-timber-wall',
+      'hogs-panorama-manali-jacuzzi-room-foot-of-bed-tub-mirror',
+      'hogs-panorama-manali-jacuzzi-room-tv-wall-green-armchairs-tub',
+      'hogs-panorama-manali-jacuzzi-room-king-bed-tv-armchairs-valley-door',
+      'hogs-panorama-manali-jacuzzi-room-king-bed-balcony-door-mountains',
+      'hogs-panorama-manali-jacuzzi-room-green-armchairs-balcony-door-dusk',
+      'hogs-panorama-manali-jacuzzi-room-armchair-balcony-door-himalayas',
+    ],
+    heroPosition: 'center 62%',
   },
 ];
 export const guestsLine = (room: Room) => `Up to ${room.maxGuests} guests · ${room.bed} bed`;

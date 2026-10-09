@@ -2,7 +2,6 @@ import PageHero from '@/components/pages/PageHero';
 import CtaBand from '@/components/pages/CtaBand';
 import About from '@/components/sections/About';
 import { FounderCards, VaataavaranPhotos, TeamPhoto, MomentsGrid } from '@/components/about/AboutSections';
-import { aboutImages } from '@/lib/aboutImages.generated';
 import { content, pic, site } from '@/lib/content';
 import { pageMetadata } from '@/lib/seo';
 const hero = pic('attic-lounge-with-timber-ceiling');
@@ -12,8 +11,8 @@ const organization = {
   sameAs: [content.instagram, content.cafeInstagram], email: content.email, telephone: content.phone,
   address: { '@type': 'PostalAddress', addressLocality: 'Manali', addressRegion: 'Himachal Pradesh', addressCountry: 'IN' },
   founder: [
-    { '@type': 'Person', name: 'Gazal', jobTitle: 'Co-founder', image: `${site.origin}${aboutImages.gazal.src}`, url: `${site.origin}/about` },
-    { '@type': 'Person', name: 'Saloni', jobTitle: 'Co-founder', image: `${site.origin}${aboutImages.saloni.src}`, url: `${site.origin}/about` },
+    { '@type': 'Person', name: 'Gazal', jobTitle: 'Co-founder', image: `${site.origin}/images/about/gazal.jpg`, url: `${site.origin}/about` },
+    { '@type': 'Person', name: 'Saloni', jobTitle: 'Co-founder', image: `${site.origin}/images/about/saloni.jpg`, url: `${site.origin}/about` },
   ],
 };
 export default function AboutPage() {

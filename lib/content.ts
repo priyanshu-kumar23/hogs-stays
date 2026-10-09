@@ -111,6 +111,7 @@ export const content = {
     { number: '03', title: 'Room for connection', text: 'Shared stories, new friendships, and conversations without a clock.', icon: 'home', ...panelImage({ ...photo('bedroom-with-balcony-door-and-mountain-view', true), position: '50% 55%' }) },
     { number: '04', title: 'The little rituals', text: 'A warm cup, a mountain morning, and nowhere else you need to be.', icon: 'cup', ...panelImage({ src: widest(cafeMeal), alt: cafeMeal.alt, position: cafeMeal === cafeCup ? cafeCup.position : '45% 75%', blur: cafeMeal.blurDataURL, ratio: cafeMeal.width / cafeMeal.height }) },
     { number: '05', title: 'Permission to slow down', text: 'Less on the itinerary. More in the moment.', icon: 'sun', ...panelImage({ ...photo('attic-lounge-with-timber-ceiling', true), position: '55% 55%' }) },
+    { number: '06', title: 'Private Jacuzzi', text: 'Soak in a jacuzzi of your own, with the mountains right beyond the glass.', icon: 'home', ...panelImage({ ...photo('jacuzzi-lit-tub-with-mountain-view', true), position: '45% 62%' }) },
   ],
   // Home curved rail: real HOGS Panorama photos only (md variant for the cards, full size for the lightbox). Keep exactly four, in this
   // order: the card tilt in app/cinematic.css is defined per :nth-child(1-4). Cards are ~3:4, so portraits are preferred; landscapes are
