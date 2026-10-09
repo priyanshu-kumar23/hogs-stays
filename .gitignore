@@ -33,3 +33,6 @@ npm-debug.log*
 
 # raw cafe photos (full-size originals, never shipped)
 /raw-images
+
+# original (uncompressed) review videos, kept out of the repo
+/video-originals/

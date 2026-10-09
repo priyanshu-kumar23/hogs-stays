@@ -1,7 +1,3 @@
-# Cafe tabletop textures
-
-Wood Table 001 by Dimitrios Savva (photography) and Rico Cilliers (processing), Poly Haven.
-Source: https://polyhaven.com/a/wood_table_001
-License: CC0 1.0, https://polyhaven.com/license
-Downloaded 1K JPEG diffuse, OpenGL normal, roughness maps and resized to 512px WebP locally.
-The cup, saucer, spoon, studio reflection rig, latte-art canvas texture and steam shader are original procedural website assets. No model or HDRI is downloaded.
+Table wood: "Dark Wood" (photography Dimitrios Savva, baking Dario Barresi, tiling Rico Cilliers) / Poly Haven. CC0. Source: https://polyhaven.com/a/dark_wood
+Maps (diffuse, normal GL, roughness) re-encoded from the 1K JPGs to WebP.
+Environment map: public/hdri/comfy_cafe_1k.hdr, "Comfy Cafe" by Sergej Majboroda / Poly Haven. CC0. Source: https://polyhaven.com/a/comfy_cafe (1K HDR, unmodified).

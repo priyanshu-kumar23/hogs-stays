@@ -62,10 +62,10 @@ export default function VideoPlayer({ video, variant = 'card' }: { video: GuestV
     onPointerEnter={e => { if (!feature && e.pointerType === 'mouse' && !matchMedia('(prefers-reduced-motion:reduce)').matches) { pinned.current = false; play(); } }}
     onPointerLeave={e => { if (!feature && e.pointerType === 'mouse' && !pinned.current) pause(); }}
     onClick={onFrameClick}>
-    <video ref={el} muted playsInline loop preload="metadata" aria-label={video.label}
+    <video ref={el} muted playsInline loop preload="none" poster={video.poster} aria-label={video.label}
       onLoadedData={() => { if (feature && visible.current && !matchMedia('(prefers-reduced-motion:reduce)').matches) play(); }}
       onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setFailed(true)}>
-      {loaded && <source src={`${video.src}#t=0.1`} type={video.type} onError={() => setFailed(true)} />}
+      {loaded && <source src={video.src} type={video.type} onError={() => setFailed(true)} />}
     </video>
     {failed ? <p className="vp-error">Video unavailable</p> : <>
       {!playing && <span className="vp-bigplay" aria-hidden="true"><Icon name="play" /></span>}

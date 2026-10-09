@@ -7,5 +7,8 @@
 .sp-frame{position:relative;min-height:452px;border-radius:12px;border:1px solid #e3b06f66;box-shadow:0 0 36px #e3b06f26;overflow:hidden;background:#0d130f}
 .sp-frame iframe{border-radius:12px;display:block;border:0;height:452px;min-height:380px;width:100%;filter:none}
 .sp-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#e3b06f;background:linear-gradient(160deg,#14201a,#0b0f0c);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.sp-app{display:inline-block;margin-top:8px;font-size:12px;letter-spacing:.08em;color:#e3b06f;text-underline-offset:4px}
+.sp-app:hover{text-decoration:underline}
+.sp{scroll-margin-top:100px}
 .sp-note{margin:10px 0 0;font-size:12px;color:#c9d0c8}
 @media(max-width:860px){.sp{grid-template-columns:minmax(0,1fr)}.sp-frame{min-height:380px}.sp-frame iframe{height:380px}}

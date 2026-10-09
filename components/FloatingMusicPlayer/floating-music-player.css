@@ -1,5 +1,5 @@
 /* Floating mini music player: dark glass pill, gold accent. --fmp-bottom is set by JS to clear the mobile BOOK NOW bar / WhatsApp button. */
-.fmp{position:fixed;right:16px;bottom:var(--fmp-bottom,calc(16px + env(safe-area-inset-bottom,0px)));z-index:27;display:flex;flex-direction:column;align-items:flex-end;gap:10px;transition:bottom .3s ease;color:#f4f1ec}
+.fmp{position:fixed;right:16px;bottom:var(--fmp-bottom,calc(16px + env(safe-area-inset-bottom,0px)));z-index:27;display:flex;flex-direction:column;align-items:flex-end;gap:10px;color:#f4f1ec}
 /* Desktop: the round WhatsApp button sits at bottom-right; the measured offset in JS keeps the pill above it. */
 .fmp-pill{display:flex;align-items:center;gap:4px;height:64px;padding:0 8px 0 6px;border:1px solid #e3b06f80;border-radius:999px;background:#111b17c7;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 38px -12px #000,0 0 0 1px #0006}
 .fmp-main{display:flex;align-items:center;gap:10px;height:100%;padding:0 6px 0 10px;border:0;background:none;color:inherit;cursor:pointer;font:inherit}
@@ -15,20 +15,28 @@
 .fmp-play:hover{background:#ecc088;transform:scale(1.05)}
 .fmp-icon-btn{display:grid;place-items:center;flex:none;width:34px;height:34px;border:0;border-radius:50%;background:none;color:#f4f1ec;cursor:pointer;transition:background .2s,color .2s}
 .fmp-icon-btn:hover{background:#f4f1ec1f}
-.fmp-chevron svg{transition:transform .3s}
-.fmp.is-expanded .fmp-chevron svg{transform:rotate(180deg)}
 .fmp-close{width:26px;height:26px;color:#aab4ab}
 .fmp button:focus-visible,.fmp a:focus-visible{outline:2px solid #e3b06f;outline-offset:2px}
-/* Panel: always in the DOM (the iframe must never unmount or the music stops), hidden with transform/opacity only. */
+/* Fades out while the playlist section is on screen. */
+.fmp{transition:bottom .3s ease,opacity .3s ease,transform .3s ease}
+.fmp.is-away{opacity:0;transform:translateY(12px);pointer-events:none}
+/* Expandable panel (every page except /cafe): only a placeholder box lives here; the global iframe is laid over .fmp-embed by MusicProvider. Collapsed = transparent and click-through, never display:none. */
 .fmp-panel{position:absolute;right:0;bottom:calc(100% + 10px);width:min(320px,90vw);padding:12px 12px 14px;border:1px solid #e3b06f66;border-radius:16px;background:#111b17e6;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 24px 60px -16px #000;transform:translateY(16px) scale(.97);transform-origin:bottom right;opacity:0;pointer-events:none;transition:transform .3s ease,opacity .25s ease}
 .fmp.is-expanded .fmp-panel{transform:none;opacity:1;pointer-events:auto}
 .fmp-panel-head{display:flex;align-items:center;justify-content:space-between;margin:0 0 8px 4px;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#e3b06f}
-.fmp-embed{min-height:152px;border-radius:12px;overflow:hidden}
-.fmp-embed iframe{display:block;width:100%;height:152px;border:0;border-radius:12px;filter:none}
-.fmp-follow{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0 4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#f4f1ec;text-underline-offset:4px}
+.fmp-embed{height:152px;border-radius:12px;background:#0d130f}
+.fmp-follow{display:inline-block;margin:12px 0 0 4px;font-size:11px;letter-spacing:.08em;color:#e3b06f;text-underline-offset:4px}
 .fmp-follow:hover{text-decoration:underline}
-.booking-open .fmp{display:none}
+.fmp-chevron svg{transition:transform .3s}
+.fmp.is-expanded .fmp-chevron svg{transform:rotate(180deg)}
+/* First appearance (after visiting /cafe): slide in from the bottom right after 1.5s. `backwards` fill keeps it hidden during the delay and hands control back afterwards. */
+.fmp.is-entering{animation:fmp-in .7s cubic-bezier(.2,.8,.2,1) 1.5s backwards}
+@keyframes fmp-in{from{opacity:0;transform:translate3d(36px,36px,0)}to{opacity:1;transform:none}}
+/* The single global Spotify iframe. Positioned only by CSS (see MusicProvider): never moved in the DOM. */
+.mp-host{position:fixed;left:0;top:0;width:320px;height:152px;opacity:0;pointer-events:none;z-index:6;border-radius:12px;overflow:hidden;transition:opacity .25s ease}
+.mp-host iframe{display:block;width:100%!important;height:100%!important;border:0;border-radius:12px;filter:none}
+.booking-open .fmp,.booking-open .mp-host{display:none}
 @media(max-width:700px){.fmp{right:12px}.fmp-name{font-size:10px;letter-spacing:.12em}}
 @media(max-width:360px){.fmp-name{display:none}}
-@media(prefers-reduced-motion:reduce){.fmp,.fmp-panel,.fmp-chevron svg{transition:none}.fmp.is-playing .fmp-eq i{animation:none}}
+@media(prefers-reduced-motion:reduce){.fmp{transition:none}.fmp.is-entering{animation:none}.fmp-panel,.mp-host,.fmp-chevron svg{transition:none}.fmp.is-playing .fmp-eq i{animation:none}}
 @media print{.fmp{display:none}}

@@ -25,7 +25,7 @@
 }
 @media(max-width:767px){.cs-terrace-card{width:70vw}.cs-terrace-photo{height:82vw;aspect-ratio:auto}.cs-terrace-card figcaption{align-items:start;flex-direction:column;gap:8px}}
 @media(max-width:767px) and (prefers-reduced-motion:reduce){.cs-terrace-card{width:70vw}}
-.cs-cup-canvas{transition:opacity .8s ease-out}
+.cs-cup-canvas{transition:opacity .3s ease-out}
 
 /* Behind the bar: a cinematic row of black-and-white shots that slowly warm to sepia on hover / focus. Equal heights (flex-grow = aspect ratio). */
 .cs-bar{border-top:1px solid #d5b58b18}
@@ -47,3 +47,13 @@
 @media(hover:none){.cs-bar-shot{animation:cs-bar-warm 6s ease-in-out infinite alternate}}
 @keyframes cs-bar-warm{to{filter:grayscale(.45) sepia(.35) contrast(1.04)}}
 @media(prefers-reduced-motion:reduce){.cs-bar-shot{transition:none;animation:none!important}.cs-bar-shot:hover,.cs-bar-shot:focus-visible{transform:none}}
+
+/* Mobile hero: the scroll hint is part of the flow (not pinned to the bottom), so the buttons can never overlap it. */
+@media(max-width:767px){
+  .cs-arrival{height:auto;min-height:100svh;flex-direction:column;align-items:stretch;justify-content:center;padding:130px 7% 36px}
+  .cs-arrival .cs-hero-copy{width:100%}
+  .cs-arrival .cs-actions{gap:14px 16px;margin-top:26px}
+  .cs-arrival .cs-actions .button{gap:14px;padding:15px 20px;line-height:1.2}
+  .cs-arrival .cs-actions .text-link{padding:10px 0}
+  .cs-arrival .cs-scroll{position:relative;left:auto;right:auto;bottom:auto;margin-top:40px;align-self:stretch}
+}

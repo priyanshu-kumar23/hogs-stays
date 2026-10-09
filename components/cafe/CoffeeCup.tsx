@@ -1,34 +1,139 @@
- 'use client';
-import { Component,Suspense,useEffect,useMemo,useRef,useState,type ReactNode } from 'react';
-import { Canvas,useFrame } from '@react-three/fiber';
+'use client';
+import { Component, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { ContactShadows } from '@react-three/drei/core/ContactShadows';
 import { Environment } from '@react-three/drei/core/Environment';
-import { Lightformer } from '@react-three/drei/core/Lightformer';
 import { useTexture } from '@react-three/drei/core/Texture';
-import { Bloom,EffectComposer } from '@react-three/postprocessing';
-import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import * as THREE from 'three';
-class Boundary extends Component<{children:ReactNode;onFailure:()=>void},{failed:boolean}>{state={failed:false};static getDerivedStateFromError(){return {failed:true};}componentDidCatch(){this.props.onFailure();}render(){return this.state.failed?null:this.props.children;}}
-function latteTexture(){const canvas=document.createElement('canvas');canvas.width=canvas.height=512;const ctx=canvas.getContext('2d')!;const gradient=ctx.createRadialGradient(250,240,10,256,256,260);gradient.addColorStop(0,'#9b562b');gradient.addColorStop(.75,'#8a4520');gradient.addColorStop(.94,'#bc8049');gradient.addColorStop(1,'#3b180b');ctx.fillStyle=gradient;ctx.fillRect(0,0,512,512);
- ctx.translate(256,256);ctx.rotate(-.25);ctx.fillStyle='#ead5b1';for(let i=0;i<10;i++){const y=105-i*21,w=92-i*7;ctx.beginPath();ctx.moveTo(0,y+8);ctx.bezierCurveTo(-w,y+25,-w-15,y-19,0,y-9);ctx.bezierCurveTo(w+15,y-19,w,y+25,0,y+8);ctx.fill();}ctx.beginPath();ctx.moveTo(0,-105);ctx.bezierCurveTo(-35,-133,-52,-105,0,-76);ctx.bezierCurveTo(52,-105,35,-133,0,-105);ctx.fill();ctx.strokeStyle='#f4e4c9';ctx.lineWidth=7;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(0,-110);ctx.bezierCurveTo(-8,-45,8,48,0,130);ctx.stroke();const t=new THREE.CanvasTexture(canvas);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;return t;}
-const steamVertex=`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
-const steamFragment=`varying vec2 vUv;uniform float time;uniform float seed;
- float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
- float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
- float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=p*2.03+3.1;a*=.5;}return v;}
- void main(){float curl=sin(vUv.y*7.-time*.3+seed)*.10;float x=vUv.x-.5+curl;float edge=exp(-x*x*38.);float height=smoothstep(0.,.16,vUv.y)*(1.-smoothstep(.55,1.,vUv.y));float wisps=fbm(vec2(vUv.x*5.+seed,vUv.y*7.-time*.22));float alpha=edge*height*smoothstep(.28,.8,wisps)*.11;gl_FragColor=vec4(1.,.91,.78,alpha);}`;
-function Steam({reduced}:{reduced:boolean}){const group=useRef<THREE.Group>(null);const materials=useMemo(()=>Array.from({length:4},(_,i)=>new THREE.ShaderMaterial({vertexShader:steamVertex,fragmentShader:steamFragment,uniforms:{time:{value:0},seed:{value:i*3.7}},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide})),[]);useEffect(()=>()=>materials.forEach(m=>m.dispose()),[materials]);useFrame(({clock,camera})=>{materials.forEach(m=>m.uniforms.time.value=clock.elapsedTime);group.current?.children.forEach((mesh,i)=>{mesh.quaternion.copy(camera.quaternion);mesh.position.x=Math.sin(clock.elapsedTime*.16+i)*.12;});});return reduced?null:<group ref={group} position={[0,1.45,0]}>{materials.map((material,i)=><mesh key={i} position={[0,.65+i*.17,(i-1.5)*.10]} material={material}><planeGeometry args={[.7,1.6]}/></mesh>)}</group>;}
-function World({reduced,onReady}:{reduced:boolean;onReady:()=>void}){const group=useRef<THREE.Group>(null),ready=useRef(false);const source=useTexture(['/textures/cafe/wood-color.webp','/textures/cafe/wood-normal.webp','/textures/cafe/wood-roughness.webp']);
- const maps=useMemo(()=>source.map((texture,i)=>{const t=texture.clone();t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(2,2);t.anisotropy=4;t.colorSpace=i===0?THREE.SRGBColorSpace:THREE.NoColorSpace;t.needsUpdate=true;return t;}),[source]);
- const latte=useMemo(latteTexture,[]);
- const body=useMemo(()=>{const profile=[[0,0],[.48,0],[.60,.015],[.65,.045],[.68,.10],[.69,.18],[.72,.4],[.77,.8],[.84,1.2],[.89,1.37],[.90,1.42],[.89,1.45],[.86,1.46],[.83,1.44],[.82,1.40],[.77,1.2],[.70,.8],[.64,.4],[.62,.19],[.58,.13],[0,.13]];const shell=new THREE.LatheGeometry(profile.map(([x,y])=>new THREE.Vector2(x,y)),128);const handle=new THREE.TorusGeometry(.43,.095,24,96);handle.scale(.75,1.2,1);handle.translate(.94,.78,0);const merged=mergeGeometries([shell,handle])!;merged.computeVertexNormals();shell.dispose();handle.dispose();return merged;},[]);
- const saucer=useMemo(()=>new THREE.LatheGeometry([[0,0],[.7,0],[1,.04],[1.5,.10],[1.72,.18],[1.76,.23],[1.74,.26],[1.65,.25],[1.4,.19],[1.1,.12],[.83,.08],[.7,.065],[0,.065]].map(([x,y])=>new THREE.Vector2(x,y)),128),[]);
- useEffect(()=>()=>{maps.forEach(t=>t.dispose());latte.dispose();body.dispose();saucer.dispose();},[maps,latte,body,saucer]);
- useFrame(({clock,pointer},delta)=>{if(!ready.current){ready.current=true;onReady();}if(group.current&&!reduced){const t=clock.elapsedTime;group.current.rotation.y=THREE.MathUtils.damp(group.current.rotation.y,Math.sin(t*.08)*.16+pointer.x*.1,2,delta);group.current.rotation.z=THREE.MathUtils.damp(group.current.rotation.z,-pointer.x*.018,2,delta);group.current.position.y=Math.sin(t*.4)*.008;}});
- const ceramic=<meshPhysicalMaterial color="#f2e9d6" roughness={.25} clearcoat={1} clearcoatRoughness={.1} metalness={0} ior={1.48}/>;
- return <><Environment resolution={128} frames={1}><Lightformer position={[-3,4,2]} rotation={[0,.5,0]} scale={[4,5,1]} intensity={3} color="#ffe2b5"/><Lightformer position={[3,2,-3]} rotation={[0,-Math.PI/2,0]} scale={[2,4,1]} intensity={2} color="#d6e2ec"/><Lightformer position={[0,6,0]} rotation={[Math.PI/2,0,0]} scale={[3,3,1]} intensity={1.5} color="#fff1da"/></Environment><ambientLight intensity={.45}/><directionalLight position={[-3,5,3]} color="#ffe4bf" intensity={3}/><directionalLight position={[3,3,-3]} color="#dce7f4" intensity={1.7}/>
- <mesh position={[0,-.09,0]}><cylinderGeometry args={[5,5,.16,96]}/><meshStandardMaterial map={maps[0]} normalMap={maps[1]} roughnessMap={maps[2]} normalScale={[.2,.2]} roughness={.65}/></mesh>
- <group ref={group}><mesh geometry={saucer} position={[0,.01,0]}>{ceramic}</mesh><mesh geometry={body} position={[0,.08,0]}>{ceramic}</mesh><mesh rotation={[-Math.PI/2,0,0]} position={[0,1.40,0]}><circleGeometry args={[.805,128]}/><meshPhysicalMaterial map={latte} roughness={.27} clearcoat={.7} clearcoatRoughness={.12} ior={1.333}/></mesh><mesh rotation={[Math.PI/2,0,0]} position={[0,1.405,0]}><torusGeometry args={[.797,.015,12,128]}/><meshPhysicalMaterial color="#5a2c13" roughness={.18} clearcoat={1}/></mesh>
- <group position={[.45,.25,1.12]} rotation={[0,-.35,-.04]}><mesh rotation={[0,0,-Math.PI/2]}><capsuleGeometry args={[.025,.68,8,24]}/><meshPhysicalMaterial color="#d6d7d4" metalness={1} roughness={.2}/></mesh><mesh position={[.48,.01,0]} scale={[.22,.035,.14]}><sphereGeometry args={[1,32,16]}/><meshPhysicalMaterial color="#d6d7d4" metalness={1} roughness={.18}/></mesh></group><Steam reduced={reduced}/></group>
- <ContactShadows position={[0,.001,0]} opacity={.45} scale={7} blur={2.5} far={3} resolution={256} frames={1}/>{!reduced&&<EffectComposer multisampling={0}><Bloom luminanceThreshold={1.4} intensity={.1} mipmapBlur/></EffectComposer>}</>;}
-export default function CoffeeCup({visible,reduced}:{visible:boolean;reduced:boolean}){const [ready,setReady]=useState(false),[failed,setFailed]=useState(false);return <Boundary onFailure={()=>setFailed(true)}>{!failed&&<div className="cs-cup-canvas" aria-hidden="true" style={{opacity:ready?1:0}}><Canvas frameloop={!visible?'never':reduced?'demand':'always'} dpr={[1,1.5]} camera={{position:[3.2,3.6,5.5],fov:38}} gl={{antialias:true,powerPreference:'low-power',toneMapping:THREE.ACESFilmicToneMapping,outputColorSpace:THREE.SRGBColorSpace}} onCreated={({gl})=>{gl.toneMappingExposure=1.05;gl.domElement.addEventListener('webglcontextlost',()=>setFailed(true),{once:true});}}><color attach="background" args={['#25180f']}/><Suspense fallback={null}><World reduced={reduced} onReady={()=>setReady(true)}/></Suspense></Canvas></div>}</Boundary>;}
+import { COFFEE_Y, cupInnerRadiusAt, makeCoffeeTexture, makeCupBody, makeGlazeTextures, makeHandle, makeSaucer, makeSpoonBowl, makeSpoonHandle, SAUCER_WELL_Y, type LatteArt } from './coffeeCupParts';
+
+/** Latte art on the coffee: 'rosetta' (default) or 'mountains' (three Himalayan peaks in milk foam). */
+const LATTE_ART: LatteArt = 'rosetta';
+
+class Boundary extends Component<{ children: ReactNode; onFailure: () => void }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  componentDidCatch() { this.props.onFailure(); }
+  render() { return this.state.failed ? null : this.props.children; }
+}
+
+// Steam: a few soft, translucent ribbons that widen and fade as they rise (noise-masked, no hard edges).
+const steamVertex = `varying vec2 vUv;uniform float time;uniform float seed;
+void main(){vUv=uv;vec3 p=position;float h=uv.y;p.x+=sin(h*4.2+time*.35+seed)*.11*h+sin(h*9.+time*.5+seed*2.)*.03*h;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}`;
+const steamFragment = `varying vec2 vUv;uniform float time;uniform float seed;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=p*2.03+3.1;a*=.5;}return v;}
+void main(){float y=vUv.y;float x=(vUv.x-.5)*2.;float width=mix(.28,.95,y);float edge=smoothstep(width,0.,abs(x));
+float fadeIn=smoothstep(0.,.2,y);float fadeOut=1.-smoothstep(.5,1.,y);
+float n=fbm(vec2(vUv.x*3.+seed,y*3.8-time*.16));float mask=smoothstep(.32,.78,n);
+float alpha=edge*fadeIn*fadeOut*mask*.22;gl_FragColor=vec4(1.,.97,.93,alpha);}`;
+function Steam({ reduced }: { reduced: boolean }) {
+  const group = useRef<THREE.Group>(null);
+  const materials = useMemo(() => Array.from({ length: 4 }, (_, i) => new THREE.ShaderMaterial({
+    vertexShader: steamVertex, fragmentShader: steamFragment, uniforms: { time: { value: 4 }, seed: { value: i * 3.7 } }, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+  })), []);
+  useEffect(() => () => materials.forEach(m => m.dispose()), [materials]);
+  useFrame(({ clock, camera }) => {
+    group.current?.children.forEach(mesh => mesh.quaternion.copy(camera.quaternion)); // face the camera
+    if (!reduced) materials.forEach(m => { m.uniforms.time.value = clock.elapsedTime; }); // reduced motion: steam stays as a still frame
+  });
+  return <group ref={group} position={[0, COFFEE_Y + 0.05, 0]}>
+    {materials.map((material, i) => <mesh key={i} position={[(i - 1.5) * 0.12, 0.9, (i - 1.5) * 0.08]} material={material} renderOrder={5}><planeGeometry args={[0.75, 1.9, 1, 24]} /></mesh>)}
+  </group>;
+}
+
+function World({ reduced, mobile, onReady }: { reduced: boolean; mobile: boolean; onReady: () => void }) {
+  const group = useRef<THREE.Group>(null);
+  const ready = useRef(false);
+  const tilt = useRef({ x: 0, y: 0 }); // device tilt on phones (only when the browser allows it without a permission prompt)
+  const source = useTexture(['/textures/cafe/wood-color.webp', '/textures/cafe/wood-normal.webp', '/textures/cafe/wood-roughness.webp']);
+  const wood = useMemo(() => source.map((texture, i) => {
+    const t = texture.clone();
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(2.5, 2.5); t.anisotropy = 4;
+    t.colorSpace = i === 0 ? THREE.SRGBColorSpace : THREE.NoColorSpace; t.needsUpdate = true;
+    return t;
+  }), [source]);
+  const glaze = useMemo(makeGlazeTextures, []);
+  const coffee = useMemo(() => makeCoffeeTexture(LATTE_ART), []);
+  const parts = useMemo(() => ({ body: makeCupBody(), saucer: makeSaucer(), handle: makeHandle(), bowl: makeSpoonBowl(), spoonHandle: makeSpoonHandle() }), []);
+  const coffeeRadius = useMemo(() => cupInnerRadiusAt(COFFEE_Y) + 0.004, []);
+  useEffect(() => () => {
+    wood.forEach(t => t.dispose()); glaze.color.dispose(); glaze.roughness.dispose(); coffee.dispose();
+    Object.values(parts).forEach(g => g.dispose());
+  }, [wood, glaze, coffee, parts]);
+
+  useEffect(() => {
+    if (reduced || !mobile) return;
+    const DeviceOrientation = window.DeviceOrientationEvent as unknown as { requestPermission?: unknown } | undefined;
+    if (!DeviceOrientation || typeof DeviceOrientation.requestPermission === 'function') return; // iOS needs a permission prompt: skip, the idle float still plays
+    const onTilt = (event: DeviceOrientationEvent) => {
+      tilt.current.x = THREE.MathUtils.clamp((event.gamma ?? 0) / 40, -1, 1);
+      tilt.current.y = THREE.MathUtils.clamp(((event.beta ?? 45) - 45) / 40, -1, 1);
+    };
+    window.addEventListener('deviceorientation', onTilt);
+    return () => window.removeEventListener('deviceorientation', onTilt);
+  }, [reduced, mobile]);
+
+  useFrame(({ clock, pointer }, delta) => {
+    if (!ready.current) { ready.current = true; onReady(); }
+    const g = group.current;
+    if (!g || reduced) return;
+    const t = clock.elapsedTime;
+    const px = mobile ? tilt.current.x : pointer.x, py = mobile ? tilt.current.y : pointer.y;
+    g.rotation.y = THREE.MathUtils.damp(g.rotation.y, Math.sin(t * 0.12) * 0.07 + px * 0.09, 2.5, delta); // slow idle turn plus parallax; the handle stays on the right
+    g.rotation.x = THREE.MathUtils.damp(g.rotation.x, -py * 0.025, 2.5, delta);
+    g.rotation.z = THREE.MathUtils.damp(g.rotation.z, -px * 0.02, 2.5, delta);
+    g.position.y = Math.sin(t * 0.5) * 0.01;
+  });
+
+  const ceramic = <meshPhysicalMaterial color="#ffffff" map={glaze.color} roughnessMap={glaze.roughness} roughness={0.5} clearcoat={1} clearcoatRoughness={0.1} metalness={0} ior={1.48} envMapIntensity={0.6} />;
+  const steel = <meshPhysicalMaterial color="#d3d5d8" metalness={1} roughness={0.3} envMapIntensity={1.1} />;
+  return <>
+    <Environment files="/hdri/comfy_cafe_1k.hdr" environmentIntensity={0.55} />
+    <hemisphereLight args={["#fff1dc", "#6a4e38", 1.35]} />
+    {/* warm key from the upper left (window light), soft cool fill from the right, rim from behind to lift the cup off the dark background */}
+    <directionalLight position={[-3.6, 5.6, 3.2]} color="#ffdcae" intensity={3.3} castShadow shadow-mapSize={[1024, 1024]} shadow-camera-left={-2.6} shadow-camera-right={2.6} shadow-camera-top={2.6} shadow-camera-bottom={-2.6} shadow-camera-near={0.5} shadow-camera-far={14} shadow-bias={-0.0012} shadow-normalBias={0.06} shadow-radius={5} />
+    <directionalLight position={[3.4, 2.4, 3.8]} color="#dbe5f2" intensity={1.0} />
+    <directionalLight position={[1.2, 1.6, 6]} color="#ffeccf" intensity={1.1} />
+    <directionalLight position={[2.6, 3.2, -4.2]} color="#fff0d8" intensity={1.7} />
+    <mesh position={[0, -0.09, 0]} receiveShadow>
+      <cylinderGeometry args={[5, 5, 0.16, 96]} />
+      <meshStandardMaterial map={wood[0]} normalMap={wood[1]} roughnessMap={wood[2]} normalScale={new THREE.Vector2(0.7, 0.7)} roughness={1} color="#8f7a66" />
+    </mesh>
+    <group ref={group}>
+      <mesh geometry={parts.saucer} castShadow receiveShadow>{ceramic}</mesh>
+      <group position={[0, SAUCER_WELL_Y, 0]}>
+        <mesh geometry={parts.body} castShadow>{ceramic}</mesh>
+        <mesh geometry={parts.handle} castShadow>{ceramic}</mesh>
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, COFFEE_Y, 0]}>
+          <circleGeometry args={[coffeeRadius, 128]} />
+          <meshPhysicalMaterial map={coffee} roughness={0.3} clearcoat={0.6} clearcoatRoughness={0.14} ior={1.333} envMapIntensity={0.6} />
+        </mesh>
+      </group>
+      <group position={[0.38, 0.21, 1.2]} rotation={[0, -0.12, 0]}> {/* teaspoon resting on the saucer rim */}
+        <mesh geometry={parts.bowl} position={[0.22, 0.045, 0]} castShadow receiveShadow><meshPhysicalMaterial color="#d3d5d8" metalness={1} roughness={0.28} side={THREE.DoubleSide} envMapIntensity={1.1} /></mesh>
+        <mesh geometry={parts.spoonHandle} position={[0.02, 0.02, 0]} rotation={[0, 0, Math.PI / 2]} castShadow>{steel}</mesh>
+      </group>
+      <Steam reduced={reduced} />
+    </group>
+    <ContactShadows position={[0, 0.002, 0]} opacity={0.55} scale={7} blur={2.2} far={1.4} resolution={512} frames={1} />
+    {!reduced && !mobile && <EffectComposer multisampling={0}><Bloom luminanceThreshold={1.4} intensity={0.1} mipmapBlur /></EffectComposer>}
+  </>;
+}
+
+export default function CoffeeCup({ visible, reduced }: { visible: boolean; reduced: boolean }) {
+  const [ready, setReady] = useState(false), [failed, setFailed] = useState(false);
+  const mobile = useMemo(() => matchMedia('(max-width:767px)').matches, []);
+  return <Boundary onFailure={() => setFailed(true)}>
+    {!failed && <div className="cs-cup-canvas" aria-hidden="true" style={{ opacity: ready ? 1 : 0 }}>
+      <Canvas shadows frameloop={!visible ? 'never' : reduced ? 'demand' : 'always'} dpr={mobile ? [1, 1.5] : [1, 2]} camera={{ position: [3.0, 4.5, 5.1], fov: 38 }}
+        gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, outputColorSpace: THREE.SRGBColorSpace }}
+        onCreated={({ gl }) => { gl.toneMappingExposure = 1.2; gl.domElement.addEventListener('webglcontextlost', () => setFailed(true), { once: true }); }}>
+        <color attach="background" args={['#25180f']} />
+        <Suspense fallback={null}><World reduced={reduced} mobile={mobile} onReady={() => setReady(true)} /></Suspense>
+      </Canvas>
+    </div>}
+  </Boundary>;
+}
