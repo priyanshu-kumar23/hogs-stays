@@ -1,13 +1,12 @@
 'use client';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import { Component, type ReactNode, useCallback, useEffect, useState } from 'react';
 
-// The 3D scene is never allowed to block the site: the page content renders underneath, the intro
-// overlay has a hard timeout (also enforced in CSS in case JS never runs), and any failure falls back to a still image.
+// The 3D scene never blocks the site: the page renders underneath, a sharp still of the same 3D terrain (same camera, no blur)
+// shows instantly, and the live canvas crossfades over it as soon as its first frames are drawn. No intro overlay, no timers.
+// The still is also the fallback when WebGL is unavailable, the scene fails, or reduced motion is on.
 const HimalayanScene = dynamic(() => import('./HimalayanScene'), { ssr: false });
-const LOADER_TIMEOUT_MS = 4000;
-const SEEN_KEY = 'hogs-intro-seen';
+if (typeof window !== 'undefined' && !new URLSearchParams(location.search).has('scene')) void import('./HimalayanScene'); // start the chunk download before hydration finishes
 
 class SceneBoundary extends Component<{ children: ReactNode; onFailure: () => void }, { failed: boolean }> {
   state = { failed: false };
@@ -25,45 +24,41 @@ function webglAvailable() {
   } catch { return false; }
 }
 
-// Runs before first paint (inline in the server HTML) so a repeat visit in the same session never flashes the loader.
-const seenScript = `try{if(sessionStorage.getItem('${SEEN_KEY}'))document.documentElement.classList.add('hogs-intro-seen')}catch(e){}`;
-
 export default function SceneLoader() {
   const [enabled, setEnabled] = useState(false);
   const [ready, setReady] = useState(false);
-  const [failed, setFailed] = useState(false);
-  const [loaderDone, setLoaderDone] = useState(false);
+  const [posterGone, setPosterGone] = useState(false);
 
-  const dismissLoader = useCallback(() => {
-    setLoaderDone(true);
-    try { sessionStorage.setItem(SEEN_KEY, '1'); } catch { /* storage blocked: loader may show again, harmless */ }
-  }, []);
   const failure = useCallback(() => {
-    setEnabled(false); setReady(false); setFailed(true); setLoaderDone(true);
+    setEnabled(false); setReady(false); setPosterGone(false);
     document.documentElement.classList.remove('landscape-ready');
   }, []);
   const loaded = useCallback(() => {
-    setReady(true); dismissLoader();
+    setReady(true);
     document.documentElement.classList.add('landscape-ready');
-  }, [dismissLoader]);
+  }, []);
 
   useEffect(() => {
     const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
     const forcedPhoto = new URLSearchParams(location.search).get('scene') === 'photo';
-    const supported = !reduced && !forcedPhoto && webglAvailable();
-    setEnabled(supported);
-    setFailed(!supported);
-    if (!supported || document.documentElement.classList.contains('hogs-intro-seen')) setLoaderDone(true);
-    // Hard timeout: the overlay always goes away, whatever the scene is doing.
-    const timer = setTimeout(dismissLoader, LOADER_TIMEOUT_MS);
-    return () => { clearTimeout(timer); document.documentElement.classList.remove('landscape-ready'); };
-  }, [dismissLoader]);
+    setEnabled(!reduced && !forcedPhoto && webglAvailable());
+    return () => { document.documentElement.classList.remove('landscape-ready'); };
+  }, []);
+  // Remove the still once the canvas has finished fading in over it.
+  useEffect(() => {
+    if (!ready) return;
+    const timer = setTimeout(() => setPosterGone(true), 600);
+    return () => clearTimeout(timer);
+  }, [ready]);
 
-  // The still image sits under the 3D canvas until the first frames are drawn, so a slow or stalled scene is never a blank page.
   return <>
-    <script dangerouslySetInnerHTML={{ __html: seenScript }} />
-    {!ready && <div className="scene-fallback" aria-hidden="true" style={{ position: 'fixed' }}><Image src="/images/manali-valley-reference.png" alt="" fill priority sizes="100vw" /></div>}
-    {!loaderDone && <div className="landscape-boot" role="status" aria-live="polite"><span>HOGS</span><small>Opening your mountain view…</small><i /></div>}
+    {!posterGone && <div className="scene-fallback" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 700px)" srcSet="/images/hero/hero-3d-poster-mobile.webp" type="image/webp" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/hero/hero-3d-poster.webp" alt="" width={1920} height={1080} fetchPriority="high" decoding="async" />
+      </picture>
+    </div>}
     <div className={ready ? 'landscape-world is-ready' : 'landscape-world'}>
       {enabled && <SceneBoundary onFailure={failure}><HimalayanScene onReady={loaded} onFailure={failure} /></SceneBoundary>}
     </div>
