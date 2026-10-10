@@ -16,6 +16,6 @@ export default function CreditsPage() {
     <p>{content.landscape.credit}</p>
     <p>{content.landscape.textures} <a href="/terrain/ATTRIBUTION.md">Landscape credits</a></p>
     <p>{content.landscape.note}</p>
-    <p><Link href="/">Back to home</Link></p>
+    <p><Link href="/" prefetch={false}>Back to home</Link></p>
   </article></main>;
 }

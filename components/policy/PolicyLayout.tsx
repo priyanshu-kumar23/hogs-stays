@@ -12,7 +12,7 @@ export default function PolicyLayout({ page, toc, children }: { page: PolicyPage
   return <main id="main" className="subpage policy">
     <header className="pl-hero">
       <div className="pl-hero-inner">
-        <nav className="pl-crumbs" aria-label="Breadcrumb"><ol><li><Link href="/">Home</Link></li><li aria-current="page">{page.title}</li></ol></nav>
+        <nav className="pl-crumbs" aria-label="Breadcrumb"><ol><li><Link href="/" prefetch={false}>Home</Link></li><li aria-current="page">{page.title}</li></ol></nav>
         <p className="eyebrow">GUEST INFORMATION</p>
         <h1>{page.title}</h1>
         <p className="pl-intro">{page.intro}</p>

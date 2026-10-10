@@ -22,7 +22,6 @@ export function MealPlans() {
   return <section className="section rp-meals" aria-labelledby="rp-meals-t">
     <Head id="rp-meals-t" label="MEAL PLANS" title={<>Choose how<br /><em>you’d like to eat.</em></>} />
     <ul className="rp-meal-grid">{mealPlans.map((plan, index) => <li key={plan.id} className="rp-meal" data-reveal>
-      <span className="rp-fig">FIG. {String(index + 1).padStart(2, '0')} —</span>
       <h3>{plan.title}</h3>
       <a className="rp-link" href={panoramaBookingUrl} target="_blank" rel="noopener noreferrer">Live rates on the booking page <span aria-hidden="true">→</span></a>
     </li>)}</ul>

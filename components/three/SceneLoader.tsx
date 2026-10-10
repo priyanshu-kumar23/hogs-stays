@@ -6,7 +6,6 @@ import { Component, type ReactNode, useCallback, useEffect, useState } from 'rea
 // shows instantly, and the live canvas crossfades over it as soon as its first frames are drawn. No intro overlay, no timers.
 // The still is also the fallback when WebGL is unavailable, the scene fails, or reduced motion is on.
 const HimalayanScene = dynamic(() => import('./HimalayanScene'), { ssr: false });
-if (typeof window !== 'undefined' && !new URLSearchParams(location.search).has('scene')) void import('./HimalayanScene'); // start the chunk download before hydration finishes
 
 class SceneBoundary extends Component<{ children: ReactNode; onFailure: () => void }, { failed: boolean }> {
   state = { failed: false };
@@ -41,8 +40,18 @@ export default function SceneLoader() {
   useEffect(() => {
     const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
     const forcedPhoto = new URLSearchParams(location.search).get('scene') === 'photo';
-    setEnabled(!reduced && !forcedPhoto && webglAvailable());
-    return () => { document.documentElement.classList.remove('landscape-ready'); };
+    if (reduced || forcedPhoto) return;
+    // The poster is the LCP: start the 3D chunk and WebGL only once the page has loaded and the browser is idle.
+    let cancelled = false; let idle = 0; let timer = 0;
+    const start = () => { if (!cancelled) setEnabled(webglAvailable()); };
+    const hasIdle = typeof window.requestIdleCallback === 'function' && typeof window.cancelIdleCallback === 'function';
+    const schedule = () => { if (hasIdle) idle = window.requestIdleCallback(start, { timeout: 2500 }); else timer = window.setTimeout(start, 800); };
+    if (document.readyState === 'complete') schedule(); else window.addEventListener('load', schedule, { once: true });
+    return () => {
+      cancelled = true; window.removeEventListener('load', schedule);
+      if (idle) window.cancelIdleCallback(idle); window.clearTimeout(timer);
+      document.documentElement.classList.remove('landscape-ready');
+    };
   }, []);
   // Remove the still once the canvas has finished fading in over it.
   useEffect(() => {

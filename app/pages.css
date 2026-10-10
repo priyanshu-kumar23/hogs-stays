@@ -15,10 +15,10 @@
 .footer-sitemap a:hover,.footer-links a:hover{color:#f3d3a4}
 
 /* ---------- Page transition + reveal ---------- */
-.page-transition{animation:page-in .45s ease-out both}
+.page-transition{animation:page-in .2s ease-out both}
 @keyframes page-in{from{opacity:0}}
 @media(prefers-reduced-motion:reduce){.page-transition{animation:none}}
-.reveal-ready [data-reveal]{transition:opacity .8s ease,transform .8s ease}
+.reveal-ready [data-reveal]{transition:opacity .5s ease,transform .5s ease}
 .reveal-ready [data-reveal]:not(.is-in){opacity:0;transform:translateY(28px)}
 
 /* ---------- Inner-page hero ---------- */
@@ -173,3 +173,7 @@
 .location-map-warm{background:#24190f;border-color:#d89a4a44;align-self:center}
 .location-map-warm iframe{filter:sepia(.22) saturate(.78)}
 @media(max-width:767px){.location-map iframe{height:320px}}
+
+/* Razorpay support badge, above the copyright row. */
+.footer-pay{margin:26px 0 0}.footer-pay a{display:inline-block;min-height:0}.footer-pay img{display:block;width:200px;height:auto;border-radius:8px}
+@media (max-width:700px){.footer-pay img{width:160px}}

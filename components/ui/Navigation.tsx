@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Icon from './Icon';
-import { motion, useReducedMotion } from 'framer-motion';
+import { LazyMotion, m, useReducedMotion } from 'framer-motion';
 import { navLinks, panoramaBookingUrl } from '@/lib/content';
 import { packageMeta } from '@/lib/packageMeta';
 import type { StayMenuItem } from '@/lib/roomsMenu';
@@ -12,6 +12,8 @@ import PackagesMenu from './PackagesMenu';
 import StaysMenu from './StaysMenu';
 
 // Order: Our Stays (mega-menu) · Cafe · Packages (mega-menu) · Gallery · Features · About Us · BOOK NOW (Aiosell, new tab).
+// framer-motion's animation features load after first paint, so they are not part of the shared bundle.
+const loadMotionFeatures = () => import('@/lib/motionFeatures').then(module => module.default);
 const isActive = (pathname: string, href: string) => pathname === href || pathname.startsWith(`${href}/`);
 export default function Navigation({ stays }: { stays: StayMenuItem[] }) {
   const reduced = useReducedMotion(); const pathname = usePathname();
@@ -40,9 +42,9 @@ export default function Navigation({ stays }: { stays: StayMenuItem[] }) {
     { key: 'about', node: simple('/about', 'About Us', true) },
     { key: 'book', node: <a href={panoramaBookingUrl} target="_blank" rel="noopener noreferrer" onClick={close}>Book Your Stay</a> },
   ];
-  return <><a className="skip-link" href="#main">Skip to content</a>
-    <motion.header className={paper ? 'navbar on-paper' : scrolled ? 'navbar is-scrolled' : 'navbar'} animate={{ y: hidden && !open ? '-110%' : '0%' }} transition={{ duration: reduced ? 0 : .45, ease: 'easeInOut' }}>
-      <Link className="brand" href="/" aria-label="HOGS home">HOGS<span>OF HIMALAYAN HOMES</span></Link>
+  return <LazyMotion features={loadMotionFeatures}><a className="skip-link" href="#main">Skip to content</a>
+    <m.header className={paper ? 'navbar on-paper' : scrolled ? 'navbar is-scrolled' : 'navbar'} animate={{ y: hidden && !open ? '-110%' : '0%' }} transition={{ duration: reduced ? 0 : .45, ease: 'easeInOut' }}>
+      <Link className="brand" href="/" prefetch={false} aria-label="HOGS home">HOGS<span>OF HIMALAYAN HOMES</span></Link>
       <nav className="desktop-nav" aria-label="Main navigation">
         <StaysMenu items={stays} active={isActive(pathname, '/stays')} />
         {simple('/cafe', 'Cafe')}
@@ -51,10 +53,10 @@ export default function Navigation({ stays }: { stays: StayMenuItem[] }) {
       </nav>
       <a className="button nav-book" href={panoramaBookingUrl} target="_blank" rel="noopener noreferrer" aria-label="Book now: HOGS Panorama, opens the secure booking site in a new tab">Book Now <Icon /></a>
       <button ref={menu} className="menu-toggle" aria-label="Open navigation" aria-expanded={open} onClick={() => { dialog.current?.showModal(); setOpen(true); }}>☰</button>
-    </motion.header>
+    </m.header>
     <dialog data-lenis-prevent ref={dialog} className="mobile-menu" onCancel={close}>
       <button className="icon-button menu-close" onClick={close} aria-label="Close navigation"><Icon name="close" /></button>
       <span className="eyebrow">A little closer to the mountains</span>
-      <nav aria-label="Mobile navigation">{mobileItems.map(({ key, node }, index) => <motion.div key={key} initial={false} animate={{ opacity: open ? 1 : 0, x: open ? 0 : 20 }} transition={{ duration: reduced ? 0 : .5, delay: open ? index * .07 : 0 }}>{node}</motion.div>)}</nav>
-    </dialog></>;
+      <nav aria-label="Mobile navigation">{mobileItems.map(({ key, node }, index) => <m.div key={key} initial={false} animate={{ opacity: open ? 1 : 0, x: open ? 0 : 20 }} transition={{ duration: reduced ? 0 : .5, delay: open ? index * .07 : 0 }}>{node}</m.div>)}</nav>
+    </dialog></LazyMotion>;
 }

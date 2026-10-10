@@ -1,7 +1,7 @@
 // Spotify iFrame API helper (client only). The one global player lives in components/music/MusicProvider.tsx.
 // Docs: https://developer.spotify.com/documentation/embeds/references/iframe-api (no next/previous methods: skipping happens inside the embed).
 // Nothing here loads on pages that don't render the Cafe player: the script is only injected by createSpotifyPlayer().
-export const SPOTIFY_PLAYLIST_ID = '6BAVDWhL0uvcq0lA3AtevP';
+export const SPOTIFY_PLAYLIST_ID = '1dpCPxboUfWMpu7QG4jtF1';
 export const SPOTIFY_PLAYLIST_URI = `spotify:playlist:${SPOTIFY_PLAYLIST_ID}`;
 export const SPOTIFY_PLAYLIST_URL = `https://open.spotify.com/playlist/${SPOTIFY_PLAYLIST_ID}`;
 export const SPOTIFY_EMBED_URL = `https://open.spotify.com/embed/playlist/${SPOTIFY_PLAYLIST_ID}?utm_source=generator&theme=0`;

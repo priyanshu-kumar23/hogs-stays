@@ -90,5 +90,5 @@ export const otherRooms = (id: string) => rooms.filter(room => room.id !== id);
 /** Meal plans offered with a stay (names as in the booking engine). No prices are shown on this site: rates are live on the booking page. */
 export const mealPlans = [
   { id: 'breakfast', title: 'Breakfast included' },
-  { id: 'breakfast-lunch', title: 'Breakfast + Lunch included' },
+  { id: 'breakfast-dinner', title: 'Breakfast + Dinner included' },
 ] as const;

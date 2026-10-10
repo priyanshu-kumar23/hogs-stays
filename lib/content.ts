@@ -72,6 +72,8 @@ export const cafeOpeningHoursSpec = { '@type': 'OpeningHoursSpecification' as co
 /** HOGS Panorama online booking (Aiosell booking engine). Every Book now / Book this stay on the Panorama side opens this in a new tab. */
 export const panoramaBookingUrl = 'https://be.aiosell.com/book/5b1f04b124';
 export const panoramaBooking = { url: panoramaBookingUrl, label: 'Book now', hint: 'Secure booking ↗', questions: 'Questions? Enquire on WhatsApp' };
+// TODO(owner): paste the Razorpay support / payment link here. While empty, the footer badge renders without a link.
+export const RAZORPAY_SUPPORT_URL = '';
 export const cafeAmbienceEnabled = false;
 export const content = {
   ui: {
