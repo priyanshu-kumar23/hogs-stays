@@ -1,0 +1,11 @@
+/* /contact: details on the left, the lazy-loaded map on the right. */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.contact-details h2{margin:0 0 18px;font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1.05}
+.contact-address{display:flex;gap:12px;align-items:flex-start;margin:0 0 26px;font-style:normal;font-size:17px;line-height:1.55}
+.contact-address svg{flex:none;margin-top:3px;color:#e3b06f}
+.contact-list{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.contact-list li{display:flex;flex-direction:column;gap:4px;font-size:17px}
+.contact-list a{display:inline-flex;align-items:center;min-height:44px;color:#f3d3a4}
+.contact-links{margin:28px 0 0;font-size:13px;line-height:2;color:#bdc4b9}
+.contact-map .footer-map-frame{height:clamp(260px,34vw,400px)}
+@media(max-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr)}}

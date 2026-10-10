@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Icon from './Icon';
 import { LazyMotion, m, useReducedMotion } from 'framer-motion';
-import { navLinks, panoramaBookingUrl } from '@/lib/content';
+import { SITE, navLinks, panoramaBookingUrl } from '@/lib/content';
 import { packageMeta } from '@/lib/packageMeta';
 import type { StayMenuItem } from '@/lib/roomsMenu';
 import PackagesMenu from './PackagesMenu';
@@ -44,7 +44,7 @@ export default function Navigation({ stays }: { stays: StayMenuItem[] }) {
   ];
   return <LazyMotion features={loadMotionFeatures}><a className="skip-link" href="#main">Skip to content</a>
     <m.header className={paper ? 'navbar on-paper' : scrolled ? 'navbar is-scrolled' : 'navbar'} animate={{ y: hidden && !open ? '-110%' : '0%' }} transition={{ duration: reduced ? 0 : .45, ease: 'easeInOut' }}>
-      <Link className="brand" href="/" prefetch={false} aria-label="HOGS home">HOGS<span>OF HIMALAYAN HOMES</span></Link>
+      <Link className="brand" href="/" prefetch={false}><Image className="brand-logo" src={SITE.logo.src} alt={SITE.logo.alt} width={SITE.logo.width} height={SITE.logo.height} priority unoptimized /></Link>
       <nav className="desktop-nav" aria-label="Main navigation">
         <StaysMenu items={stays} active={isActive(pathname, '/stays')} />
         {simple('/cafe', 'Cafe')}

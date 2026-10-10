@@ -36,7 +36,7 @@ export const navLinks = [
 export const footerLinks = [
   { title: 'Home', href: '/' }, { title: 'Our Stays', href: '/stays' }, { title: 'HOGS Panorama', href: '/stays/panorama' },
   { title: 'Cafe DO NTHNG', href: '/cafe' }, { title: 'Gallery', href: '/gallery' }, { title: 'Features', href: '/features' },
-  { title: 'About Us', href: '/about' }, { title: 'Manali Packages', href: '/packages' }, { title: 'Book Now', href: '/book' },
+  { title: 'About Us', href: '/about' }, { title: 'Manali Packages', href: '/packages' }, { title: 'Book Now', href: '/book' }, { title: 'Contact', href: '/contact' },
 ] as const;
 // One location for the stay and its in-house cafe. Verified coordinates can be supplied here.
 export const panoramaLocation = {
@@ -72,6 +72,26 @@ export const cafeOpeningHoursSpec = { '@type': 'OpeningHoursSpecification' as co
 /** HOGS Panorama online booking (Aiosell booking engine). Every Book now / Book this stay on the Panorama side opens this in a new tab. */
 export const panoramaBookingUrl = 'https://be.aiosell.com/book/5b1f04b124';
 export const panoramaBooking = { url: panoramaBookingUrl, label: 'Book now', hint: 'Secure booking ↗', questions: 'Questions? Enquire on WhatsApp' };
+/** One place for the business address, map and logo. Footer, /contact and the structured data all read this.
+ *  TODO(owner): the short link below could not be resolved from the build machine, so the map is built from the address (no key needed).
+ *  Open the link in a browser, copy the latitude/longitude from the address bar (@lat,lng) and set `geo`: the embed, the directions link
+ *  and the JSON-LD `geo` then all switch to the exact pin automatically. */
+const mapAddress = '6672+9M8, Shuru Rd, Himachal Pradesh 175143';
+const mapGeo = null as { latitude: number; longitude: number } | null;
+const mapShortUrl = 'https://maps.app.goo.gl/pNJ92bjCdLYYSmGm9';
+export const SITE = {
+  name: 'HOGS Stays',
+  address: {
+    plusCode: '6672+9M8', street: 'Shuru Rd', region: 'Himachal Pradesh', postalCode: '175143', country: 'India', countryCode: 'IN',
+    /** The one-line address shown to guests. */
+    text: `${mapAddress}, India`,
+  },
+  geo: mapGeo,
+  mapShortUrl,
+  mapEmbedUrl: mapGeo ? `https://www.google.com/maps?q=${mapGeo.latitude},${mapGeo.longitude}&z=15&output=embed` : `https://www.google.com/maps?q=${encodeURIComponent(mapAddress)}&output=embed`,
+  directionsUrl: mapGeo ? `https://www.google.com/maps/dir/?api=1&destination=${mapGeo.latitude},${mapGeo.longitude}` : mapShortUrl,
+  logo: { src: '/images/brand/hogs-logo.webp', width: 543, height: 241, alt: 'HOGS – A Himalayan Home' },
+};
 // TODO(owner): paste the Razorpay support / payment link here. While empty, the footer badge renders without a link.
 export const RAZORPAY_SUPPORT_URL = '';
 export const cafeAmbienceEnabled = false;

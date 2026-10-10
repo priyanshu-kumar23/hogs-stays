@@ -177,3 +177,27 @@
 /* Razorpay support badge, above the copyright row. */
 .footer-pay{margin:26px 0 0}.footer-pay a{display:inline-block;min-height:0}.footer-pay img{display:block;width:200px;height:auto;border-radius:8px}
 @media (max-width:700px){.footer-pay img{width:160px}}
+
+/* Brand logo (navbar + footer). The sign has its own dark wood; rounded corners and a soft shadow keep it from looking like a pasted box. */
+.brand .brand-logo{display:block;width:auto;height:44px;border-radius:7px;box-shadow:0 2px 12px #00000059}
+@media(max-width:700px){.brand .brand-logo{height:36px;border-radius:6px}}
+/* Footer columns: logo + about | links | find us + map. */
+.footer-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);padding:34px 0 8px;align-items:start}
+.footer-cols .footer-sitemap{display:flex;flex-direction:column;align-items:flex-start;flex-wrap:nowrap;gap:0;padding:0;font-size:13px;text-align:left}
+.footer-cols .footer-sitemap a{justify-content:flex-start;text-align:left}
+.footer-cols .footer-sitemap .eyebrow{margin-bottom:6px}
+.footer-nav-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px}
+.footer-logo{display:inline-block;line-height:0}
+.footer-logo img{display:block;width:auto;height:56px;border-radius:8px;box-shadow:0 3px 14px #00000066}
+.footer-brand p{margin:16px 0 0;max-width:34ch;font-size:13px;line-height:1.7;color:#bdc4b9}
+.footer-address{display:flex;align-items:flex-start;gap:10px;margin:16px 0 0;font-style:normal;font-size:13px;line-height:1.55;color:#e3e7df}
+.footer-address svg{flex:none;margin-top:2px;color:#e3b06f}
+.footer-find .eyebrow{display:block;margin-bottom:12px}
+.footer-map-frame{position:relative;height:220px;overflow:hidden;border-radius:12px;background:#17221d;border:1px solid #f4f1ec1f}
+.footer-map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px;filter:invert(.9) hue-rotate(180deg) saturate(.7) contrast(.95) brightness(.95)}
+.footer-map-load{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;border:0;background:#17221d;color:#d4c8b1;font-size:13px;letter-spacing:.08em;cursor:pointer}
+.footer-map-load:hover{color:#f3d3a4}
+.footer-map-directions{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;font-size:13px;color:#e3b06f}
+.footer-map-directions:hover{color:#f3d3a4}
+@media(max-width:900px){.footer-cols{grid-template-columns:minmax(0,1fr);gap:30px}.footer-map-frame{height:200px}}
+@media(max-width:700px){.footer-cols{padding-bottom:0}}
